@@ -1,0 +1,13 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Facelets Hello World</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:inputText value="#{feedback.value}"></h:inputText>
+		<h:commandButton type="submit" value="Save"
+			action="#{basicFeedbackManager.saveFeedback(feedback)}"></h:commandButton>
+	</h:form>
+</h:body>
+</html>
