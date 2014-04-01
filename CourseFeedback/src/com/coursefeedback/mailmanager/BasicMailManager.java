@@ -1,6 +1,7 @@
 package com.coursefeedback.mailmanager;
 
 import java.util.Properties;
+
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
