@@ -23,6 +23,7 @@ public class BasicFeedbackManager implements FeedbackManager {
 		return "feedbackBar";
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<Feedback> getAllFeedbacks() {
 		Query query = this.em.createQuery("SELECT f FROM Feedback f");
