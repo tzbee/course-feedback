@@ -4,18 +4,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </h:head>
 
 <h:body>
-	<p:barChart id="basic"
-		value="#{feedbackBar.createCategoryModel(basicFeedbackManager.allFeedbacks)}"
-		legendPosition="ne" title="Feedback Bar" />
-	<p:editor rendered="false" />
-	<h:button value="Enter a new value" outcome="input-value">
-	</h:button>
+	<h:form>
+		<c:forEach items="#{basicCourseManager.courses}" var="course">
+			<h:outputText value="#{course.name}"></h:outputText>
+			<br />
+		</c:forEach>
+	</h:form>
+	<br />
+	<ui:include src="/footer.xhtml"></ui:include>
 </h:body>
 </html>

@@ -1,4 +1,4 @@
-package com.coursefeedback.course;
+package com.coursefeedback.teacher;
 
 import java.util.Collection;
 
@@ -14,45 +14,35 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.coursefeedback.teacher.Teacher;
+import com.coursefeedback.course.Course;
 
 @ManagedBean
 @Entity
-@Table(name = "course")
-public class Course {
+@Table(name = "teacher")
+public class Teacher {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name="courseId")
-	private int courseId;
-
+	@Column(name = "teacherId")
+	private int teacherId;
 	private String name;
 
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "course_teacher", joinColumns = { @JoinColumn(name = "courseId") }, inverseJoinColumns = { @JoinColumn(name = "teacherId") })
-	private Collection<Teacher> teachers;
+	@JoinTable(name = "course_teacher", joinColumns = { @JoinColumn(name = "teacherId") }, inverseJoinColumns = { @JoinColumn(name = "courseId") })
+	private Collection<Course> courses;
 
-	public int getCourseId() {
-		return courseId;
+	public int getTeacherId() {
+		return teacherId;
 	}
 
-	public void setCourseId(int id) {
-		this.courseId = id;
+	public void setTeacherId(int id) {
+		this.teacherId = id;
 	}
 
-	@Column(name = "name")
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Collection<Teacher> getTeachers() {
-		return teachers;
-	}
-
-	public void setTeachers(Collection<Teacher> teachers) {
-		this.teachers = teachers;
 	}
 }

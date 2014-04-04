@@ -11,11 +11,10 @@
 </h:head>
 
 <h:body>
-	<p:barChart id="basic"
-		value="#{feedbackBar.createCategoryModel(basicFeedbackManager.allFeedbacks)}"
-		legendPosition="ne" title="Feedback Bar" />
-	<p:editor rendered="false" />
-	<h:button value="Enter a new value" outcome="input-value">
-	</h:button>
+	<h:link value="Add course" outcome="add-course" />
+	<br />
+	<h:link value="Show courses" outcome="get-courses" />
+	<br />
+	<h:link value="Search courses by teacher" outcome="search-courses-by-teacher" />
 </h:body>
 </html>
