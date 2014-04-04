@@ -3,19 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </h:head>
 
 <h:body>
-	<h:form>
-		<h:inputText value="#{basicCourseManager.searchTerm}" />
-		<h:commandButton value="Search" action="search-results" />
-		<br />
-		<br />
-	</h:form>
+	<ui:include src="/header.xhtml" />
 
 	<h:link value="Add course" outcome="add-course" />
 	<br />

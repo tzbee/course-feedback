@@ -13,6 +13,8 @@
 </h:head>
 
 <h:body>
+	<ui:include src="/header.xhtml" />
+
 	<h:form>
 		<c:forEach items="#{basicCourseManager.courses}" var="course">
 			<h:outputLabel value="Course name: " />
