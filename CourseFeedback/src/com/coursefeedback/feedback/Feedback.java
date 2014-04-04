@@ -12,17 +12,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "feedback")
 public class Feedback {
-	private long id;
+	private long feedbackId;
 	private int value = 0;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getId() {
-		return id;
+	public Long getFeedbackId() {
+		return feedbackId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setFeedbackId(Long id) {
+		this.feedbackId = id;
 	}
 
 	@Column(name = "value")

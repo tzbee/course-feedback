@@ -55,4 +55,9 @@ public class Course {
 	public void setTeachers(Collection<Teacher> teachers) {
 		this.teachers = teachers;
 	}
+
+	@Override
+	public String toString() {
+		return "Id: " + this.courseId + ", name: " + this.name;
+	}
 }

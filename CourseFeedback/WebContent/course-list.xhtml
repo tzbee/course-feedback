@@ -17,16 +17,10 @@
 
 	<h:form>
 		<c:forEach items="#{basicCourseManager.courses}" var="course">
-			<h:outputLabel value="Course name: " />
-			<h:outputText value="#{course.name}" />
-
-			<br />
-			<h:outputLabel value="Teachers: " />
-
-			<c:forEach items="#{course.teachers}" var="teacher">
-				<h:outputText value="#{teacher.name} " />
-			</c:forEach>
-			<br />
+			<h:outputLink value="course-page.xhtml">
+				<f:param name="courseid" value="#{course.courseId}" />
+				<h:outputText value="#{course.name}" />
+			</h:outputLink>
 			<br />
 		</c:forEach>
 	</h:form>

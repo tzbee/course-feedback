@@ -28,4 +28,6 @@ public interface CourseManager {
 	 * @return
 	 */
 	Collection<Course> getCoursesByTeacherName(String teacherName);
+
+	Course getCourseById(int courseId);
 }

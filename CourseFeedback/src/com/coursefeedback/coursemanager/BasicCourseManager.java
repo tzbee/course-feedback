@@ -59,4 +59,12 @@ public class BasicCourseManager implements CourseManager {
 	public void setSearchTerm(String searchTerm) {
 		this.searchTerm = searchTerm;
 	}
+
+	@Override
+	public Course getCourseById(int courseId) {
+		Query query = this.em
+				.createQuery("SELECT c FROM Course c WHERE c.courseId = "
+						+ courseId);
+		return (Course) query.getSingleResult();
+	}
 }
