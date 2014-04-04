@@ -22,7 +22,7 @@ import com.coursefeedback.teacher.Teacher;
 public class Course {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name="courseId")
+	@Column(name = "courseId")
 	private int courseId;
 
 	private String name;

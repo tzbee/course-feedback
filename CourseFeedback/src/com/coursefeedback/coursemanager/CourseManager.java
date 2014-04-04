@@ -22,6 +22,7 @@ public interface CourseManager {
 	Collection<Course> getCourses();
 
 	/**
+	 * Get all courses associated with the teacher given his name
 	 * 
 	 * @param teacherName
 	 * @return

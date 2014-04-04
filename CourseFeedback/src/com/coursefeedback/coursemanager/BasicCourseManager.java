@@ -11,6 +11,11 @@ import javax.persistence.Query;
 import com.coursefeedback.course.Course;
 import com.coursefeedback.teacher.Teacher;
 
+/**
+ * Basic implementation of a course manager
+ * 
+ * @author touzbi
+ */
 @ManagedBean
 public class BasicCourseManager implements CourseManager {
 	// XXX To do better
@@ -21,7 +26,7 @@ public class BasicCourseManager implements CourseManager {
 
 	@Override
 	public String addCourse(Course course, Teacher teacher) {
-		//Add teacher to the course
+		// Add teacher to the course
 		course.setTeachers(Arrays.asList(teacher));
 
 		this.em.getTransaction().begin();
@@ -38,10 +43,13 @@ public class BasicCourseManager implements CourseManager {
 		return (Collection<Course>) query.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<Course> getCoursesByTeacherName(String teacherName) {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = this.em
+				.createQuery("SELECT c FROM Course c LEFT OUTER JOIN c.teachers t WHERE t.name = '"
+						+ teacherName + "'");
+		return (Collection<Course>) query.getResultList();
 	}
 
 	public String getSearchTerm() {

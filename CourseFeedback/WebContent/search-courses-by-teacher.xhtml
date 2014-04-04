@@ -14,9 +14,9 @@
 	<h:form>
 		<h:outputLabel value="Teacher's name: " />
 		<h:inputText value="#{basicCourseManager.searchTerm}" />
-		<h:outputText value="#{basicCourseManager.searchTerm}" />
+		<h:commandButton value="Search" action="search-results" />
 	</h:form>
 	<br />
-	<ui:include src="/footer.xhtml"></ui:include>
+	<ui:include src="/footer.xhtml" />
 </h:body>
 </html>
