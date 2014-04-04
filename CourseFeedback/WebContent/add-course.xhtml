@@ -13,9 +13,19 @@
 
 <h:body>
 	<h:form>
+		<h:outputLabel value="Course name "></h:outputLabel>
 		<h:inputText value="#{course.name}"></h:inputText>
+
+		<br />
+
+		<h:outputLabel value="Teacher's name "></h:outputLabel>
+		<h:inputText value="#{teacher.name}"></h:inputText>
+
+		<br />
+
 		<h:commandButton type="submit"
-			action="#{basicCourseManager.addCourse(course)}" value="Save course"></h:commandButton>
+			action="#{basicCourseManager.addCourse(course,teacher)}"
+			value="Save course"></h:commandButton>
 	</h:form>
 	<br />
 	<ui:include src="/footer.xhtml"></ui:include>
