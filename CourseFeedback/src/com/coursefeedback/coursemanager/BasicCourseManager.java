@@ -22,7 +22,7 @@ public class BasicCourseManager implements CourseManager {
 	private EntityManager em = Persistence.createEntityManagerFactory(
 			"CourseFeedback").createEntityManager();
 
-	private String searchTerm;
+	private String searchTerm = "Search by teacher";
 
 	@Override
 	public String addCourse(Course course, Teacher teacher) {

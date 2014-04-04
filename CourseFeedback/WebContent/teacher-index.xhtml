@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -11,10 +10,17 @@
 </h:head>
 
 <h:body>
+	<h:form>
+		<h:inputText value="#{basicCourseManager.searchTerm}" />
+		<h:commandButton value="Search" action="search-results" />
+		<br />
+		<br />
+	</h:form>
+
 	<h:link value="Add course" outcome="add-course" />
 	<br />
+
 	<h:link value="Show courses" outcome="get-courses" />
 	<br />
-	<h:link value="Search courses by teacher" outcome="search-courses-by-teacher" />
 </h:body>
 </html>
