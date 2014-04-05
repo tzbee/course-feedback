@@ -58,6 +58,12 @@ public class Course {
 
 	@Override
 	public String toString() {
-		return "Id: " + this.courseId + ", name: " + this.name;
+		return "Id: "
+				+ getCourseId()
+				+ ", name: "
+				+ getName()
+				+ ", teachers: "
+				+ (getTeachers() == null || getTeachers().isEmpty() ? "No teachers assigned"
+						: getTeachers());
 	}
 }
