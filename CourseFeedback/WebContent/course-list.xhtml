@@ -6,11 +6,23 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
-	<c:forEach items="#{courseList}" var="course">
-		<h:outputLink value="course-page.xhtml">
-			<f:param name="courseid" value="#{course.courseId}" />
-			<h:outputText value="#{course.name}" />
-		</h:outputLink>
-		<br />
-	</c:forEach>
+
+	<c:choose>
+
+		<c:when test="#{empty courseList}">
+			<h:outputText value="No courses yet" />
+		</c:when>
+
+		<c:otherwise>
+			<c:forEach items="#{courseList}" var="course">
+				<h:outputLink value="course-page.xhtml">
+					<f:param name="courseid" value="#{course.courseId}" />
+					<h:outputText value="#{course.name}" />
+				</h:outputLink>
+			</c:forEach>
+		</c:otherwise>
+
+	</c:choose>
+
+	<br />
 </ui:composition>
