@@ -7,6 +7,7 @@
 		<class>com.coursefeedback.feedback.Feedback</class>
 		<class>com.coursefeedback.course.Course</class>
 		<class>com.coursefeedback.teacher.Teacher</class>
+		<class>com.coursefeedback.studentmanager.Student</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

@@ -6,17 +6,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.coursefeedback.course.Course;
 
 @ManagedBean
 @Entity
 @Table(name = "feedback")
 public class Feedback {
-	private long feedbackId;
-	private int value = 0;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long feedbackId;
+
+	private int value = 0;
+
+	@ManyToOne
+	private Course course;
+
 	public Long getFeedbackId() {
 		return feedbackId;
 	}
@@ -32,5 +39,13 @@ public class Feedback {
 
 	public void setValue(int value) {
 		this.value = value;
+	}
+
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 }
