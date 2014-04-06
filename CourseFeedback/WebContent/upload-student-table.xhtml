@@ -11,18 +11,11 @@
 </h:head>
 
 <h:body>
-	<ui:include src="/header.xhtml" />
+	<h:form>
+		<h:outputLabel value="Upload file" />
+		<h:inputText />
+	</h:form>
 
-	<h:link value="Add course" outcome="add-course" />
-	<br />
-
-	<h:link value="Show courses" outcome="all-courses" />
-	<br />
-
-	<h:link value="Add student" outcome="input-student" />
-	<br />
-
-	<h:link value="Add students(Excell document)" outcome="upload-student-table" />
-	<br />
+	<ui:include src="/footer.xhtml" />
 </h:body>
 </html>
