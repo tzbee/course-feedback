@@ -1,6 +1,9 @@
 package com.coursefeedback.studentmanager;
 
+import java.util.ArrayList;
 import java.util.Collection;
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 public interface AbstractStudentManager {
 	/*
@@ -37,4 +40,7 @@ public interface AbstractStudentManager {
 	 */
 	public Collection<Student> getAllStudents();
 
+	ArrayList<Student> displayStudentFile(HSSFWorkbook workbook);
+
+	String saveStudentList(Collection<Student> students);
 }
