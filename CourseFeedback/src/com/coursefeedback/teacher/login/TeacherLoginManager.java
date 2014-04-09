@@ -14,4 +14,8 @@ public interface TeacherLoginManager {
 	boolean isUserNameValid(String userName);
 
 	boolean isPasswordValid(String userName, String password);
+
+	Teacher getSessionTeacher();
+
+	String logout();
 }
