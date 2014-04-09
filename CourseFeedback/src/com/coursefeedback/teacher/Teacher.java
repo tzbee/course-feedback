@@ -30,6 +30,13 @@ public class Teacher {
 	@JoinTable(name = "course_teacher", joinColumns = { @JoinColumn(name = "teacherId") }, inverseJoinColumns = { @JoinColumn(name = "courseId") })
 	private Collection<Course> courses;
 
+	// Teacher account
+
+	private String userName;
+	private String password;
+
+	//
+
 	public int getTeacherId() {
 		return teacherId;
 	}
@@ -44,6 +51,23 @@ public class Teacher {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	// Teacher account
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String username) {
+		this.userName = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override

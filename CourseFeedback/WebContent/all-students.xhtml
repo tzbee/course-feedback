@@ -19,17 +19,9 @@
 				<h:outputText value="#{student.studentEmail}" />
 			</p>
 		</c:forEach>
-		<p>
-			Student number:
-			<h:inputText value="#{student.studentNumber}"></h:inputText>
-		</p>
-		<p>
-			Student email:
-			<h:inputText value="#{student.studentEmail}"></h:inputText>
-		</p>
-		<h:commandButton type="submit" value="Save"
-			action="#{studentManager.addStudentToSystem(student.studentNumber, student.studentEmail)}"></h:commandButton>
 	</h:form>
+
+
 
 	<ui:include src="/footer.xhtml" />
 </h:body>

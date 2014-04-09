@@ -1,0 +1,50 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>fileUpload</title>
+</h:head>
+<h:body>
+
+	<!-- Add students by excel file  -->
+	<p>
+		<h:form id="form" enctype="multipart/form-data">
+			<strong><h:outputLabel value="Add students with excel file" /></strong>
+
+			<br />
+
+			<p>
+				<h:inputFile id="file" value="#{uploadBean.file}"
+					validator="#{uploadBean.validateFile}" />
+				<br />
+				<h:commandButton value="Upload"
+					action="#{uploadBean.upload(studentManager)}" />
+			</p>
+
+		</h:form>
+	</p>
+
+	<!-- Add student manually -->
+	<p>
+		<h:form>
+			<strong><h:outputLabel value="Add student manually" /></strong>
+			<br />
+
+			<p>
+				Student number:
+				<h:inputText value="#{student.studentNumber}"></h:inputText>
+			</p>
+			<p>
+				Student email:
+				<h:inputText value="#{student.studentEmail}"></h:inputText>
+			</p>
+			<h:commandButton type="submit" value="Save"
+				action="#{studentManager.addStudentToSystem(student.studentNumber, student.studentEmail)}"></h:commandButton>
+		</h:form>
+	</p>
+
+	<br />
+	<ui:include src="/footer.xhtml" />
+</h:body>
+</html>
