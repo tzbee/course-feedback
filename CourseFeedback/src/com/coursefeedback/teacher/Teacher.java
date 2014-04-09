@@ -24,7 +24,7 @@ public class Teacher {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "teacherId")
 	private int teacherId;
-	private String name;
+	private String name = "";
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "course_teacher", joinColumns = { @JoinColumn(name = "teacherId") }, inverseJoinColumns = { @JoinColumn(name = "courseId") })
