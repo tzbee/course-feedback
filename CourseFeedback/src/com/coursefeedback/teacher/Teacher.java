@@ -21,9 +21,10 @@ import com.coursefeedback.course.Course;
 @Table(name = "teacher")
 public class Teacher {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "teacherId")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int teacherId;
+
 	private String name = "";
 
 	@ManyToMany(cascade = CascadeType.ALL)
@@ -31,7 +32,6 @@ public class Teacher {
 	private Collection<Course> courses;
 
 	// Teacher account
-
 	private String userName;
 	private String password;
 
@@ -41,8 +41,8 @@ public class Teacher {
 		return teacherId;
 	}
 
-	public void setTeacherId(int id) {
-		this.teacherId = id;
+	public void setTeacherId(int teacherId) {
+		this.teacherId = teacherId;
 	}
 
 	public String getName() {

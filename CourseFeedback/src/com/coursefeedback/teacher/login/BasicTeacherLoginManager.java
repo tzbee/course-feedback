@@ -32,7 +32,7 @@ public class BasicTeacherLoginManager implements TeacherLoginManager {
 					.getSession(false);
 
 			httpSession.setAttribute(TEACHER_ATTRIBUTE, teacher);
-			
+
 			return "teacher-index";
 		}
 
@@ -50,10 +50,11 @@ public class BasicTeacherLoginManager implements TeacherLoginManager {
 		return teacher.getPassword().equals(password);
 	}
 
-	public Teacher getTeacherByUserName(String userName) {
+	@Override
+	public Teacher getTeacherByUserName(String name) {
 		Query query = this.em
-				.createQuery("SELECT t from Teacher t WHERE t.userName='"
-						+ userName + "'");
+				.createQuery("SELECT t from Teacher t WHERE t.userName='" + name
+						+ "'");
 
 		try {
 			return (Teacher) query.getSingleResult();
@@ -80,4 +81,5 @@ public class BasicTeacherLoginManager implements TeacherLoginManager {
 		httpSession.invalidate();
 		return "teacher-index";
 	}
+
 }

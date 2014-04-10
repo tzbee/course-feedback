@@ -18,4 +18,6 @@ public interface TeacherLoginManager {
 	Teacher getSessionTeacher();
 
 	String logout();
+
+	Teacher getTeacherByUserName(String userName);
 }
