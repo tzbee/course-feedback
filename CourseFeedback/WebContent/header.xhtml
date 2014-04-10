@@ -3,20 +3,22 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
-	<h:outputText value="Logged as #{teacherSession.userName}" />
-	<br />
+	<c:if test="#{not empty teacherSession.userName}">
+		<h:form>
+			<h:outputText value="Logged as #{teacherSession.userName}" />
+			<br />
+			<h:commandButton value="Logout"
+				action="#{basicTeacherLoginManager.logout}" />
+		</h:form>
+		<br />
+	</c:if>
 
 	<h:form>
-		<h:commandButton value="Logout"
-			action="#{basicTeacherLoginManager.logout}" />
-
-		<br />
-
 		<h:inputText value="#{basicCourseManager.searchTerm}" />
 		<h:commandButton value="Search" action="search-results" />
-
 		<br />
 		<br />
 	</h:form>

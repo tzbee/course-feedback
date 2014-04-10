@@ -32,6 +32,8 @@ public class BasicTeacherLoginManager implements TeacherLoginManager {
 					.getSession(false);
 
 			httpSession.setAttribute(TEACHER_ATTRIBUTE, teacher);
+			
+			return "teacher-index";
 		}
 
 		return "login-page";
