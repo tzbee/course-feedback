@@ -1,23 +1,27 @@
 package com.coursefeedback.teacher.login;
 
 import com.coursefeedback.teacher.Teacher;
+import com.coursefeedback.teacher.exception.InvalidPasswordException;
+import com.coursefeedback.teacher.exception.InvalidUserNameException;
 
 public interface TeacherLoginManager {
-	String login(Teacher teacher);
+	/**
+	 * Teacher login
+	 * 
+	 * @param teacher
+	 * @return next page
+	 */
+
+	String login(String userName, String password);
 
 	/**
-	 * The given user name exists
+	 * Teacher logout
 	 * 
-	 * @param userName
-	 * @return
+	 * @return next page
 	 */
-	boolean isUserNameValid(String userName);
-
-	boolean isPasswordValid(String userName, String password);
-
-	Teacher getSessionTeacher();
-
 	String logout();
 
-	Teacher getTeacherByUserName(String userName);
+	Teacher getTeacher(String userName, String password)
+			throws InvalidUserNameException, InvalidPasswordException;
+
 }

@@ -3,12 +3,12 @@ package com.coursefeedback.teacher.login;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.servlet.http.HttpSession;
 
 import com.coursefeedback.teacher.Teacher;
+import com.coursefeedback.teacher.exception.InvalidPasswordException;
+import com.coursefeedback.teacher.exception.InvalidUserNameException;
 
 @ManagedBean
 public class BasicTeacherLoginManager implements TeacherLoginManager {
@@ -17,58 +17,40 @@ public class BasicTeacherLoginManager implements TeacherLoginManager {
 	private EntityManager em = Persistence.createEntityManagerFactory(
 			"CourseFeedback").createEntityManager();
 
-	@Override
-	public String login(Teacher teacher) {
-
-		if (isUserNameValid(teacher.getUserName())
-				&& isPasswordValid(teacher.getUserName(), teacher.getPassword())) {
-
-			System.out.println("Good!!");
-			// Login
-
-			// Get session
-			HttpSession httpSession = (HttpSession) FacesContext
-					.getCurrentInstance().getExternalContext()
-					.getSession(false);
-
-			httpSession.setAttribute(TEACHER_ATTRIBUTE, teacher);
-
-			return "teacher-index";
-		}
-
-		return "login-page";
-	}
+	private String message = "";
 
 	@Override
-	public boolean isUserNameValid(String userName) {
-		return getTeacherByUserName(userName) != null;
-	}
-
-	@Override
-	public boolean isPasswordValid(String userName, String password) {
-		Teacher teacher = getTeacherByUserName(userName);
-		return teacher.getPassword().equals(password);
-	}
-
-	@Override
-	public Teacher getTeacherByUserName(String name) {
-		Query query = this.em
-				.createQuery("SELECT t from Teacher t WHERE t.userName='" + name
-						+ "'");
+	public String login(String userName, String password) {
+		Teacher teacher = null;
 
 		try {
-			return (Teacher) query.getSingleResult();
-		} catch (NoResultException e) {
-			return null;
+			teacher = getTeacher(userName, password);
+		} catch (InvalidUserNameException | InvalidPasswordException e) {
+			this.message = e.getMessage();
+			return "login-page";
 		}
-	}
 
-	@Override
-	public Teacher getSessionTeacher() {
+		System.out.println(teacher);
+		// Get session
 		HttpSession httpSession = (HttpSession) FacesContext
 				.getCurrentInstance().getExternalContext().getSession(false);
 
-		Teacher teacher = (Teacher) httpSession.getAttribute(TEACHER_ATTRIBUTE);
+		httpSession.setAttribute(TEACHER_ATTRIBUTE, teacher);
+
+		return "teacher-home";
+	}
+
+	@Override
+	public Teacher getTeacher(String userName, String password)
+			throws InvalidUserNameException, InvalidPasswordException {
+
+		Teacher teacher = this.em.find(Teacher.class, userName);
+
+		if (teacher == null)
+			throw new InvalidUserNameException(userName);
+
+		if (!teacher.getPassword().equals(password))
+			throw new InvalidPasswordException();
 
 		return teacher;
 	}
@@ -79,7 +61,11 @@ public class BasicTeacherLoginManager implements TeacherLoginManager {
 				.getCurrentInstance().getExternalContext().getSession(false);
 
 		httpSession.invalidate();
-		return "teacher-index";
+
+		return "teacher-home";
 	}
 
+	public String getMessage() {
+		return message;
+	}
 }

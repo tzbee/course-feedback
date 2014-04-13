@@ -1,5 +1,7 @@
 package com.coursefeedback.course;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 import javax.faces.bean.ManagedBean;
@@ -25,11 +27,12 @@ public class Course {
 	@Column(name = "courseId")
 	private int courseId;
 
+	@Column(name = "name")
 	private String name;
 
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "course_teacher", joinColumns = { @JoinColumn(name = "courseId") }, inverseJoinColumns = { @JoinColumn(name = "teacherId") })
-	private Collection<Teacher> teachers;
+	@JoinTable(name = "course_teacher", joinColumns = { @JoinColumn(name = "courseId") }, inverseJoinColumns = { @JoinColumn(name = "userName") })
+	private Collection<Teacher> teachers = new ArrayList<Teacher>();
 
 	public int getCourseId() {
 		return courseId;
@@ -39,7 +42,6 @@ public class Course {
 		this.courseId = id;
 	}
 
-	@Column(name = "name")
 	public String getName() {
 		return name;
 	}
@@ -58,12 +60,6 @@ public class Course {
 
 	@Override
 	public String toString() {
-		return "Id: "
-				+ getCourseId()
-				+ ", name: "
-				+ getName()
-				+ ", teachers: "
-				+ (getTeachers() == null || getTeachers().isEmpty() ? "No teachers assigned"
-						: getTeachers());
+		return getName();
 	}
 }

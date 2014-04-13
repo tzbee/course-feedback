@@ -1,13 +1,13 @@
 package com.coursefeedback.teacher;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 import javax.faces.bean.ManagedBean;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -21,39 +21,15 @@ import com.coursefeedback.course.Course;
 @Table(name = "teacher")
 public class Teacher {
 	@Id
-	@Column(name = "teacherId")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int teacherId;
-
-	private String name = "";
-
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "course_teacher", joinColumns = { @JoinColumn(name = "teacherId") }, inverseJoinColumns = { @JoinColumn(name = "courseId") })
-	private Collection<Course> courses;
-
-	// Teacher account
+	@Column(name = "userName")
 	private String userName;
+
 	private String password;
 
-	//
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "course_teacher", joinColumns = { @JoinColumn(name = "userName") }, inverseJoinColumns = { @JoinColumn(name = "courseId") })
+	private Collection<Course> courses;
 
-	public int getTeacherId() {
-		return teacherId;
-	}
-
-	public void setTeacherId(int teacherId) {
-		this.teacherId = teacherId;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	// Teacher account
 	public String getUserName() {
 		return userName;
 	}
@@ -70,8 +46,19 @@ public class Teacher {
 		this.password = password;
 	}
 
+	public Collection<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(Collection<Course> courses) {
+		this.courses = courses;
+		for (Course course : courses) {
+			course.setTeachers(Arrays.asList(this));
+		}
+	}
+
 	@Override
 	public String toString() {
-		return getName();
+		return getUserName() + ", Courses: " + getCourses();
 	}
 }

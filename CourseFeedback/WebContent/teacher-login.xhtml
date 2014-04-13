@@ -1,20 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<h:head>
-	<title>Register teacher</title>
-</h:head>
+	<h:form name="LoginForm">
+		<h2>
+			<h:outputLabel value="Login" />
+		</h2>
 
-<h:body>
-	<ui:include src="/header.xhtml" />
-	<br />
-
-	<h:form name="Register teacher form">
 		<p>
 			<strong>Username:</strong>
 			<h:inputText value="#{teacher.userName}" />
@@ -24,12 +20,10 @@
 			<h:inputText value="#{teacher.password}" />
 		</p>
 
-		<h:commandButton value="Register"
-			action="#{basicTeacherRegistrationManager.register(teacher)}" />
+		<h:commandButton value="Login"
+			action="#{basicTeacherLoginManager.login(teacher.userName,teacher.password)}" />
+
+		<br />
+		<h:outputText value="#{basicTeacherLoginManager.message}" />
 	</h:form>
-
-	<ui:include src="/footer.xhtml" />
-</h:body>
-</html>
-
-
+</ui:composition>

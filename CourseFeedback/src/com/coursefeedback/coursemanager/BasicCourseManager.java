@@ -24,17 +24,6 @@ public class BasicCourseManager implements CourseManager {
 
 	private String searchTerm = "Search by teacher";
 
-	@Override
-	public String addCourse(Course course, Teacher teacher) {
-		// Add teacher to the course
-		course.setTeachers(Arrays.asList(teacher));
-
-		this.em.getTransaction().begin();
-		this.em.persist(course);
-		this.em.getTransaction().commit();
-
-		return "get-courses";
-	}
 
 	@SuppressWarnings("unchecked")
 	@Override
