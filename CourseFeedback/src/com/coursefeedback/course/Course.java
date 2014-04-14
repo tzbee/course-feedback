@@ -1,19 +1,12 @@
 package com.coursefeedback.course;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-
 import javax.faces.bean.ManagedBean;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.coursefeedback.teacher.Teacher;
@@ -27,12 +20,11 @@ public class Course {
 	@Column(name = "courseId")
 	private int courseId;
 
+	@ManyToOne
+	private Teacher teacher;
+
 	@Column(name = "name")
 	private String name;
-
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "course_teacher", joinColumns = { @JoinColumn(name = "courseId") }, inverseJoinColumns = { @JoinColumn(name = "userName") })
-	private Collection<Teacher> teachers = new ArrayList<Teacher>();
 
 	public int getCourseId() {
 		return courseId;
@@ -50,12 +42,12 @@ public class Course {
 		this.name = name;
 	}
 
-	public Collection<Teacher> getTeachers() {
-		return teachers;
+	public Teacher getTeacher() {
+		return teacher;
 	}
 
-	public void setTeachers(Collection<Teacher> teachers) {
-		this.teachers = teachers;
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
 	}
 
 	@Override

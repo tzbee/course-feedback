@@ -18,6 +18,6 @@ public class BasicTeacherRegistrationManager implements
 		this.em.persist(teacher);
 		this.em.getTransaction().commit();
 
-		return "teacher-index";
+		return "teacher-home";
 	}
 }

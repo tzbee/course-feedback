@@ -23,4 +23,6 @@ public interface CourseManager {
 	Collection<Course> getCoursesByTeacherName(String teacherName);
 
 	Course getCourseById(int courseId);
+
+	void addCourse(Course course);
 }

@@ -12,7 +12,7 @@ import com.coursefeedback.teacher.exception.InvalidUserNameException;
 
 @ManagedBean
 public class BasicTeacherLoginManager implements TeacherLoginManager {
-	private static final String TEACHER_ATTRIBUTE = "teacherSession";
+	private static final String TEACHER_SESSION_ATTRIBUTE = "teacherSession";
 
 	private EntityManager em = Persistence.createEntityManagerFactory(
 			"CourseFeedback").createEntityManager();
@@ -35,7 +35,7 @@ public class BasicTeacherLoginManager implements TeacherLoginManager {
 		HttpSession httpSession = (HttpSession) FacesContext
 				.getCurrentInstance().getExternalContext().getSession(false);
 
-		httpSession.setAttribute(TEACHER_ATTRIBUTE, teacher);
+		httpSession.setAttribute(TEACHER_SESSION_ATTRIBUTE, teacher);
 
 		return "teacher-home";
 	}

@@ -1,17 +1,14 @@
 package com.coursefeedback.teacher;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 
 import javax.faces.bean.ManagedBean;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.coursefeedback.course.Course;
@@ -24,9 +21,10 @@ public class Teacher {
 	@Column(name = "userName")
 	private String userName;
 
+	@Column(name = "password")
 	private String password;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "teacher")
 	@JoinTable(name = "course_teacher", joinColumns = { @JoinColumn(name = "userName") }, inverseJoinColumns = { @JoinColumn(name = "courseId") })
 	private Collection<Course> courses;
 
@@ -53,7 +51,7 @@ public class Teacher {
 	public void setCourses(Collection<Course> courses) {
 		this.courses = courses;
 		for (Course course : courses) {
-			course.setTeachers(Arrays.asList(this));
+			course.setTeacher(this);
 		}
 	}
 
