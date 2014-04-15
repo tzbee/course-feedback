@@ -1,17 +1,19 @@
 package com.coursefeedback.teacher;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import javax.faces.bean.ManagedBean;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.coursefeedback.course.Course;
+import com.coursefeedback.coursemanager.Course;
 
 @ManagedBean
 @Entity
@@ -24,8 +26,8 @@ public class Teacher {
 	@Column(name = "password")
 	private String password;
 
-	@OneToMany(mappedBy = "teacher")
-	@JoinTable(name = "course_teacher", joinColumns = { @JoinColumn(name = "userName") }, inverseJoinColumns = { @JoinColumn(name = "courseId") })
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "teacher_course", joinColumns = { @JoinColumn(name = "userName") }, inverseJoinColumns = { @JoinColumn(name = "courseId") })
 	private Collection<Course> courses;
 
 	public String getUserName() {
@@ -48,15 +50,12 @@ public class Teacher {
 		return courses;
 	}
 
-	public void setCourses(Collection<Course> courses) {
-		this.courses = courses;
-		for (Course course : courses) {
-			course.setTeacher(this);
-		}
+	public void addCourses(Collection<Course> courses) {
+		this.courses.addAll(courses);
 	}
 
 	@Override
 	public String toString() {
-		return getUserName() + ", Courses: " + getCourses();
+		return getUserName() + " " + getCourses();
 	}
 }

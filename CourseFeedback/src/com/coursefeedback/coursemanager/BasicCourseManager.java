@@ -1,15 +1,11 @@
 package com.coursefeedback.coursemanager;
 
-import java.util.Arrays;
 import java.util.Collection;
 
 import javax.faces.bean.ManagedBean;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-
-import com.coursefeedback.course.Course;
-import com.coursefeedback.teacher.Teacher;
 
 /**
  * Basic implementation of a course manager
@@ -33,15 +29,6 @@ public class BasicCourseManager implements CourseManager {
 	@Override
 	public Collection<Course> getCourses() {
 		Query query = this.em.createQuery("SELECT c FROM Course c");
-		return (Collection<Course>) query.getResultList();
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public Collection<Course> getCoursesByTeacherName(String teacherName) {
-		Query query = this.em
-				.createQuery("SELECT c FROM Course c LEFT OUTER JOIN c.teachers t WHERE t.name = '"
-						+ teacherName + "'");
 		return (Collection<Course>) query.getResultList();
 	}
 
