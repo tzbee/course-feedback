@@ -1,6 +1,5 @@
 package com.coursefeedback.teacher;
 
-import java.util.Arrays;
 import java.util.Collection;
 
 import javax.faces.bean.ManagedBean;
@@ -50,8 +49,8 @@ public class Teacher {
 		return courses;
 	}
 
-	public void addCourses(Collection<Course> courses) {
-		this.courses.addAll(courses);
+	public void addCourse(Course course) {
+		this.courses.add(course);
 	}
 
 	@Override

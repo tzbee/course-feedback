@@ -1,10 +1,12 @@
 package com.coursefeedback.teacher.login;
 
+import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpSession;
+import javax.transaction.UserTransaction;
 
 import com.coursefeedback.teacher.Teacher;
 import com.coursefeedback.teacher.exception.InvalidPasswordException;
@@ -14,8 +16,11 @@ import com.coursefeedback.teacher.exception.InvalidUserNameException;
 public class BasicTeacherLoginManager implements TeacherLoginManager {
 	private static final String TEACHER_SESSION_ATTRIBUTE = "teacherSession";
 
-	private EntityManager em = Persistence.createEntityManagerFactory(
-			"CourseFeedback").createEntityManager();
+	@PersistenceContext(name = "CourseFeedback")
+	private EntityManager em;
+
+	@Resource
+	private UserTransaction utx;
 
 	private String message = "";
 

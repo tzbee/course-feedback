@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+
+<h:body>
+
+	<h:form>
+		<h:commandButton value="Logout"
+			action="#{basicTeacherLoginManager.logout}" />
+	</h:form>
+
+	<h1>Teacher profile</h1>
+
+	<h2>Name</h2>
+
+	<h:outputText value="#{teacherSession.userName}" />
+
+	<h2>Course List</h2>
+
+	<ui:include src="/my-courses.xhtml" />
+	<br />
+
+	<h2>Add Course</h2>
+
+	<ui:include src="/add-course.xhtml" />
+</h:body>
+</html>

@@ -1,4 +1,4 @@
-package com.coursefeedback.teacher.registration;
+package com.coursefeedback.teacher.teachermanager;
 
 import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
@@ -6,11 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 
+import com.coursefeedback.coursemanager.Course;
 import com.coursefeedback.teacher.Teacher;
 
 @ManagedBean
-public class BasicTeacherRegistrationManager implements
-		TeacherRegistrationManager {
+public class BasicTeacherManager implements TeacherManager {
 
 	@PersistenceContext(name = "CourseFeedback")
 	private EntityManager em;
@@ -19,18 +19,21 @@ public class BasicTeacherRegistrationManager implements
 	private UserTransaction utx;
 
 	@Override
-	public String register(Teacher teacher) {
+	public String addCourseToTeacher(Course course, Teacher teacher) {
+
 		try {
 			this.utx.begin();
-			this.em.persist(teacher);
+			this.em.persist(course);
+			teacher.addCourse(course);
+			this.em.merge(teacher);
 			this.utx.commit();
 		} catch (Exception e) {
 			try {
-				this.utx.rollback();
-			} catch (Exception ignore) {
+				utx.rollback();
+			} catch (Exception e1) {
 			}
 		}
 
-		return "teacher-home";
+		return "teacher-profile";
 	}
 }

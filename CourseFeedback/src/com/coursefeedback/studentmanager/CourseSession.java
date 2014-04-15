@@ -9,18 +9,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @ManagedBean
 @Entity
 @Table(name = "course_session")
 public class CourseSession {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+
 	private int courseID = 0;
+
+	@Temporal(TemporalType.DATE)
 	private Date time;
 	private int teacherID = 0;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() {
 		return id;
 	}

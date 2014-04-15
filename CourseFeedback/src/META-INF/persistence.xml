@@ -3,16 +3,13 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="CourseFeedback"
-		transaction-type="RESOURCE_LOCAL">
+		transaction-type="JTA">
+		<jta-data-source>jdbc/bonecp_resource</jta-data-source>
+
 		<class>com.coursefeedback.teacher.Teacher</class>
 		<class>com.coursefeedback.coursemanager.Course</class>
+		<class>com.coursefeedback.courseitemmanager.CourseItem</class>
+		<class>com.coursefeedback.feedback.Feedback</class>
 
-		<properties>
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/feedback" />
-			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.password" value="F6FGG6W4GDB2BXW" />
-			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
-		</properties>
 	</persistence-unit>
 </persistence>
