@@ -2,10 +2,12 @@ package com.coursefeedback.coursemanager;
 
 import java.util.Collection;
 
+import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.UserTransaction;
 
 /**
  * Basic implementation of a course manager
@@ -14,15 +16,21 @@ import javax.persistence.Query;
  */
 @ManagedBean
 public class BasicCourseManager implements CourseManager {
-	// XXX To do better
-	private EntityManager em = Persistence.createEntityManagerFactory(
-			"CourseFeedback").createEntityManager();
+	@PersistenceContext(name = "CourseFeedback")
+	private EntityManager em;
+
+	@Resource
+	private UserTransaction utx;
 
 	@Override
 	public void addCourse(Course course) {
-		this.em.getTransaction().begin();
-		this.em.persist(course);
-		this.em.getTransaction().commit();
+		try {
+			this.utx.begin();
+			this.em.persist(course);
+			this.utx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@SuppressWarnings("unchecked")

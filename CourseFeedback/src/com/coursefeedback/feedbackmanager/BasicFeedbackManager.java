@@ -2,23 +2,32 @@ package com.coursefeedback.feedbackmanager;
 
 import java.util.Collection;
 
+import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.UserTransaction;
 
 import com.coursefeedback.feedback.Feedback;
 
 @ManagedBean
 public class BasicFeedbackManager implements FeedbackManager {
-	private EntityManager em = Persistence.createEntityManagerFactory(
-			"CourseFeedback").createEntityManager();
+	@PersistenceContext(name = "CourseFeedback")
+	private EntityManager em;
+
+	@Resource
+	private UserTransaction utx;
 
 	@Override
 	public String saveFeedback(Feedback feedback) {
-		this.em.getTransaction().begin();
-		this.em.persist(feedback);
-		this.em.getTransaction().commit();
+		try {
+			this.utx.begin();
+			this.em.persist(feedback);
+			this.utx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		return "feedbackBar";
 	}
