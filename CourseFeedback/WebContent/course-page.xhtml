@@ -4,16 +4,33 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </h:head>
 
 <h:body>
-	<h:outputText
+
+	<c:set var="currentCourse"
 		value="#{basicCourseManager.getCourseById(param['courseid'])}" />
+
+	<h:outputText value=" #{currentCourse}" />
+
 	<br />
+
+	<h:form>
+		<h:inputText value="#{courseItem.courseItemName}" />
+		<h:commandButton type="submit"
+			action="#{basicCourseItemManager.addCourseItemToCourse(courseItem,currentCourse)}"
+			value="Add course item" />
+	</h:form>
+
+	<c:forEach items="#{currentCourse.courseItems}" var="courseItem">
+		<h:outputText value="#{courseItem.courseItemName}" />
+	</c:forEach>
+
 	<ui:include src="/footer.xhtml" />
 </h:body>
 </html>

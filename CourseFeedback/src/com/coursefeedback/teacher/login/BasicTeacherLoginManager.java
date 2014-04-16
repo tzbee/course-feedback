@@ -35,7 +35,6 @@ public class BasicTeacherLoginManager implements TeacherLoginManager {
 			return "login-page";
 		}
 
-		System.out.println(teacher);
 		// Get session
 		HttpSession httpSession = (HttpSession) FacesContext
 				.getCurrentInstance().getExternalContext().getSession(false);

@@ -19,7 +19,7 @@ import com.coursefeedback.feedback.Feedback;
 
 @ManagedBean
 @Entity
-@Table(name = "COURSE_ITEM")
+@Table(name = "courseItem")
 public class CourseItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)

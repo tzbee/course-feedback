@@ -1,0 +1,30 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+<h:head>
+	<title>Register Student</title>
+</h:head>
+<h:body>
+		<p id="wrapper">
+			<h:outputText value="Database contents:" /> :
+			<c:forEach items="#{studentManager.getAllStudents()}" var="Student">
+				<p>
+					<h:outputText value="#{Student.id}" /> : 
+					<h:outputText value="#{Student.studentNumber}" /> : 
+					<h:outputText value="#{Student.studentEmail}" /> : 
+					<h:outputText value="#{Student.studentKey}" /> : 
+					<h:outputLink value="#{studentManager.getStudentKeyLink(Student)}">#{studentManager.getStudentKeyLink(Student)}</h:outputLink>
+				</p>
+			</c:forEach>
+		</p>
+	
+	
+	<h:form>
+		<p>Student number: <h:inputText value="#{student.studentNumber}"></h:inputText> </p> 
+		<p><h:outputText value="#{studentManager.getLoginReply()}" /></p>
+		<h:commandButton type="submit" value="Register" action="#{studentManager.createKeyForStudent(student.studentNumber)}" update=":wrapper"></h:commandButton>		
+	</h:form>
+</h:body>
+</html>

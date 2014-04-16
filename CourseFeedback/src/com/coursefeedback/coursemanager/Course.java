@@ -53,6 +53,14 @@ public class Course {
 		this.name = name;
 	}
 
+	public void addCourseItem(CourseItem courseItem) {
+		this.courseItems.add(courseItem);
+	}
+
+	public Collection<CourseItem> getCourseItems() {
+		return courseItems;
+	}
+
 	@Override
 	public String toString() {
 		return getName();

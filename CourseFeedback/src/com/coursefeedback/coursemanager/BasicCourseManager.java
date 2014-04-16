@@ -42,9 +42,6 @@ public class BasicCourseManager implements CourseManager {
 
 	@Override
 	public Course getCourseById(int courseId) {
-		Query query = this.em
-				.createQuery("SELECT c FROM Course c WHERE c.courseId = "
-						+ courseId);
-		return (Course) query.getSingleResult();
+		return (Course) this.em.find(Course.class, courseId);
 	}
 }
