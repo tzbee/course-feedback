@@ -12,7 +12,7 @@ import com.coursefeedback.teacher.Teacher;
 import com.coursefeedback.teacher.exception.InvalidPasswordException;
 import com.coursefeedback.teacher.exception.InvalidUserNameException;
 
-@ManagedBean
+@ManagedBean(name = "teacherLoginManager")
 public class BasicTeacherLoginManager implements TeacherLoginManager {
 	private static final String TEACHER_SESSION_ATTRIBUTE = "teacherSession";
 
@@ -39,7 +39,8 @@ public class BasicTeacherLoginManager implements TeacherLoginManager {
 		HttpSession httpSession = (HttpSession) FacesContext
 				.getCurrentInstance().getExternalContext().getSession(false);
 
-		httpSession.setAttribute(TEACHER_SESSION_ATTRIBUTE, teacher);
+		httpSession.setAttribute(TEACHER_SESSION_ATTRIBUTE,
+				teacher.getUserName());
 
 		return "teacher-home";
 	}

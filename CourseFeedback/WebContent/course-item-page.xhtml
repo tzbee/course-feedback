@@ -19,7 +19,7 @@
 		value="#{courseManager.getCourseById(coursePageBean.currentCourseId)}" />
 
 	<h1>
-		<h:outputText value="Course info:" />
+		<h:outputText value="Course Item info:" />
 	</h1>
 
 	<br />
@@ -34,13 +34,10 @@
 		<h:outputText value="Course items" />
 	</h2>
 
+	<!-- TODO Course items-->
 
 	<c:forEach items="#{currentCourse.courseItems}" var="currentCourseItem">
-		<h:link value="#{currentCourseItem.name}" outcome="course-item-page">
-			<f:param name="courseitemid"
-				value="#{currentCourseItem.courseItemId}" />
-		</h:link>
-
+		<h:link value="#{currentCourseItem.name}" outcome="" />
 		<br />
 	</c:forEach>
 

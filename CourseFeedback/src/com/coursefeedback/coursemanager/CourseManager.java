@@ -15,4 +15,6 @@ public interface CourseManager {
 	Course getCourseById(int courseId);
 
 	void addCourse(Course course);
+
+	Collection<Course> getCoursesByTeacher();
 }

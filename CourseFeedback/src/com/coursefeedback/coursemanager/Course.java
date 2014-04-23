@@ -23,7 +23,7 @@ import com.coursefeedback.teacher.Teacher;
 @Table(name = "course")
 public class Course {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "courseId")
 	private int courseId;
 
@@ -55,6 +55,7 @@ public class Course {
 
 	public void addCourseItem(CourseItem courseItem) {
 		this.courseItems.add(courseItem);
+		courseItem.setCourse(this);
 	}
 
 	public Collection<CourseItem> getCourseItems() {

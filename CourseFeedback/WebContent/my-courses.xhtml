@@ -3,9 +3,27 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core">
 
-	<c:set var="courseList" value="#{teacherSession.courses}" />
+	<c:set var="loggedTeacher"
+		value="#{teacherManager.getTeacherByUserName(teacherSession)}" />
+	<c:set var="courseList" value="#{loggedTeacher.courses}" />
 
-	<ui:include src="/course-list.xhtml" />
+	<c:choose>
+		<c:when test="#{empty courseList}">
+			<h:outputText value="No courses yet" />
+		</c:when>
+
+		<c:otherwise>
+			<c:forEach items="#{courseList}" var="course">
+				<h:outputLink value="course-page.xhtml">
+					<f:param name="courseid" value="#{course.courseId}" />
+					<h:outputText value="#{course.name}" />
+				</h:outputLink>
+				<br />
+			</c:forEach>
+		</c:otherwise>
+
+	</c:choose>
 </ui:composition>

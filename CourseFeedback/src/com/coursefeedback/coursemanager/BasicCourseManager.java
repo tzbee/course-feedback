@@ -14,7 +14,7 @@ import javax.transaction.UserTransaction;
  * 
  * @author touzbi
  */
-@ManagedBean
+@ManagedBean(name = "courseManager")
 public class BasicCourseManager implements CourseManager {
 	@PersistenceContext(name = "CourseFeedback")
 	private EntityManager em;
@@ -38,6 +38,12 @@ public class BasicCourseManager implements CourseManager {
 	public Collection<Course> getCourses() {
 		Query query = this.em.createQuery("SELECT c FROM Course c");
 		return (Collection<Course>) query.getResultList();
+	}
+
+	@Override
+	public Collection<Course> getCoursesByTeacher() {
+
+		return null;
 	}
 
 	@Override

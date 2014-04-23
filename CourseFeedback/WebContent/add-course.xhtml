@@ -10,7 +10,7 @@
 	<h:form>
 		<h:inputText value="#{course.name}" />
 		<h:commandButton type="submit"
-			action="#{basicTeacherManager.addCourseToTeacher(course,teacherSession)}"
+			action="#{teacherManager.addCourseToTeacher(course,teacherSession)}"
 			value="Save course" />
 	</h:form>
 </ui:composition>

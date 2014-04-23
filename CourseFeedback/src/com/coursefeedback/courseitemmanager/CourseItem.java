@@ -1,5 +1,6 @@
 package com.coursefeedback.courseitemmanager;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -13,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.coursefeedback.coursemanager.Course;
 import com.coursefeedback.feedback.Feedback;
@@ -24,38 +27,51 @@ public class CourseItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "courseItemId")
-	private int courseItemId;
+	private long courseItemId;
 
-	private String courseItemName;
+	@Column(name = "name")
+	private String name;
+
+	@ManyToOne
+	@JoinColumn(name = "courseId")
+	private Course course;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name = "time")
+	private Date time;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "courseItem")
 	private List<Feedback> feedbacks;
 
-	@ManyToOne
-	@JoinColumn(name = "courseId", nullable = false)
-	private Course course;
-
-	public int getCourseItemId() {
+	public long getCourseItemId() {
 		return courseItemId;
 	}
 
-	public void setCourseItemId(int courseItemId) {
+	public void setCourseItemId(long courseItemId) {
 		this.courseItemId = courseItemId;
 	}
 
-	public String getCourseItemName() {
-		return courseItemName;
+	public String getName() {
+		return name;
 	}
 
-	public void setCourseItemName(String courseItemName) {
-		this.courseItemName = courseItemName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public List<Feedback> getFeedbacks() {
-		return feedbacks;
+	public Course getCourse() {
+		return course;
 	}
 
-	public void addFeedback(Feedback feedback) {
-		this.feedbacks.add(feedback);
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+
+	public Date getTime() {
+		return this.time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
 	}
 }

@@ -8,9 +8,8 @@ import javax.transaction.UserTransaction;
 
 import com.coursefeedback.coursemanager.Course;
 
-@ManagedBean
+@ManagedBean(name = "courseItemManager")
 public class BasicCourseItemManager implements CourseItemManager {
-
 	@PersistenceContext(name = "CourseFeedback")
 	private EntityManager em;
 
@@ -18,20 +17,19 @@ public class BasicCourseItemManager implements CourseItemManager {
 	private UserTransaction utx;
 
 	@Override
-	public String addCourseItemToCourse(CourseItem courseItem, Course course) {
-
+	public String addCourseItemToCourse(CourseItem courseItem, String courseId) {
 		try {
-			System.out.println(courseItem + " " + course);
+			Integer courseIdNb = Integer.valueOf(courseId);
+
 			this.utx.begin();
-			this.em.persist(courseItem);
+			Course course = this.em.find(Course.class, courseIdNb);
 			course.addCourseItem(courseItem);
-			this.em.merge(course);
 			this.utx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		// XXX To do better
+		// XXX TODO better
 		return "course-page";
 	}
 }

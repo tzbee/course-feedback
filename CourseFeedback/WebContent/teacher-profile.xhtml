@@ -6,20 +6,20 @@
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Teacher profile</title>
 </h:head>
 
 <h:body>
 
 	<h:form>
-		<h:commandButton value="Logout"
-			action="#{basicTeacherLoginManager.logout}" />
+		<h:commandButton value="Logout" action="#{teacherLoginManager.logout}" />
 	</h:form>
 
 	<h1>Teacher profile</h1>
 
 	<h2>Name</h2>
 
-	<h:outputText value="#{teacherSession.userName}" />
+	<h:outputText value="#{teacherSession}" />
 
 	<h2>Course List</h2>
 
@@ -29,5 +29,10 @@
 	<h2>Add Course</h2>
 
 	<ui:include src="/add-course.xhtml" />
+	<br />
+
+	<h2>Add Student</h2>
+
+	<ui:include src="/add-students.xhtml" />
 </h:body>
 </html>

@@ -19,15 +19,9 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
-//import org.apache.poi.ss.usermodel.Cell;
-//import HSSFSheet;
-//import HSSFWorkbook;
-//import Row;
-//import Student;
-
-@ManagedBean
+@ManagedBean(name = "studentManager")
 public class StudentManager implements AbstractStudentManager {
-	@PersistenceContext(name = "CourseFeedbaack")
+	@PersistenceContext(name = "CourseFeedback")
 	private EntityManager em;
 
 	@Resource
@@ -304,10 +298,4 @@ public class StudentManager implements AbstractStudentManager {
 		}
 		return "teacher-index";
 	}
-
-	// @Override
-	// public ArrayList<Student> displayStudentFile(HSSFWorkbook workbook) {
-	// // TODO Auto-generated method stub
-	// return null;
-	// }
 }

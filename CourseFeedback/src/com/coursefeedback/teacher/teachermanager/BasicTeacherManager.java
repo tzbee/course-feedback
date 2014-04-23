@@ -9,9 +9,8 @@ import javax.transaction.UserTransaction;
 import com.coursefeedback.coursemanager.Course;
 import com.coursefeedback.teacher.Teacher;
 
-@ManagedBean
+@ManagedBean(name = "teacherManager")
 public class BasicTeacherManager implements TeacherManager {
-
 	@PersistenceContext(name = "CourseFeedback")
 	private EntityManager em;
 
@@ -19,13 +18,11 @@ public class BasicTeacherManager implements TeacherManager {
 	private UserTransaction utx;
 
 	@Override
-	public String addCourseToTeacher(Course course, Teacher teacher) {
-
+	public String addCourseToTeacher(Course course, String teacherUserName) {
 		try {
 			this.utx.begin();
-			this.em.persist(course);
+			Teacher teacher = getTeacherByUserName(teacherUserName);
 			teacher.addCourse(course);
-			this.em.merge(teacher);
 			this.utx.commit();
 		} catch (Exception e) {
 			try {
@@ -35,5 +32,10 @@ public class BasicTeacherManager implements TeacherManager {
 		}
 
 		return "teacher-profile";
+	}
+
+	@Override
+	public Teacher getTeacherByUserName(String userName) {
+		return this.em.find(Teacher.class, userName);
 	}
 }

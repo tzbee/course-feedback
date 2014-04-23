@@ -9,7 +9,7 @@
 		<class>com.coursefeedback.teacher.Teacher</class>
 		<class>com.coursefeedback.coursemanager.Course</class>
 		<class>com.coursefeedback.courseitemmanager.CourseItem</class>
-		<class>com.coursefeedback.feedback.Feedback</class>
+		<class>com.coursefeedback.studentmanager.Student</class>
 
 		<properties>
 			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
