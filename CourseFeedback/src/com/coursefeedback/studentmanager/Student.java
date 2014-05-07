@@ -13,12 +13,13 @@ import javax.persistence.Table;
 @Table(name = "student")
 public class Student {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "studentId")
 	private long id;
 
-	private int studentKey = 0;
-	private String studentNumber = "empty";
-	private String studentEmail = "empty";
+	private String studentKey = "0";
+	private String studentNumber = "";
+	private String studentEmail = "";
 
 	public Long getId() {
 		return id;
@@ -28,12 +29,14 @@ public class Student {
 		this.id = id;
 	}
 
+	// public int getStudentKey() {
 	@Column(name = "studentkey")
-	public int getStudentKey() {
+	public String getStudentKey() {
 		return this.studentKey;
 	}
 
-	public void setStudentKey(int studentKey) {
+	// public void setStudentKey(int studentKey) {
+	public void setStudentKey(String studentKey) {
 		this.studentKey = studentKey;
 	}
 

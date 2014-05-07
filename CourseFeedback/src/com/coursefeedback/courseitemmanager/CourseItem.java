@@ -27,10 +27,10 @@ public class CourseItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "courseItemId")
-	private long courseItemId;
+	private int courseItemId;
 
 	@Column(name = "name")
-	private String name;
+	private String courseItemName;
 
 	@ManyToOne
 	@JoinColumn(name = "courseId")
@@ -47,16 +47,16 @@ public class CourseItem {
 		return courseItemId;
 	}
 
-	public void setCourseItemId(long courseItemId) {
+	public void setCourseItemId(int courseItemId) {
 		this.courseItemId = courseItemId;
 	}
 
-	public String getName() {
-		return name;
+	public String getCourseItemName() {
+		return courseItemName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCourseItemName(String courseItemName) {
+		this.courseItemName = courseItemName;
 	}
 
 	public Course getCourse() {
@@ -73,5 +73,14 @@ public class CourseItem {
 
 	public void setTime(Date time) {
 		this.time = time;
+	}
+
+	public List<Feedback> getFeedbacks() {
+		return feedbacks;
+	}
+
+	public void addFeedback(Feedback feedback) {
+		this.feedbacks.add(feedback);
+		feedback.setCourseItem(this);
 	}
 }

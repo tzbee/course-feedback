@@ -41,12 +41,6 @@ public class BasicCourseManager implements CourseManager {
 	}
 
 	@Override
-	public Collection<Course> getCoursesByTeacher() {
-
-		return null;
-	}
-
-	@Override
 	public Course getCourseById(int courseId) {
 		return (Course) this.em.find(Course.class, courseId);
 	}

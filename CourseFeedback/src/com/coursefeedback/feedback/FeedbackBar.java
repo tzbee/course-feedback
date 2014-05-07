@@ -14,27 +14,23 @@ public class FeedbackBar implements Serializable {
 
 	private CartesianChartModel categoryModel;
 
-	public FeedbackBar() {
-	}
-
 	public CartesianChartModel getCategoryModel() {
 		return categoryModel;
 	}
 
 	public CartesianChartModel createCategoryModel(
 			Collection<Feedback> feedbacks) {
-		categoryModel = new CartesianChartModel();
+		this.categoryModel = new CartesianChartModel();
 
 		ChartSeries chart = new ChartSeries();
-		chart.setLabel("Lecture 1");
 
 		int counter = 0;
 		for (Feedback feedback : feedbacks) {
 			chart.set("Feedback " + counter++, feedback.getValue());
 		}
 
-		categoryModel.addSeries(chart);
+		this.categoryModel.addSeries(chart);
 
-		return categoryModel;
+		return this.categoryModel;
 	}
 }

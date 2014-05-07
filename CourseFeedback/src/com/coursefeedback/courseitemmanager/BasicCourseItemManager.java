@@ -32,4 +32,17 @@ public class BasicCourseItemManager implements CourseItemManager {
 		// XXX TODO better
 		return "course-page";
 	}
+
+	@Override
+	public CourseItem getCourseItemById(int courseItemId) {
+		return this.em.find(CourseItem.class, courseItemId);
+	}
+
+	@Override
+	public String getCourseNameById(int courseItemId) {
+		return (String) this.em
+				.createQuery(
+						"SELECT ci.courseItemName FROM CourseItem ci WHERE ci.courseItemId= :courseItemId")
+				.setParameter("courseItemId", courseItemId).getSingleResult();
+	}
 }

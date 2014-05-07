@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.coursefeedback.courseitemmanager.CourseItem;
+import com.coursefeedback.studentmanager.Student;
 import com.coursefeedback.teacher.Teacher;
 
 @ManagedBean
@@ -29,6 +30,10 @@ public class Course {
 
 	@Column(name = "name")
 	private String name;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "course_student", joinColumns = { @JoinColumn(name = "courseId") }, inverseJoinColumns = { @JoinColumn(name = "studentId") })
+	private Collection<Student> students;
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "teacher_course", joinColumns = { @JoinColumn(name = "courseId") }, inverseJoinColumns = { @JoinColumn(name = "userName") })
@@ -60,6 +65,10 @@ public class Course {
 
 	public Collection<CourseItem> getCourseItems() {
 		return courseItems;
+	}
+
+	public void addStudent(Student student) {
+		this.students.add(student);
 	}
 
 	@Override

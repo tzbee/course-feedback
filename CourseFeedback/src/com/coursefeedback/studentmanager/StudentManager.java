@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -19,7 +20,11 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
-@ManagedBean(name = "studentManager")
+import com.coursefeedback.courseitemmanager.CourseItem;
+import com.coursefeedback.coursemanager.Course;
+
+@ManagedBean
+@SessionScoped
 public class StudentManager implements AbstractStudentManager {
 	@PersistenceContext(name = "CourseFeedback")
 	private EntityManager em;
@@ -29,8 +34,71 @@ public class StudentManager implements AbstractStudentManager {
 
 	private String loginReply = "";
 
+	private long currentStudentID = -1;
+	private Course currentCourse = null;
+
+	public Course getCurrentCourse() {
+		return this.currentCourse;
+	}
+
+	public String setCurrentCourse(Course selectedCourse) {
+		this.currentCourse = selectedCourse;
+		return "courseItemSelection.xhtml";
+	}
+
+	public String setCurrentStudentID(long studentID) {
+		this.currentStudentID = studentID;
+		return "courseSelection.xhtml";
+	}
+
+	public long getCurrentStudentID() {
+		return this.currentStudentID;
+	}
+
+	// for temp testing
+	public Collection<Course> getCoursesByStudentId(long studentID) {
+		Collection<Course> col = new ArrayList<Course>();
+		Course c1 = new Course(), c2 = new Course(), c3 = new Course();
+		CourseItem ci1 = new CourseItem(), ci2 = new CourseItem(), ci3 = new CourseItem();
+		c1.setCourseId(1);
+		c2.setCourseId(2);
+		c3.setCourseId(3);
+		ci1.setCourseItemId(1);
+		ci2.setCourseItemId(2);
+		ci3.setCourseItemId(3);
+		c1.setName("math (course 1)");
+		c2.setName("science (course 2)");
+		c3.setName("computing (course 3)");
+		ci1.setCourseItemName("courseItemName a");
+		ci2.setCourseItemName("courseItemName b");
+		ci3.setCourseItemName("courseItemName c");
+		c1.addCourseItem(ci1);
+		c2.addCourseItem(ci1);
+		c2.addCourseItem(ci2);
+		c3.addCourseItem(ci1);
+		c3.addCourseItem(ci2);
+		c3.addCourseItem(ci3);
+
+		if (studentID == 1) {
+			col.add(c1);
+			col.add(c2);
+			col.add(c3);
+			return col;
+		} else if (studentID == 2) {
+			col.add(c1);
+			col.add(c2);
+			return col;
+		} else if (studentID == 3) {
+			col.add(c1);
+			return col;
+		} else {
+			col.clear();
+			return col;
+		}
+	}
+
 	@SuppressWarnings("unchecked")
-	private Student getStudentByStudentNumber(String studentNumber) {
+	public Student getStudentByStudentNumber(String studentNumber) {
 		Query query = this.em
 				.createQuery(
 						"SELECT f FROM Student f WHERE f.studentNumber LIKE :stuNumber")
@@ -48,7 +116,7 @@ public class StudentManager implements AbstractStudentManager {
 	}
 
 	@SuppressWarnings("unchecked")
-	private Student getStudentByStudentKey(int studentKey) {
+	private Student getStudentByStudentKey(String studentKey) {
 		Query query = this.em.createQuery(
 				"SELECT f FROM Student f WHERE f.studentKey LIKE :stuKey")
 				.setParameter("stuKey", studentKey);
@@ -60,40 +128,49 @@ public class StudentManager implements AbstractStudentManager {
 			return null;
 	}
 
-	public String getParameter() {
+	public boolean getParameter() {
 		String parameter = FacesContext.getCurrentInstance()
 				.getExternalContext().getRequestParameterMap().get("key");
+		System.out.print("Paramater: " + parameter); // for testing
 		if (parameter != null) {
-			int studentKey = Integer.parseInt(parameter);
+			String studentKey = parameter;
 			Student student = getStudentByStudentKey(studentKey);
-			if (student != null)
-				return "Student ( number: " + student.getStudentNumber()
-						+ " email: " + student.getStudentEmail() + " key: "
-						+ student.getStudentKey() + " ) has logged in.";
-			else
-				return "error";
-		} else
-			return "error";
+			if (student != null) {
+				this.setCurrentStudentID(student.getId());
+				System.out
+						.print("Current Student ID: " + getCurrentStudentID()); // for
+																				// testing
+				return true;
+			}
+		}
+		return false;
 	}
 
-	private int generateStudentKey() {
-		int MIN = 100000000;
-		int MAX = 999999999;
+	private String generateStudentKey() {
+		int MIN = 10000000;
+		int MAX = 99999999;
 		long fraction;
-		int randomKey;
+		String randomKey;
 
 		SecureRandom random = new SecureRandom();
 		long range = (long) MAX - (long) MIN + 1;
 		do {
 			fraction = (long) (range * random.nextDouble());
-			randomKey = (int) (fraction + MIN);
+			randomKey = Integer.toString((int) (fraction + MIN));
 		} while (keyIsDuplicate(randomKey));
 
 		return randomKey;
 	}
 
+	/*
+	 * private String generateStudentKey() { UUID randomKey; do { randomKey =
+	 * UUID.randomUUID(); } while (keyIsDuplicate(randomKey.toString()));
+	 * 
+	 * return randomKey.toString(); }
+	 */
+
 	@SuppressWarnings("unchecked")
-	private boolean keyIsDuplicate(int key) {
+	private boolean keyIsDuplicate(String key) {
 		Query query = this.em.createQuery(
 				"SELECT f FROM Student f WHERE f.studentKey LIKE :stuKey")
 				.setParameter("stuKey", key);
@@ -108,13 +185,15 @@ public class StudentManager implements AbstractStudentManager {
 	public String createKeyForStudent(String studentNumber) {
 		Student student = getStudentByStudentNumber(studentNumber);
 		if (student != null) {
-			student.setStudentKey(generateStudentKey());
-			updateStudentKeyToDatabase(student);
-			loginReply = "Login link has been sent to email: "
-					+ student.getStudentEmail();
+			if (student.getStudentKey().equals("0")) {
+				student.setStudentKey(generateStudentKey());
+				updateStudentKeyToDatabase(student);
+				loginReply = "Login link has been sent to email: "
+						+ student.getStudentEmail();
+			} else
+				loginReply = "Key already generated";
 		} else
 			loginReply = "student number not in system";
-
 		return "studentRegister.xhtml";
 	}
 
@@ -148,8 +227,10 @@ public class StudentManager implements AbstractStudentManager {
 		List<Student> students = query.getResultList();
 
 		if (students.size() == 1)
-			return "http://localhost:8080/CourseFeedback/studentLogin.xhtml"
+			return "http://localhost:8080/CourseFeedback/courseSelection.xhtml"
 					+ "?key=" + students.get(0).getStudentKey();
+		// return "http://localhost:8080/CourseFeedback/studentLogin.xhtml" +
+		// "?key=" + students.get(0).getStudentKey();
 		else
 			return "";
 	}
@@ -213,11 +294,10 @@ public class StudentManager implements AbstractStudentManager {
 			return null;
 	}
 
-	private static final long serialVersionUID = 1L;
-	public ArrayList<Student> studentList = new ArrayList<Student>();
-
 	@Override
-	public ArrayList<Student> displayStudentFile(HSSFWorkbook workbook) {
+	public Collection<Student> displayStudentFile(HSSFWorkbook workbook) {
+		Collection<Student> studentList = new ArrayList<Student>();
+
 		// This workbook already has all content of uploaded file
 		// ArrayList<Student> studentList=new ArrayList<Student>();
 		String studentNo = null;
@@ -225,6 +305,7 @@ public class StudentManager implements AbstractStudentManager {
 		HSSFSheet sheet = workbook.getSheetAt(0);
 		// Iterate through each rows from first sheet
 		Iterator<Row> rowIterator = sheet.rowIterator();
+
 		while (rowIterator.hasNext()) {
 			Row row = rowIterator.next();
 			// For each row, iterate through each columns
@@ -275,21 +356,10 @@ public class StudentManager implements AbstractStudentManager {
 
 			}
 			student.setStudentEmail(studentEmail);
-			this.studentList.add(student);
+			studentList.add(student);
 		}
 
-		return this.studentList;
-	}
-
-	public ArrayList<Student> getStudentList() {
 		return studentList;
-	}
-
-	public void setStudentList(ArrayList<Student> studentList) {
-		System.out.println("studentList1 size" + studentList.size());
-
-		this.studentList = studentList;
-		System.out.println("this.studentList size" + this.studentList.size());
 	}
 
 	public String saveStudentList(Collection<Student> students) {
@@ -297,5 +367,21 @@ public class StudentManager implements AbstractStudentManager {
 			saveStudent(student);
 		}
 		return "teacher-index";
+	}
+
+	@Override
+	public String addStudentToCourse(String studentNumber, int courseId) {
+		try {
+			this.utx.begin();
+			Student student = getStudentByStudentNumber(studentNumber);
+			Course course = this.em.find(Course.class, courseId);
+			course.addStudent(student);
+			this.utx.commit();
+		} catch (Exception e) {
+			// XXX To do better
+			e.printStackTrace();
+		}
+
+		return "teacher-home";
 	}
 }

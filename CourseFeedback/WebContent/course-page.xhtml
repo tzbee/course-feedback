@@ -36,7 +36,8 @@
 
 
 	<c:forEach items="#{currentCourse.courseItems}" var="currentCourseItem">
-		<h:link value="#{currentCourseItem.name}" outcome="course-item-page">
+		<h:link value="#{currentCourseItem.courseItemName}"
+			outcome="rateCourseItem">
 			<f:param name="courseitemid"
 				value="#{currentCourseItem.courseItemId}" />
 		</h:link>
@@ -49,11 +50,23 @@
 			<h:outputLabel value="Add course item" />
 		</h2>
 
-		<h:inputText value="#{courseItem.name}" />
+		<h:inputText value="#{courseItem.courseItemName}" />
 
 		<h:commandButton type="submit"
 			action="#{courseItemManager.addCourseItemToCourse(courseItem,coursePageBean.currentCourseId)}"
 			value="Add course item">
+			<f:param name="courseid" value="#{coursePageBean.currentCourseId}" />
+		</h:commandButton>
+
+		<h2>
+			<h:outputLabel value="Add student to this course" />
+		</h2>
+
+		<h:inputText value="#{student.studentNumber}" />
+
+		<h:commandButton type="submit"
+			action="#{studentManager.addStudentToCourse(student.studentNumber,coursePageBean.currentCourseId)}"
+			value="Add student">
 			<f:param name="courseid" value="#{coursePageBean.currentCourseId}" />
 		</h:commandButton>
 	</h:form>

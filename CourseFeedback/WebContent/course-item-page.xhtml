@@ -7,7 +7,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 <f:metadata>
-	<f:viewParam name="courseid" value="#{coursePageBean.currentCourseId}" />
+	<f:viewParam name="courseitemid" />
 </f:metadata>
 
 <h:head>
@@ -15,46 +15,22 @@
 </h:head>
 
 <h:body>
-	<c:set var="currentCourse"
-		value="#{courseManager.getCourseById(coursePageBean.currentCourseId)}" />
-
-	<h1>
-		<h:outputText value="Course Item info:" />
-	</h1>
-
-	<br />
-
-	<h2>
-		<h:outputText value="Name" />
-	</h2>
-
-	<h:outputText value="#{currentCourse.name}" />
-
-	<h2>
-		<h:outputText value="Course items" />
-	</h2>
-
-	<!-- TODO Course items-->
-
-	<c:forEach items="#{currentCourse.courseItems}" var="currentCourseItem">
-		<h:link value="#{currentCourseItem.name}" outcome="" />
-		<br />
-	</c:forEach>
 
 	<h:form>
-		<h2>
-			<h:outputLabel value="Add course item" />
-		</h2>
+		<h:inputText value="#{feedback.value}" />
 
-		<h:inputText value="#{courseItem.name}" />
-
-		<h:commandButton type="submit"
-			action="#{courseItemManager.addCourseItemToCourse(courseItem,coursePageBean.currentCourseId)}"
-			value="Add course item">
-			<f:param name="courseid" value="#{coursePageBean.currentCourseId}" />
+		<h:commandButton value="Add Feedback"
+			action="#{feedbackManager.addFeedbackToCourseItem(feedback,courseitemid)}">
+			<f:param name="courseitemid" value="#{courseitemid}" />
 		</h:commandButton>
 	</h:form>
 
+	<p:barChart id="basic"
+		value="#{feedbackBar.createCategoryModel(feedbackManager.getFeedbacksByCourseItemId(courseitemid))}"
+		legendPosition="ne" title="Feedback Bar" />
+	<p:editor rendered="false" />
+
+	<br />
 	<ui:include src="/footer.xhtml" />
 </h:body>
 </html>

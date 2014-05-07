@@ -1,17 +1,16 @@
 package com.coursefeedback.feedback;
 
 import javax.faces.bean.ManagedBean;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.coursefeedback.courseitemmanager.CourseItem;
-import com.coursefeedback.feedback.metadata.MetaData;
 
 @ManagedBean
 @Entity
@@ -19,16 +18,15 @@ import com.coursefeedback.feedback.metadata.MetaData;
 public class Feedback {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "feedbackId")
 	private int feedbackId;
 
-	private int value;
+	@Column(name = "value")
+	private int value = 1;
 
 	@ManyToOne
-	@JoinColumn(name = "courseItemId", nullable = false)
+	@JoinColumn(name = "courseItemId")
 	private CourseItem courseItem;
-
-	@OneToOne
-	private MetaData metaData;
 
 	public int getValue() {
 		return value;
@@ -54,11 +52,8 @@ public class Feedback {
 		this.courseItem = courseItem;
 	}
 
-	public MetaData getMetaData() {
-		return metaData;
-	}
-
-	public void setMetaData(MetaData metaData) {
-		this.metaData = metaData;
+	@Override
+	public String toString() {
+		return getFeedbackId() + " " + getValue();
 	}
 }

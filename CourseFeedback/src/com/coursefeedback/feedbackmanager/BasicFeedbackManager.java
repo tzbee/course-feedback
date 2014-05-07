@@ -9,9 +9,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.UserTransaction;
 
+import com.coursefeedback.courseitemmanager.CourseItem;
 import com.coursefeedback.feedback.Feedback;
 
-@ManagedBean
+@ManagedBean(name = "feedbackManager")
 public class BasicFeedbackManager implements FeedbackManager {
 	@PersistenceContext(name = "CourseFeedback")
 	private EntityManager em;
@@ -20,7 +21,7 @@ public class BasicFeedbackManager implements FeedbackManager {
 	private UserTransaction utx;
 
 	@Override
-	public String saveFeedback(Feedback feedback) {
+	public String addFeedback(Feedback feedback) {
 		try {
 			this.utx.begin();
 			this.em.persist(feedback);
@@ -29,7 +30,33 @@ public class BasicFeedbackManager implements FeedbackManager {
 			e.printStackTrace();
 		}
 
-		return "feedbackBar";
+		return "course-item-page";
+	}
+
+	@Override
+	public String addFeedbackToCourseItem(Feedback feedback, int courseItemId) {
+		try {
+			this.utx.begin();
+			CourseItem courseItem = this.em
+					.find(CourseItem.class, courseItemId);
+			courseItem.addFeedback(feedback);
+			this.utx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return "course-item-page";
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Collection<Feedback> getFeedbacksByCourseItemId(int courseItemId) {
+		Collection<Feedback> feedbacks = this.em
+				.createQuery(
+						"SELECT f FROM Feedback f WHERE f.courseItem.courseItemId = :courseItemId")
+				.setParameter("courseItemId", courseItemId).getResultList();
+
+		return feedbacks;
 	}
 
 	@SuppressWarnings("unchecked")

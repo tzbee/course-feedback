@@ -5,7 +5,11 @@ import java.util.Collection;
 import com.coursefeedback.feedback.Feedback;
 
 public interface FeedbackManager {
-	String saveFeedback(Feedback feedback);
-
 	Collection<Feedback> getAllFeedbacks();
+
+	String addFeedbackToCourseItem(Feedback feedback, int courseId);
+
+	String addFeedback(Feedback feedback);
+
+	Collection<Feedback> getFeedbacksByCourseItemId(int courseItemId);
 }

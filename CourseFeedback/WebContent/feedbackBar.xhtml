@@ -12,10 +12,8 @@
 
 <h:body>
 	<p:barChart id="basic"
-		value="#{feedbackBar.createCategoryModel(basicFeedbackManager.allFeedbacks)}"
+		value="#{feedbackBar.createCategoryModel(currentCourseItem.feedbacks)}"
 		legendPosition="ne" title="Feedback Bar" />
 	<p:editor rendered="false" />
-	<h:button value="Enter a new value" outcome="input-value">
-	</h:button>
 </h:body>
 </html>
