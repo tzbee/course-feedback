@@ -7,7 +7,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 <f:metadata>
-	<f:viewParam name="courseid" value="#{coursePageBean.currentCourseId}" />
+	<f:viewParam name="courseid" />
 </f:metadata>
 
 <h:head>
@@ -16,7 +16,7 @@
 
 <h:body>
 	<c:set var="currentCourse"
-		value="#{courseManager.getCourseById(coursePageBean.currentCourseId)}" />
+		value="#{courseManager.getCourseById(courseid)}" />
 
 	<h1>
 		<h:outputText value="Course info:" />
@@ -52,22 +52,22 @@
 
 		<h:inputText value="#{courseItem.courseItemName}" />
 
-		<h:commandButton type="submit"
-			action="#{courseItemManager.addCourseItemToCourse(courseItem,coursePageBean.currentCourseId)}"
-			value="Add course item">
-			<f:param name="courseid" value="#{coursePageBean.currentCourseId}" />
+		<h:commandButton value="Add course item"
+			action="#{courseItemManager.addCourseItemToCourse(courseItem,courseid)}">
+			<f:param name="courseid" value="#{courseid}" />
 		</h:commandButton>
+	</h:form>
 
+	<h:form>
 		<h2>
 			<h:outputLabel value="Add student to this course" />
 		</h2>
 
 		<h:inputText value="#{student.studentNumber}" />
 
-		<h:commandButton type="submit"
-			action="#{studentManager.addStudentToCourse(student.studentNumber,coursePageBean.currentCourseId)}"
-			value="Add student">
-			<f:param name="courseid" value="#{coursePageBean.currentCourseId}" />
+		<h:commandButton value="Add student"
+			action="#{studentManager.addStudentToCourse(student.studentNumber,courseId)}">
+			<f:param name="courseid" value="#{courseid}" />
 		</h:commandButton>
 	</h:form>
 

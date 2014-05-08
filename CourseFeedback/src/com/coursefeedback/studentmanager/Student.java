@@ -1,12 +1,20 @@
 package com.coursefeedback.studentmanager;
 
+import java.util.Collection;
+
 import javax.faces.bean.ManagedBean;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.coursefeedback.coursemanager.Course;
 
 @ManagedBean
 @Entity
@@ -15,17 +23,21 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "studentId")
-	private long id;
+	private int id;
 
 	private String studentKey = "0";
 	private String studentNumber = "";
 	private String studentEmail = "";
 
-	public Long getId() {
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "course_student", joinColumns = { @JoinColumn(name = "studentId") }, inverseJoinColumns = { @JoinColumn(name = "courseId") })
+	private Collection<Course> courses;
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -56,5 +68,15 @@ public class Student {
 
 	public void setStudentEmail(String studentEmail) {
 		this.studentEmail = studentEmail;
+	}
+
+	public void addCourse(Course course) {
+		this.courses.add(course);
+	}
+
+	@Override
+	public String toString() {
+		return getId() + " " + getStudentNumber() + " " + getStudentEmail()
+				+ " " + getStudentKey();
 	}
 }

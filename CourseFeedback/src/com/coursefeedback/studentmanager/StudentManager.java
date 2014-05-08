@@ -23,7 +23,7 @@ import org.apache.poi.ss.usermodel.Row;
 import com.coursefeedback.courseitemmanager.CourseItem;
 import com.coursefeedback.coursemanager.Course;
 
-@ManagedBean
+@ManagedBean(name="studentManager")
 @SessionScoped
 public class StudentManager implements AbstractStudentManager {
 	@PersistenceContext(name = "CourseFeedback")
@@ -372,11 +372,13 @@ public class StudentManager implements AbstractStudentManager {
 	@Override
 	public String addStudentToCourse(String studentNumber, int courseId) {
 		try {
-			this.utx.begin();
 			Student student = getStudentByStudentNumber(studentNumber);
-			Course course = this.em.find(Course.class, courseId);
-			course.addStudent(student);
-			this.utx.commit();
+			System.out.println(student);
+//
+//			this.utx.begin();
+//			Course course = this.em.find(Course.class, courseId);
+//			course.addStudent(student);
+//			this.utx.commit();
 		} catch (Exception e) {
 			// XXX To do better
 			e.printStackTrace();

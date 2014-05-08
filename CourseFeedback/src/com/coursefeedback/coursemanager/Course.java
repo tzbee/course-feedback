@@ -69,6 +69,7 @@ public class Course {
 
 	public void addStudent(Student student) {
 		this.students.add(student);
+		student.addCourse(this);
 	}
 
 	@Override

@@ -17,19 +17,18 @@ public class BasicCourseItemManager implements CourseItemManager {
 	private UserTransaction utx;
 
 	@Override
-	public String addCourseItemToCourse(CourseItem courseItem, String courseId) {
-		try {
-			Integer courseIdNb = Integer.valueOf(courseId);
+	public String addCourseItemToCourse(CourseItem courseItem, int courseId) {
+		System.out.println(courseItem);
 
+		try {
 			this.utx.begin();
-			Course course = this.em.find(Course.class, courseIdNb);
+			Course course = this.em.find(Course.class, courseId);
 			course.addCourseItem(courseItem);
 			this.utx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		// XXX TODO better
 		return "course-page";
 	}
 
