@@ -98,5 +98,12 @@ public interface AbstractStudentManager {
 
 	String saveStudentList(Collection<Student> students);
 
+	/**
+	 * Get all courses associated with one student
+	 * 
+	 * @param studentID
+	 *            of the student
+	 * @return
+	 */
 	Collection<Course> getCoursesByStudentId(int studentID);
 }
