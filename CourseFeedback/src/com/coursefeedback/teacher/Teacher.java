@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 import com.coursefeedback.coursemanager.Course;
 
-@ManagedBean(name="teacher")
+@ManagedBean(name = "teacher")
 @Entity
 @Table(name = "teacher")
 public class Teacher {
