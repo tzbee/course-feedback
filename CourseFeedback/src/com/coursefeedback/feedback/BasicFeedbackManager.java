@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.transaction.UserTransaction;
 
 import com.coursefeedback.courseitem.CourseItem;
@@ -18,6 +17,8 @@ import com.coursefeedback.courseitem.CourseItem;
  */
 @ManagedBean(name = "feedbackManager")
 public class BasicFeedbackManager implements FeedbackManager {
+	private static final String COURSE_ITEM_VIEW = "course-item-page";
+
 	@PersistenceContext(name = "CourseFeedback")
 	private EntityManager em;
 
@@ -34,7 +35,7 @@ public class BasicFeedbackManager implements FeedbackManager {
 			e.printStackTrace();
 		}
 
-		return "course-item-page";
+		return COURSE_ITEM_VIEW;
 	}
 
 	@Override
@@ -46,27 +47,25 @@ public class BasicFeedbackManager implements FeedbackManager {
 			courseItem.addFeedback(feedback);
 			this.utx.commit();
 		} catch (Exception e) {
+			// XXX To do better
 			e.printStackTrace();
 		}
 
-		return "course-item-page";
+		return COURSE_ITEM_VIEW;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<Feedback> getFeedbacksByCourseItemId(int courseItemId) {
-		Collection<Feedback> feedbacks = this.em
+		return this.em
 				.createQuery(
 						"SELECT f FROM Feedback f WHERE f.courseItem.courseItemId = :courseItemId")
 				.setParameter("courseItemId", courseItemId).getResultList();
-
-		return feedbacks;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<Feedback> getAllFeedbacks() {
-		Query query = this.em.createQuery("SELECT f FROM Feedback f");
-		return (Collection<Feedback>) query.getResultList();
+		return this.em.createQuery("SELECT f FROM Feedback f").getResultList();
 	}
 }
