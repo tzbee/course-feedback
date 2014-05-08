@@ -3,6 +3,7 @@ package com.coursefeedback.teacher;
 import java.util.Collection;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +18,7 @@ import com.coursefeedback.coursemanager.Course;
 @ManagedBean(name = "teacher")
 @Entity
 @Table(name = "teacher")
+@RequestScoped
 public class Teacher {
 	@Id
 	@Column(name = "userName")
