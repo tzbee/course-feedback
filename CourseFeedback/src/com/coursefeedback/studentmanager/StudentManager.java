@@ -20,7 +20,6 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
-import com.coursefeedback.courseitemmanager.CourseItem;
 import com.coursefeedback.coursemanager.Course;
 
 @ManagedBean(name = "studentManager")
@@ -55,46 +54,13 @@ public class StudentManager implements AbstractStudentManager {
 		return this.currentStudentID;
 	}
 
-	// for temp testing
-	public Collection<Course> getCoursesByStudentId(long studentID) {
-		Collection<Course> col = new ArrayList<Course>();
-		Course c1 = new Course(), c2 = new Course(), c3 = new Course();
-		CourseItem ci1 = new CourseItem(), ci2 = new CourseItem(), ci3 = new CourseItem();
-		c1.setCourseId(1);
-		c2.setCourseId(2);
-		c3.setCourseId(3);
-		ci1.setCourseItemId(1);
-		ci2.setCourseItemId(2);
-		ci3.setCourseItemId(3);
-		c1.setName("math (course 1)");
-		c2.setName("science (course 2)");
-		c3.setName("computing (course 3)");
-		ci1.setCourseItemName("courseItemName a");
-		ci2.setCourseItemName("courseItemName b");
-		ci3.setCourseItemName("courseItemName c");
-		c1.addCourseItem(ci1);
-		c2.addCourseItem(ci1);
-		c2.addCourseItem(ci2);
-		c3.addCourseItem(ci1);
-		c3.addCourseItem(ci2);
-		c3.addCourseItem(ci3);
-
-		if (studentID == 1) {
-			col.add(c1);
-			col.add(c2);
-			col.add(c3);
-			return col;
-		} else if (studentID == 2) {
-			col.add(c1);
-			col.add(c2);
-			return col;
-		} else if (studentID == 3) {
-			col.add(c1);
-			return col;
-		} else {
-			col.clear();
-			return col;
-		}
+	@SuppressWarnings("unchecked")
+	@Override
+	public Collection<Course> getCoursesByStudentId(int studentID) {
+		return this.em
+				.createQuery(
+						"SELECT c FROM Course c JOIN c.students s WHERE s.id = :studentID")
+				.setParameter("studentID", studentID).getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -161,13 +127,6 @@ public class StudentManager implements AbstractStudentManager {
 
 		return randomKey;
 	}
-
-	/*
-	 * private String generateStudentKey() { UUID randomKey; do { randomKey =
-	 * UUID.randomUUID(); } while (keyIsDuplicate(randomKey.toString()));
-	 * 
-	 * return randomKey.toString(); }
-	 */
 
 	@SuppressWarnings("unchecked")
 	private boolean keyIsDuplicate(String key) {
