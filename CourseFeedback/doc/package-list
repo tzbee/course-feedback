@@ -1,0 +1,13 @@
+com.coursefeedback.courseitemmanager
+com.coursefeedback.coursemanager
+com.coursefeedback.feedback
+com.coursefeedback.feedback.metadata
+com.coursefeedback.feedbackmanager
+com.coursefeedback.fileupload
+com.coursefeedback.studentmanager
+com.coursefeedback.teacher
+com.coursefeedback.teacher.exception
+com.coursefeedback.teacher.login
+com.coursefeedback.teacher.registration
+com.coursefeedback.teacher.teachermanager
+courseitempagebean
