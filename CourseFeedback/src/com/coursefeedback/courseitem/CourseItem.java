@@ -1,4 +1,4 @@
-package com.coursefeedback.courseitemmanager;
+package com.coursefeedback.courseitem;
 
 import java.util.Date;
 import java.util.List;
@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.coursefeedback.coursemanager.Course;
+import com.coursefeedback.course.Course;
 import com.coursefeedback.feedback.Feedback;
 
 @ManagedBean

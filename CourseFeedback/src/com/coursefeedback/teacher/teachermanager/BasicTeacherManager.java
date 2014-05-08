@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 
-import com.coursefeedback.coursemanager.Course;
+import com.coursefeedback.course.Course;
 import com.coursefeedback.teacher.Teacher;
 
 @ManagedBean(name = "teacherManager")

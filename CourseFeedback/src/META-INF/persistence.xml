@@ -7,9 +7,9 @@
 		<jta-data-source>jdbc/bonecp_resource</jta-data-source>
 
 		<class>com.coursefeedback.teacher.Teacher</class>
-		<class>com.coursefeedback.coursemanager.Course</class>
-		<class>com.coursefeedback.courseitemmanager.CourseItem</class>
-		<class>com.coursefeedback.studentmanager.Student</class>
+		<class>com.coursefeedback.course.Course</class>
+		<class>com.coursefeedback.courseitem.CourseItem</class>
+		<class>com.coursefeedback.student.Student</class>
 		<class>com.coursefeedback.feedback.Feedback</class>
 
 		<properties>

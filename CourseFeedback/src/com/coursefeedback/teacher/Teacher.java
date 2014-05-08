@@ -13,7 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.coursefeedback.coursemanager.Course;
+import com.coursefeedback.course.Course;
 
 @ManagedBean(name = "teacher")
 @Entity

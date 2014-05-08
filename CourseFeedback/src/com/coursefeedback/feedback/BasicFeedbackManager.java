@@ -1,4 +1,4 @@
-package com.coursefeedback.feedbackmanager;
+package com.coursefeedback.feedback;
 
 import java.util.Collection;
 
@@ -9,9 +9,13 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.UserTransaction;
 
-import com.coursefeedback.courseitemmanager.CourseItem;
-import com.coursefeedback.feedback.Feedback;
+import com.coursefeedback.courseitem.CourseItem;
 
+/**
+ * Basic implementation of FeedbackManager
+ * 
+ * @author touzbi
+ */
 @ManagedBean(name = "feedbackManager")
 public class BasicFeedbackManager implements FeedbackManager {
 	@PersistenceContext(name = "CourseFeedback")

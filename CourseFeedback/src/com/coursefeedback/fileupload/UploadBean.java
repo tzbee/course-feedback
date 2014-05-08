@@ -11,8 +11,8 @@ import javax.servlet.http.Part;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
-import com.coursefeedback.studentmanager.Student;
-import com.coursefeedback.studentmanager.StudentManager;
+import com.coursefeedback.student.Student;
+import com.coursefeedback.student.StudentManager;
 
 @ManagedBean
 @RequestScoped

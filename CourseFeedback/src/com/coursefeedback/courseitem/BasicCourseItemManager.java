@@ -1,4 +1,4 @@
-package com.coursefeedback.courseitemmanager;
+package com.coursefeedback.courseitem;
 
 import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 
-import com.coursefeedback.coursemanager.Course;
+import com.coursefeedback.course.Course;
 
 @ManagedBean(name = "courseItemManager")
 public class BasicCourseItemManager implements CourseItemManager {

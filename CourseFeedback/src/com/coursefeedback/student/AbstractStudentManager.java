@@ -1,10 +1,10 @@
-package com.coursefeedback.studentmanager;
+package com.coursefeedback.student;
 
 import java.util.Collection;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
-import com.coursefeedback.coursemanager.Course;
+import com.coursefeedback.course.Course;
 
 public interface AbstractStudentManager {
 

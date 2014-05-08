@@ -1,4 +1,4 @@
-package com.coursefeedback.coursemanager;
+package com.coursefeedback.course;
 
 import java.util.Collection;
 

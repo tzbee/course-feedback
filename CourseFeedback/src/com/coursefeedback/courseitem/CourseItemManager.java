@@ -1,4 +1,4 @@
-package com.coursefeedback.courseitemmanager;
+package com.coursefeedback.courseitem;
 
 public interface CourseItemManager {
 	String addCourseItemToCourse(CourseItem courseItem, int courseId);

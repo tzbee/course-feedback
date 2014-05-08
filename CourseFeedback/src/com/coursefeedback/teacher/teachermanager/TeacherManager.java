@@ -1,6 +1,6 @@
 package com.coursefeedback.teacher.teachermanager;
 
-import com.coursefeedback.coursemanager.Course;
+import com.coursefeedback.course.Course;
 import com.coursefeedback.teacher.Teacher;
 
 public interface TeacherManager {

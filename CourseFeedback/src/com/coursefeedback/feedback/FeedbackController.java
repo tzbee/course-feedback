@@ -8,9 +8,8 @@ import javax.faces.context.FacesContext;
 import org.primefaces.event.RateEvent;
 import org.primefaces.event.SlideEndEvent;
 
-import com.coursefeedback.courseitemmanager.CourseItem;
-import com.coursefeedback.feedbackmanager.BasicFeedbackManager;
-import com.coursefeedback.studentmanager.StudentManager;
+import com.coursefeedback.courseitem.CourseItem;
+import com.coursefeedback.student.StudentManager;
 
 @ManagedBean
 public class FeedbackController {

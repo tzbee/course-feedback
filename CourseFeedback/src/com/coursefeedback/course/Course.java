@@ -1,4 +1,4 @@
-package com.coursefeedback.coursemanager;
+package com.coursefeedback.course;
 
 import java.util.Collection;
 
@@ -15,8 +15,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.coursefeedback.courseitemmanager.CourseItem;
-import com.coursefeedback.studentmanager.Student;
+import com.coursefeedback.courseitem.CourseItem;
+import com.coursefeedback.student.Student;
 import com.coursefeedback.teacher.Teacher;
 
 @ManagedBean

@@ -1,14 +1,12 @@
-package com.coursefeedback.feedbackmanager;
+package com.coursefeedback.feedback;
 
 import java.util.Collection;
 
-import com.coursefeedback.feedback.Feedback;
-
 /**
- * Feedback Manager class
- * Handles all feedback operations
+ * Feedback Manager class Handles all feedback operations
+ * 
  * @author Amine
- *
+ * 
  */
 public interface FeedbackManager {
 	/**
@@ -19,6 +17,7 @@ public interface FeedbackManager {
 
 	/**
 	 * Adds feedback to a course item
+	 * 
 	 * @param feedback
 	 * @param courseId
 	 * @return
@@ -27,6 +26,7 @@ public interface FeedbackManager {
 
 	/**
 	 * Adds feedback to the system
+	 * 
 	 * @param feedback
 	 * @return
 	 */
@@ -34,6 +34,7 @@ public interface FeedbackManager {
 
 	/**
 	 * Get all feedbacks for a specific course item given its id
+	 * 
 	 * @param courseItemId
 	 * @return The feedbacks
 	 */

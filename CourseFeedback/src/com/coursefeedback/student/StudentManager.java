@@ -1,4 +1,4 @@
-package com.coursefeedback.studentmanager;
+package com.coursefeedback.student;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
-import com.coursefeedback.coursemanager.Course;
+import com.coursefeedback.course.Course;
 
 @ManagedBean(name = "studentManager")
 @SessionScoped
