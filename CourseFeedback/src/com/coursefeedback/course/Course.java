@@ -19,6 +19,13 @@ import com.coursefeedback.courseitem.CourseItem;
 import com.coursefeedback.student.Student;
 import com.coursefeedback.teacher.Teacher;
 
+
+/**
+ * Java bean representing the basic structure of a course
+ * 
+ * @author touzbi
+ * 
+ */
 @ManagedBean
 @Entity
 @Table(name = "course")

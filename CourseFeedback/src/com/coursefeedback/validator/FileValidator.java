@@ -10,6 +10,11 @@ import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 import javax.servlet.http.Part;
 
+/**
+ * Validates a file based on its size(>10MB)
+ * 
+ * @author touzbi
+ */
 @FacesValidator(value = "fileValidator")
 public class FileValidator implements Validator {
 

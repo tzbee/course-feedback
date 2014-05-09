@@ -12,6 +12,12 @@ import javax.persistence.Table;
 
 import com.coursefeedback.courseitem.CourseItem;
 
+/**
+ * Java bean representing the basic structure of a feedback
+ * 
+ * @author touzbi
+ * 
+ */
 @ManagedBean
 @Entity
 @Table(name = "feedback")

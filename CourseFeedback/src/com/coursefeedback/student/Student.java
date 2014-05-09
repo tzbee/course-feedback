@@ -16,6 +16,11 @@ import javax.persistence.Table;
 
 import com.coursefeedback.course.Course;
 
+/**
+ * Java bean containing the basic student information
+ * 
+ * @author touzbi
+ */
 @ManagedBean
 @Entity
 @Table(name = "student")
