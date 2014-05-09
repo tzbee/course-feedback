@@ -9,10 +9,20 @@ public interface CourseManager {
 	 * 
 	 * @return
 	 */
-
 	Collection<Course> getCourses();
 
+	/**
+	 * Get a course by its unique id
+	 * 
+	 * @param courseId
+	 * @return
+	 */
 	Course getCourseById(int courseId);
 
+	/**
+	 * Add a course to the system
+	 * 
+	 * @param course
+	 */
 	void addCourse(Course course);
 }
