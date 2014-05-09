@@ -15,11 +15,11 @@
 			<br />
 
 			<p>
-				<h:inputFile id="file" value="#{uploadBean.file}"
-					validator="#{uploadBean.validateFile}" />
+				<h:inputFile id="file" value="#{uploadBean.file}">
+					<f:validator validatorId="fileValidator" />
+				</h:inputFile>
 				<br />
-				<h:commandButton value="Upload"
-					action="#{uploadBean.upload(studentManager)}" />
+				<h:commandButton value="Upload" action="#{uploadBean.upload()}" />
 			</p>
 
 		</h:form>
