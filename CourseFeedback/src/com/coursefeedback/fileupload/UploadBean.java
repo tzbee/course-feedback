@@ -8,7 +8,7 @@ import javax.faces.bean.RequestScoped;
 import javax.servlet.http.Part;
 
 import com.coursefeedback.student.StudentManager;
-import com.coursefeedback.studentlistfactory.StudentsFactory;
+import com.coursefeedback.student.studentsfactory.StudentsFactory;
 
 @ManagedBean(name = "uploadBean")
 @RequestScoped
@@ -52,5 +52,4 @@ public class UploadBean {
 	public void setStudentsFactory(StudentsFactory studentsFactory) {
 		this.studentsFactory = studentsFactory;
 	}
-
 }

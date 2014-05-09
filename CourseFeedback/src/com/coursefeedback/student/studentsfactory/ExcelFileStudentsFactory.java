@@ -1,4 +1,4 @@
-package com.coursefeedback.studentlistfactory;
+package com.coursefeedback.student.studentsfactory;
 
 import java.io.IOException;
 import java.io.InputStream;
