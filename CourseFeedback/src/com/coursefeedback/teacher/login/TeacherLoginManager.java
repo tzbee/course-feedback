@@ -21,7 +21,17 @@ public interface TeacherLoginManager {
 	 */
 	String logout();
 
+	/**
+	 * Retrive a teacher from its user name and password
+	 * 
+	 * @param userName
+	 * @param password
+	 * @return
+	 * @throws InvalidUserNameException
+	 *             The username does not exist
+	 * @throws InvalidPasswordException
+	 *             The password associated to this username is wrong
+	 */
 	Teacher getTeacher(String userName, String password)
 			throws InvalidUserNameException, InvalidPasswordException;
-
 }
