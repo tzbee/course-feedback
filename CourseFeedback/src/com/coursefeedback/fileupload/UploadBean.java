@@ -24,6 +24,14 @@ public class UploadBean {
 	@ManagedProperty("#{studentsFactory}")
 	private StudentsFactory studentsFactory;
 
+	/**
+	 * Retrives the students using the injected student factory implementation
+	 * and file Saves the students using the injected student manager
+	 * implementation
+	 * 
+	 * @return
+	 * @throws IOException
+	 */
 	public String upload() throws IOException {
 		return this.studentManager.saveStudents(this.studentsFactory
 				.getStudents(this.file.getInputStream()));

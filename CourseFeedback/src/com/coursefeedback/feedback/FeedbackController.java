@@ -13,6 +13,7 @@ import com.coursefeedback.student.StudentManager;
 
 @ManagedBean
 public class FeedbackController {
+
 	@ManagedProperty(value = "#{feedbackManager}")
 	private BasicFeedbackManager fbm;
 

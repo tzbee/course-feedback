@@ -10,6 +10,7 @@ import java.util.Collection;
  */
 public interface FeedbackManager {
 	/**
+	 * Get all feedbacks registered in the system
 	 * 
 	 * @return all registered feedbacks
 	 */
