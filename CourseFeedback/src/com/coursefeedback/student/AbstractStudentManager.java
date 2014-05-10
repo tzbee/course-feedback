@@ -2,8 +2,6 @@ package com.coursefeedback.student;
 
 import java.util.Collection;
 
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-
 import com.coursefeedback.course.Course;
 
 public interface AbstractStudentManager {
@@ -94,9 +92,7 @@ public interface AbstractStudentManager {
 
 	public Collection<Student> getAllStudents();
 
-	Collection<Student> displayStudentFile(HSSFWorkbook workbook);
-
-	String saveStudentList(Collection<Student> students);
+	String saveStudents(Collection<Student> students);
 
 	/**
 	 * Get all courses associated with one student

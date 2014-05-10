@@ -13,7 +13,7 @@ import javax.servlet.http.Part;
 /**
  * Validates a file based on its size(>10MB)
  * 
- * @author touzbi
+ * @author Lan Shao
  */
 @FacesValidator(value = "fileValidator")
 public class FileValidator implements Validator {

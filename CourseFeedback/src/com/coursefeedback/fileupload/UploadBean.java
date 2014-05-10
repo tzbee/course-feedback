@@ -25,7 +25,7 @@ public class UploadBean {
 	private StudentsFactory studentsFactory;
 
 	public String upload() throws IOException {
-		return this.studentManager.saveStudentList(this.studentsFactory
+		return this.studentManager.saveStudents(this.studentsFactory
 				.getStudents(this.file.getInputStream()));
 	}
 
