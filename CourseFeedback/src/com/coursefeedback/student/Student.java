@@ -30,8 +30,13 @@ public class Student {
 	@Column(name = "studentId")
 	private int id;
 
+	@Column(name = "studentkey")
 	private String studentKey = "0";
+
+	@Column(name = "studentnumber")
 	private String studentNumber = "";
+
+	@Column(name = "studentemail")
 	private String studentEmail = "";
 
 	@ManyToMany(cascade = CascadeType.ALL)
@@ -46,18 +51,14 @@ public class Student {
 		this.id = id;
 	}
 
-	// public int getStudentKey() {
-	@Column(name = "studentkey")
 	public String getStudentKey() {
 		return this.studentKey;
 	}
 
-	// public void setStudentKey(int studentKey) {
 	public void setStudentKey(String studentKey) {
 		this.studentKey = studentKey;
 	}
 
-	@Column(name = "studentnumber")
 	public String getStudentNumber() {
 		return this.studentNumber;
 	}
@@ -66,7 +67,6 @@ public class Student {
 		this.studentNumber = studentNumber;
 	}
 
-	@Column(name = "studentemail")
 	public String getStudentEmail() {
 		return this.studentEmail;
 	}
