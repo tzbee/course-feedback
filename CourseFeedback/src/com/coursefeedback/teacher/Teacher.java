@@ -42,7 +42,7 @@ public class Teacher {
 	}
 
 	public void setUserName(String username) {
-		this.userName = username;
+		this.userName = username;	
 	}
 
 	public String getPassword() {

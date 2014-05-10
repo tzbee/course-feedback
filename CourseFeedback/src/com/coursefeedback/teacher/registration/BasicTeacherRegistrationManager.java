@@ -8,7 +8,7 @@ import javax.transaction.UserTransaction;
 
 import com.coursefeedback.teacher.Teacher;
 
-@ManagedBean
+@ManagedBean(name = "teacherRegistrationManager")
 public class BasicTeacherRegistrationManager implements
 		TeacherRegistrationManager {
 
