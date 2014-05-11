@@ -1,0 +1,23 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<f:metadata>
+	<f:viewParam name="courseid" />
+</f:metadata>
+
+<h:head>
+	<title>Summary Graph</title>
+</h:head>
+
+<h:body>
+	<p:layout style="min-width:400px;min-height:200px;" id="layout" fullPage="true">
+		<p:layoutUnit position="center" resizable="true" size="300">
+			<p:barChart id="basic" value="#{feedbackSummary.createFeedbackSummaryModel(courseManager.getCourseById(courseid))}" 
+			legendPosition="ne" title="" style="height:100%" />
+		</p:layoutUnit>
+	</p:layout>
+</h:body>
+</html>
