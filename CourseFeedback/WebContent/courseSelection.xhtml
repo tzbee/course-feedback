@@ -1,26 +1,37 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core">
 
 
 <h:head>
 	<title>Course Select</title>
 </h:head>
 <h:body>
-			<c:set var="parameter" scope="session" value="#{studentManager.getParameter()}"/>
-			<h:outputText value="student id: #{studentManager.getCurrentStudentID()}"/><br />
-			<h:outputText value="Select a course to give feedback to:" />
-			
-			<!-- studentManager.getCoursesByStudentId() method should be changed to method implement by Sarah -->
-			<c:forEach items="#{studentManager.getCoursesByStudentId(studentManager.getCurrentStudentID())}" var="Cour">
-				<p>
-					<h:form>
-						<h:commandButton type="submit" value="#{Cour.name}" action="#{studentManager.setCurrentCourse(Cour)}"></h:commandButton>		
-					</h:form>
-				</p>
-			</c:forEach>
-			<h:form>
-				<h:commandButton type="submit" value="Back" action="studentRegister.xhtml"></h:commandButton>
-			</h:form>		
+	<c:set var="parameter" scope="session"
+		value="#{studentManager.getParameter()}" />
+	<h:outputText
+		value="student id: #{studentManager.getCurrentStudentID()}" />
+	<br />
+	<h:outputText value="student key: #{parameter}" />
+	<br />
+
+	<h:outputText value="Select a course to give feedback to:" />
+
+
+	<!-- studentManager.getCoursesByStudentId() method should be changed to method implement by Sarah -->
+	<c:forEach
+		items="#{studentManager.getCoursesByStudentId(studentManager.getCurrentStudentID())}"
+		var="Cour">
+		<p>
+			<h:link value="#{Cour.name}" outcome="course-page">
+				<f:param name="courseid" value="{Cour.courseId}" />
+			</h:link>
+		</p>
+	</c:forEach>
+	<h:form>
+		<h:commandButton type="submit" value="Back"
+			action="studentRegister.xhtml"></h:commandButton>
+	</h:form>
 </h:body>
 </html>

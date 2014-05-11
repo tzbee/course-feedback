@@ -44,4 +44,13 @@ public class BasicCourseManager implements CourseManager {
 	public Course getCourseById(int courseId) {
 		return (Course) this.em.find(Course.class, courseId);
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Collection<Course> getCoursesByStudentKey(String studentKey) {
+		return this.em
+				.createQuery(
+						"SELECT c FROM Course c JOIN c.students s WHERE s.studentKey = :studentKey")
+				.setParameter("studentKey", studentKey).getResultList();
+	}
 }

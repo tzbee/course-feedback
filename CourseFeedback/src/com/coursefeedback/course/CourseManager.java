@@ -25,4 +25,13 @@ public interface CourseManager {
 	 * @param course
 	 */
 	void addCourse(Course course);
+
+	/**
+	 * Get all courses taken by a student identified by its student key
+	 * 
+	 * @param studentKey
+	 * @return
+	 */
+
+	Collection<Course> getCoursesByStudentKey(String studentKey);
 }

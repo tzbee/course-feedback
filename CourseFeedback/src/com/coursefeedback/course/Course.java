@@ -77,6 +77,10 @@ public class Course {
 		this.students.add(student);
 	}
 
+	public Collection<Student> getStudents() {
+		return students;
+	}
+
 	@Override
 	public String toString() {
 		return getName();

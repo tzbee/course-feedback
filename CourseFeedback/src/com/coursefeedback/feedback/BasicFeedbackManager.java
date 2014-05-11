@@ -25,6 +25,13 @@ public class BasicFeedbackManager implements FeedbackManager {
 	@Resource
 	private UserTransaction utx;
 
+	/**
+	 * Adds feedback to a course item
+	 * 
+	 * @param feedback
+	 * @param courseId
+	 * @return
+	 */
 	@Override
 	public String addFeedback(Feedback feedback) {
 		try {
@@ -53,6 +60,13 @@ public class BasicFeedbackManager implements FeedbackManager {
 
 		return COURSE_ITEM_VIEW;
 	}
+
+	/**
+	 * Get all feedbacks for a specific course item given its id
+	 * 
+	 * @param courseItemId
+	 * @return The feedbacks
+	 */
 
 	@SuppressWarnings("unchecked")
 	@Override
