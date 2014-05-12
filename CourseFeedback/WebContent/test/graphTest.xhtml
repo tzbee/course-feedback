@@ -8,13 +8,13 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Graphs</title>
+	<title>Graph Test</title>
 </h:head>
 
 <h:body>
 	<ui:insert name="graphModule1">
 
-		<ui:include src="/test/graph/singleGraphModule.xhtml">
+		<ui:include src="/graph/singleGraphModule.xhtml">
 			<ui:param name="graphName" value="Average" />
 			<ui:param name="data" value="#{feedbackBeanTest.feedbacks}" />
 		</ui:include>

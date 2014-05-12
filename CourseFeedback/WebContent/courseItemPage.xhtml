@@ -25,10 +25,15 @@
 		</h:commandButton>
 	</h:form>
 
-	<p:barChart id="basic"
-		value="#{feedbackBar.createCategoryModel(feedbackManager.getFeedbacksByCourseItemId(courseitemid))}"
-		legendPosition="ne" title="Feedback Bar" />
-	<p:editor rendered="false" />
+	<ui:insert>
+		<ui:include src="/graph/singleGraphModule.xhtml">
+			<ui:param name="graphName" value="Feedback average" />
+			<ui:param name="data"
+				value="#{feedbackManager.getFeedbacksByCourseItemId(courseitemid)}" />
+		</ui:include>
+	</ui:insert>
+
+
 
 	<br />
 	<ui:include src="/footer.xhtml" />

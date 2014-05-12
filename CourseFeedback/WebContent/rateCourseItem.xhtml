@@ -84,10 +84,14 @@
 			</center>
 		</p:layoutUnit>
 
-		<p:layoutUnit position="center" resizable="true">
-			<p:barChart id="basic"
-				value="#{feedbackBar.createCategoryModel(feedbackManager.getFeedbacksByCourseItemId(courseitemid))}"
-				legendPosition="ne" title="" style="height:100%" />
+		<p:layoutUnit position="center" resizable="true" size="300">
+			<ui:insert>
+				<ui:include src="/graph/singleGraphModule.xhtml">
+					<ui:param name="graphName" value="Feedback average" />
+					<ui:param name="data"
+						value="#{feedbackManager.getFeedbacksByCourseItemId(courseitemid)}" />
+				</ui:include>
+			</ui:insert>
 		</p:layoutUnit>
 
 	</p:layout>
