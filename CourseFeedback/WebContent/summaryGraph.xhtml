@@ -13,10 +13,12 @@
 </h:head>
 
 <h:body>
-	<p:layout style="min-width:400px;min-height:200px;" id="layout" fullPage="true">
+	<p:layout style="min-width:400px;min-height:200px;" id="layout"
+		fullPage="true">
 		<p:layoutUnit position="center" resizable="true" size="300">
-			<p:barChart id="basic" value="#{feedbackSummary.createFeedbackSummaryModel(courseManager.getCourseById(courseid))}" 
-			legendPosition="ne" title="" style="height:100%" />
+			<p:barChart id="basic"
+				value="#{feedbackSummary.createFeedbackSummaryModel(courseManager.getCourseById(courseid))}"
+				legendPosition="ne" title="" style="height:100%" />
 		</p:layoutUnit>
 	</p:layout>
 </h:body>

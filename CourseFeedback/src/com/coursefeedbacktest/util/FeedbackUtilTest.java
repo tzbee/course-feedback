@@ -27,14 +27,12 @@ public class FeedbackUtilTest {
 		int index = NUMBERS.size() - 1;
 
 		System.out.println("Numbers: " + NUMBERS + " - index: " + index);
-
 		System.out.println("Subset: " + getSubSet(NUMBERS, index));
 	}
 
 	@Test
 	public void testSum() {
 		System.out.println("Numbers: " + NUMBERS);
-
 		System.out.println("Sum: " + FeedbackUtil.sum(NUMBERS));
 
 	}
@@ -42,7 +40,6 @@ public class FeedbackUtilTest {
 	@Test
 	public void testAverage() {
 		System.out.println("Numbers: " + NUMBERS);
-
 		System.out.println("Average: " + FeedbackUtil.average(NUMBERS));
 	}
 }

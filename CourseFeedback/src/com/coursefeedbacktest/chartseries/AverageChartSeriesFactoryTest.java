@@ -5,15 +5,12 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.coursefeedback.feedback.Feedback;
 import com.coursefeedback.graph.chartseriesfactory.AverageChartSeriesFactory;
-import com.coursefeedback.graph.chartseriesfactory.ChartSeriesFactory;
 import com.coursefeedback.graph.chartseriesfactory.ContinuousChartSeriesFactory;
-import com.coursefeedback.graph.chartseriesfactory.DiscreteChartSeriesFactory;
 
 public class AverageChartSeriesFactoryTest {
 	private static List<Feedback> FEEDBACKS;

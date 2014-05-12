@@ -13,15 +13,18 @@ import com.coursefeedback.feedback.Feedback;
 import com.coursefeedback.graph.chartseriesfactory.ContinuousChartSeriesFactory;
 
 /**
- * Creates a line chart model with: x axis -> constant iteration (1,2,3..). y *
- * axis -> average of all previous feedback values
+ * Creates a line chart model with:
+ * 
+ * x axis -> constant iteration (1,2,3..).
+ * 
+ * y axis -> series of values taken from the series factory
  * 
  * @author touzbi
  * 
  */
 
 @ManagedBean(name = "chartModelFactory")
-public class AverageChartModelFactory implements ChartModelFactory {
+public class LineChartModelFactory implements ChartModelFactory {
 
 	@ManagedProperty("#{chartSeriesFactory}")
 	private ContinuousChartSeriesFactory chartSeriesFactory;
