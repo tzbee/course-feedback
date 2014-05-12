@@ -9,8 +9,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.coursefeedback.feedback.Feedback;
-import com.coursefeedback.graph.chartseriesfactory.AverageChartSeriesFactory;
-import com.coursefeedback.graph.chartseriesfactory.ContinuousChartSeriesFactory;
+import com.coursefeedback.graph.chartdatafactory.AverageChartDataFactory;
+import com.coursefeedback.graph.chartdatafactory.ContinuousChartDataFactory;
 
 public class AverageChartSeriesFactoryTest {
 	private static List<Feedback> FEEDBACKS;
@@ -34,10 +34,10 @@ public class AverageChartSeriesFactoryTest {
 
 	@Test
 	public void test() {
-		ContinuousChartSeriesFactory continuousChartSeriesFactory = new AverageChartSeriesFactory();
+		ContinuousChartDataFactory continuousChartSeriesFactory = new AverageChartDataFactory();
 
 		System.out.println("Feedback values: " + FEEDBACKS);
 		System.out.println("Chart series: "
-				+ continuousChartSeriesFactory.getChartSeries(FEEDBACKS));
+				+ continuousChartSeriesFactory.getChartData(FEEDBACKS));
 	}
 }

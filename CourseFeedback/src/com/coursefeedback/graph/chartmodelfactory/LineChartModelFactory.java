@@ -10,7 +10,7 @@ import org.primefaces.model.chart.CartesianChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 
 import com.coursefeedback.feedback.Feedback;
-import com.coursefeedback.graph.chartseriesfactory.ContinuousChartSeriesFactory;
+import com.coursefeedback.graph.chartdatafactory.ContinuousChartDataFactory;
 
 /**
  * Creates a line chart model with:
@@ -26,36 +26,41 @@ import com.coursefeedback.graph.chartseriesfactory.ContinuousChartSeriesFactory;
 @ManagedBean(name = "chartModelFactory")
 public class LineChartModelFactory implements ChartModelFactory {
 
-	@ManagedProperty("#{chartSeriesFactory}")
-	private ContinuousChartSeriesFactory chartSeriesFactory;
+	@ManagedProperty("#{chartDataFactory}")
+	private ContinuousChartDataFactory chartDataFactory;
 
 	@Override
 	public CartesianChartModel getFeedbackChartModel(List<Feedback> feedbacks) {
 
+		// Create the model
 		CartesianChartModel cartesianChartModel = new CartesianChartModel();
 
+		// Create the series
 		LineChartSeries series = new LineChartSeries();
 
+		// Label the series
 		series.setLabel("Average");
 
-		Map<Integer, Double> chartSeries = this.chartSeriesFactory
-				.getChartSeries(feedbacks);
+		// Translate the data
+		Map<Integer, Double> chartSeries = this.chartDataFactory
+				.getChartData(feedbacks);
 
+		// Add the data to the chart series
 		for (Integer xAxisValue : chartSeries.keySet()) {
 			series.set(xAxisValue, chartSeries.get(xAxisValue));
 		}
 
+		// Add the series to the model
 		cartesianChartModel.addSeries(series);
 
 		return cartesianChartModel;
 	}
 
-	public ContinuousChartSeriesFactory getChartSeriesFactory() {
-		return chartSeriesFactory;
+	public ContinuousChartDataFactory getChartDataFactory() {
+		return chartDataFactory;
 	}
 
-	public void setChartSeriesFactory(
-			ContinuousChartSeriesFactory chartSeriesFactory) {
-		this.chartSeriesFactory = chartSeriesFactory;
+	public void setChartDataFactory(ContinuousChartDataFactory chartDataFactory) {
+		this.chartDataFactory = chartDataFactory;
 	}
 }

@@ -1,4 +1,4 @@
-package com.coursefeedback.graph.chartseriesfactory;
+package com.coursefeedback.graph.chartdatafactory;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,19 +10,20 @@ import com.coursefeedback.feedback.Feedback;
 import com.coursefeedback.util.FeedbackUtil;
 
 /**
- * Create chart data (x & y axis)based on a list of feedback - x axis ->
- * constant iteration (1,2,3..) - y * axis -> average of all previous feedback
- * values
+ * Create chart data (x & y axis) based on a list of feedback with:
+ * 
+ * x axis ->constant iteration (1,2,3..)
+ * 
+ * y axis -> average of all previous feedback values
  * 
  * @author touzbi
- * 
  */
 
-@ManagedBean(name = "chartSeriesFactory")
-public class AverageChartSeriesFactory implements ContinuousChartSeriesFactory {
+@ManagedBean(name = "chartDataFactory")
+public class AverageChartDataFactory implements ContinuousChartDataFactory {
 
 	@Override
-	public Map<Integer, Double> getChartSeries(List<Feedback> feedbacks) {
+	public Map<Integer, Double> getChartData(List<Feedback> feedbacks) {
 		Map<Integer, Double> chartSeries = new HashMap<Integer, Double>();
 
 		// Get a list of all feedback values
