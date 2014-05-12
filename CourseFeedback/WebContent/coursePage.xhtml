@@ -37,7 +37,7 @@
 
 	<c:forEach items="#{currentCourse.courseItems}" var="currentCourseItem">
 		<h:link value="#{currentCourseItem.courseItemName}"
-			outcome="/rateCourseItem">
+			outcome="/student/rateCourseItem">
 			<f:param name="courseitemid"
 				value="#{currentCourseItem.courseItemId}" />
 		</h:link>
@@ -71,6 +71,6 @@
 		</h:commandButton>
 	</h:form>
 
-	<ui:include src="/footer.xhtml" />
+	<ui:include src="modules/footer.xhtml" />
 </h:body>
 </html>

@@ -26,17 +26,18 @@
 	<ui:include src="/modules/course/courseList.xhtml">
 		<ui:param name="courses"
 			value="#{courseManager.getCoursesByTeacherId(sessionTeacherId)}" />
+		<ui:param name="coursePage" value="/coursePage" />
 	</ui:include>
 
 	<br />
 
 	<h2>Add Course</h2>
 
-	<ui:include src="/add-course.xhtml" />
+	<ui:include src="addCourse.xhtml" />
 	<br />
 
 	<h2>Add Student</h2>
 
-	<ui:include src="/add-students.xhtml" />
+	<ui:include src="addStudents.xhtml" />
 </h:body>
 </html>

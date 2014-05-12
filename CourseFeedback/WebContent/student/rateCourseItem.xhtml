@@ -78,9 +78,9 @@
 					<br />
 					<br />
 
-					<ui:include src="footer.xhtml" />
 
 				</h:form>
+				<ui:include src="/modules/footer.xhtml" />
 			</center>
 		</p:layoutUnit>
 
@@ -92,8 +92,9 @@
 						value="#{feedbackManager.getFeedbacksByCourseItemId(courseitemid)}" />
 				</ui:include>
 			</ui:insert>
-		</p:layoutUnit>
 
+		</p:layoutUnit>
 	</p:layout>
+
 </h:body>
 </html>
