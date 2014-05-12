@@ -34,6 +34,9 @@ public class Course {
 	@Column(name = "courseId")
 	private int courseId;
 
+	@Column(name = "courseCode")
+	private String courseCode;
+
 	@Column(name = "name")
 	private String name;
 
@@ -54,6 +57,14 @@ public class Course {
 
 	public void setCourseId(int courseId) {
 		this.courseId = courseId;
+	}
+
+	public String getCourseCode() {
+		return courseCode;
+	}
+
+	public void setCourseCode(String courseCode) {
+		this.courseCode = courseCode;
 	}
 
 	public String getName() {

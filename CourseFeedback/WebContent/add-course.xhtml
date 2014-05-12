@@ -8,7 +8,16 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<h:form>
+		<h:outputLabel value="Name" />
 		<h:inputText value="#{course.name}" />
+
+		<br />
+
+		<h:outputLabel value="Code" />
+		<h:inputText value="#{course.courseCode}" />
+
+		<br />
+
 		<h:commandButton
 			action="#{teacherManager.addCourseToTeacher(course,sessionTeacherId)}"
 			value="Save course" />

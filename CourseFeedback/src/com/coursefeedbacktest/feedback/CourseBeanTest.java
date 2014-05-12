@@ -13,6 +13,8 @@ public class CourseBeanTest {
 	private List<Course> courses = new ArrayList<Course>();
 
 	// Test values
+	private static final String[] COURSE_CODES = { "H454", "S65987", "FEF",
+			"FE656" };
 	private static final String[] COURSE_NAMES = { "IT", "Physics", "Maths",
 			"Geography" };
 
@@ -20,10 +22,15 @@ public class CourseBeanTest {
 	public void initCourses() {
 		Course course;
 
-		for (String courseName : COURSE_NAMES) {
-			course = new Course();
-			course.setName(courseName);
-			this.courses.add(course);
+		try {
+			for (int i = 0; i < COURSE_CODES.length; i++) {
+				course = new Course();
+				course.setCourseCode(COURSE_CODES[i]);
+				course.setName(COURSE_NAMES[i]);
+				this.courses.add(course);
+			}
+		} catch (IndexOutOfBoundsException ignore) {
+			// Do nothing
 		}
 	}
 

@@ -37,7 +37,7 @@
 
 	<c:forEach items="#{currentCourse.courseItems}" var="currentCourseItem">
 		<h:link value="#{currentCourseItem.courseItemName}"
-			outcome="rateCourseItem">
+			outcome="/rateCourseItem">
 			<f:param name="courseitemid"
 				value="#{currentCourseItem.courseItemId}" />
 		</h:link>
