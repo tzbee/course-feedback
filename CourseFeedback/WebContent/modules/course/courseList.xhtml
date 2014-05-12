@@ -9,44 +9,51 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 	xmlns:f="http://java.sun.com/jsf/core">
+	<c:choose>
+		<c:when test="#{!empty courses}">
+			<h:dataTable value="#{courses}" var="course" styleClass="order-table"
+				headerClass="order-table-header"
+				rowClasses="order-table-odd-row,order-table-even-row">
 
-	<h:dataTable value="#{courses}" var="course" styleClass="order-table"
-		headerClass="order-table-header"
-		rowClasses="order-table-odd-row,order-table-even-row">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Code" />
+					</f:facet>
 
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Code" />
-			</f:facet>
+					<h:link value="#{course.courseCode}" outcome="#{coursePage}">
+						<f:param name="courseid" value="#{course.courseId}" />
+					</h:link>
 
-			<h:link value="#{course.courseCode}" outcome="#{coursePage}">
-				<f:param name="courseid" value="#{course.courseId}" />
-			</h:link>
+				</h:column>
 
-		</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Name" />
+					</f:facet>
+					<h:outputText value="#{course.name}" />
+				</h:column>
 
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Name" />
-			</f:facet>
-			<h:outputText value="#{course.name}" />
-		</h:column>
+				<!-- 				<h:column> -->
+				<!-- 					<f:facet name="header"> -->
+				<!-- 						<h:outputText value="Course Period" /> -->
+				<!-- 					</f:facet> -->
+				<!-- 					<h:outputText value="#{course.startTime}- #{course.endTime}" /> -->
+				<!-- 				</h:column> -->
+				<!-- 				<h:column> -->
 
-		<!-- 				<h:column> -->
-		<!-- 					<f:facet name="header"> -->
-		<!-- 						<h:outputText value="Course Period" /> -->
-		<!-- 					</f:facet> -->
-		<!-- 					<h:outputText value="#{course.startTime}- #{course.endTime}" /> -->
-		<!-- 				</h:column> -->
-		<!-- 				<h:column> -->
+				<!-- 					<f:facet name="header"> -->
+				<!-- 						<h:outputText value="Submit Feedback" /> -->
+				<!-- 					</f:facet> -->
+				<!-- 					<h:outputLink value="give_feedback.xhtml"> -->
+				<!-- 						<f:param name="courseid" value="#{course.courseId}" /> -->
+				<!-- 						<h:outputText value="give feedback" /> -->
+				<!-- 					</h:outputLink> -->
+				<!-- 				</h:column> -->
+			</h:dataTable>
+		</c:when>
 
-		<!-- 					<f:facet name="header"> -->
-		<!-- 						<h:outputText value="Submit Feedback" /> -->
-		<!-- 					</f:facet> -->
-		<!-- 					<h:outputLink value="give_feedback.xhtml"> -->
-		<!-- 						<f:param name="courseid" value="#{course.courseId}" /> -->
-		<!-- 						<h:outputText value="give feedback" /> -->
-		<!-- 					</h:outputLink> -->
-		<!-- 				</h:column> -->
-	</h:dataTable>
+		<c:otherwise>
+			<h:outputText value="No courses yet" />
+		</c:otherwise>
+	</c:choose>
 </ui:composition>

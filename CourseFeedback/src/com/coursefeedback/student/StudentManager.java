@@ -18,6 +18,8 @@ import com.coursefeedback.course.Course;
 @ManagedBean(name = "studentManager")
 @SessionScoped
 public class StudentManager implements AbstractStudentManager {
+	private static final String TEACHER_HOME = "teacherHome";
+
 	@PersistenceContext(name = "CourseFeedback")
 	private EntityManager em;
 
@@ -209,7 +211,7 @@ public class StudentManager implements AbstractStudentManager {
 
 		}
 
-		return "input-student";
+		return TEACHER_HOME;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -241,7 +243,7 @@ public class StudentManager implements AbstractStudentManager {
 		for (Student student : students) {
 			saveStudent(student);
 		}
-		return "teacher-index";
+		return TEACHER_HOME;
 	}
 
 	@Override
@@ -257,6 +259,6 @@ public class StudentManager implements AbstractStudentManager {
 			e.printStackTrace();
 		}
 
-		return "teacher-home";
+		return TEACHER_HOME;
 	}
 }

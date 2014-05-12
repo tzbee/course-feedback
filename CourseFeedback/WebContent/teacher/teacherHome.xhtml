@@ -11,12 +11,15 @@
 <h:body>
 	<c:choose>
 		<c:when test="#{empty sessionTeacherId}">
-			<h:link value="Register" outcome="teacher-registration" />
+			<h:link value="Register" outcome="teacherRegistration" />
 			<ui:include src="teacherLogin.xhtml" />
 		</c:when>
 		<c:otherwise>
 			<ui:include src="teacherProfile.xhtml" />
 		</c:otherwise>
+
 	</c:choose>
+
+	<ui:include src="/modules/footer.xhtml" />
 </h:body>
 </html>
