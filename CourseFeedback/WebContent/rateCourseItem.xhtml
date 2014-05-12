@@ -35,7 +35,7 @@
 <h:body>
 	<p:layout style="min-width:400px;min-height:200px;" id="layout"
 		fullPage="true">
-		<p:layoutUnit position="north" resizable="true" size="300">
+		<p:layoutUnit position="center" resizable="true" size="300">
 			<center>
 				<H2>
 					Course item:
@@ -84,9 +84,9 @@
 			</center>
 		</p:layoutUnit>
 
-		<p:layoutUnit position="center" resizable="true" size="300">
+		<p:layoutUnit position="south" resizable="true" size="300">
 			<ui:insert>
-				<ui:include src="/graph/singleGraphModule.xhtml">
+				<ui:include src="/graphs/singleGraphModule.xhtml">
 					<ui:param name="graphName" value="Feedback average" />
 					<ui:param name="data"
 						value="#{feedbackManager.getFeedbacksByCourseItemId(courseitemid)}" />
