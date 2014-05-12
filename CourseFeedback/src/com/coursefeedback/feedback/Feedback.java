@@ -60,6 +60,6 @@ public class Feedback {
 
 	@Override
 	public String toString() {
-		return getFeedbackId() + " " + getValue();
+		return String.valueOf(getValue());
 	}
 }

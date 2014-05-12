@@ -4,18 +4,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.faces.bean.ManagedBean;
+
 import com.coursefeedback.feedback.Feedback;
 import com.coursefeedback.util.FeedbackUtil;
 
 /**
- * Creates a line chart series with: x axis -> constant iteration (1,2,3..). y *
- * axis -> average of all previous feedback values
+ * Create chart data (x & y axis)based on a list of feedback - x axis ->
+ * constant iteration (1,2,3..) - y * axis -> average of all previous feedback
+ * values
  * 
  * @author touzbi
  * 
  */
-public class AverageChartSeriesFactory implements
-		ContinuousChartSeriesFactory {
+
+@ManagedBean(name = "chartSeriesFactory")
+public class AverageChartSeriesFactory implements ContinuousChartSeriesFactory {
 
 	@Override
 	public Map<Integer, Double> getChartSeries(List<Feedback> feedbacks) {

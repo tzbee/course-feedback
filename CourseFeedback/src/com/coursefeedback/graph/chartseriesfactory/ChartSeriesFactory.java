@@ -6,7 +6,7 @@ import java.util.Map;
 import com.coursefeedback.feedback.Feedback;
 
 /**
- * Creates a set of data (Int -> E)based on a feedback list
+ * Create chart data (x & y axis)based on a list of feedback
  * 
  * @author touzbi
  * 
