@@ -6,5 +6,4 @@ public interface CourseItemManager {
 	CourseItem getCourseItemById(int courseItemId);
 
 	String getCourseNameById(int courseItemId);
-
 }

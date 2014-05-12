@@ -25,10 +25,9 @@ public class UploadBean {
 	private StudentsFactory studentsFactory;
 
 	/**
-	 * Retrives the students using the injected student factory implementation
-	 * and file content.
+	 * Retrieves the students using the student factory and file content.
 	 * 
-	 * Saves the students using the injected student manager implementation.
+	 * Saves the students using the student manager
 	 * 
 	 * @return the next navigation rule
 	 * @throws IOException

@@ -48,15 +48,6 @@ public class StudentManager implements AbstractStudentManager {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
-	public Collection<Course> getCoursesByStudentId(int studentID) {
-		return this.em
-				.createQuery(
-						"SELECT c FROM Course c JOIN c.students s WHERE s.id = :studentID")
-				.setParameter("studentID", studentID).getResultList();
-	}
-
-	@SuppressWarnings("unchecked")
 	public Student getStudentByStudentNumber(String studentNumber) {
 		Query query = this.em
 				.createQuery(

@@ -34,4 +34,8 @@ public interface CourseManager {
 	 */
 
 	Collection<Course> getCoursesByStudentKey(String studentKey);
+
+	Collection<Course> getCoursesByStudentId(int studentID);
+
+	Collection<Course> getCoursesByTeacherId(String userName);
 }

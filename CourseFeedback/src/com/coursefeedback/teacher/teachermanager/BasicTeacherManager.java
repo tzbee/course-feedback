@@ -11,6 +11,8 @@ import com.coursefeedback.teacher.Teacher;
 
 @ManagedBean(name = "teacherManager")
 public class BasicTeacherManager implements TeacherManager {
+	private static final String TEACHER_PROFILE = "teacherProfile";
+
 	@PersistenceContext(name = "CourseFeedback")
 	private EntityManager em;
 
@@ -19,6 +21,7 @@ public class BasicTeacherManager implements TeacherManager {
 
 	@Override
 	public String addCourseToTeacher(Course course, String teacherUserName) {
+		System.out.println(teacherUserName);
 		try {
 			this.utx.begin();
 			Teacher teacher = getTeacherByUserName(teacherUserName);
@@ -31,7 +34,7 @@ public class BasicTeacherManager implements TeacherManager {
 			}
 		}
 
-		return "teacher-profile";
+		return TEACHER_PROFILE;
 	}
 
 	@Override

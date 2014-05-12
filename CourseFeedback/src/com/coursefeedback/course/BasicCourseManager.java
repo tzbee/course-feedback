@@ -53,4 +53,30 @@ public class BasicCourseManager implements CourseManager {
 						"SELECT c FROM Course c JOIN c.students s WHERE s.studentKey = :studentKey")
 				.setParameter("studentKey", studentKey).getResultList();
 	}
+
+	/**
+	 * Get all courses associated with one student
+	 * 
+	 * @param studentID
+	 *            of the student
+	 * @return
+	 */
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Collection<Course> getCoursesByStudentId(int studentID) {
+		return this.em
+				.createQuery(
+						"SELECT c FROM Course c JOIN c.students s WHERE s.id = :studentID")
+				.setParameter("studentID", studentID).getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Collection<Course> getCoursesByTeacherId(String userName) {
+		return this.em
+				.createQuery(
+						"SELECT c FROM Course c JOIN c.teachers t WHERE t.userName = :userName")
+				.setParameter("userName", userName).getResultList();
+	}
 }

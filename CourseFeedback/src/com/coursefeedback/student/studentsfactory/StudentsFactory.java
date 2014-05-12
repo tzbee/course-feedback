@@ -6,7 +6,7 @@ import java.util.Collection;
 import com.coursefeedback.student.Student;
 
 /**
- * Defines ways of creating or retriving a set of students
+ * Defines ways of creating or retrieving a set of students
  * 
  * @author touzbi
  * 

@@ -14,7 +14,10 @@ import com.coursefeedback.teacher.exception.InvalidUserNameException;
 
 @ManagedBean(name = "teacherLoginManager")
 public class BasicTeacherLoginManager implements TeacherLoginManager {
-	private static final String TEACHER_SESSION_ATTRIBUTE = "teacherSession";
+	private static final String TEACHER_SESSION_ATTRIBUTE = "sessionTeacherId";
+
+	private static final String TEACHER_HOME = "teacherHome";
+	private static final String LOGIN_PAGE = "teacherLogin";
 
 	@PersistenceContext(name = "CourseFeedback")
 	private EntityManager em;
@@ -32,7 +35,7 @@ public class BasicTeacherLoginManager implements TeacherLoginManager {
 			teacher = getTeacher(userName, password);
 		} catch (InvalidUserNameException | InvalidPasswordException e) {
 			this.message = e.getMessage();
-			return "login-page";
+			return LOGIN_PAGE;
 		}
 
 		// Get session
@@ -42,7 +45,7 @@ public class BasicTeacherLoginManager implements TeacherLoginManager {
 		httpSession.setAttribute(TEACHER_SESSION_ATTRIBUTE,
 				teacher.getUserName());
 
-		return "teacher-home";
+		return TEACHER_HOME;
 	}
 
 	@Override
@@ -67,7 +70,7 @@ public class BasicTeacherLoginManager implements TeacherLoginManager {
 
 		httpSession.invalidate();
 
-		return "teacher-home";
+		return TEACHER_HOME;
 	}
 
 	public String getMessage() {

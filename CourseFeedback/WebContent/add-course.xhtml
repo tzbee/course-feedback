@@ -9,8 +9,8 @@
 
 	<h:form>
 		<h:inputText value="#{course.name}" />
-		<h:commandButton type="submit"
-			action="#{teacherManager.addCourseToTeacher(course,teacherSession)}"
+		<h:commandButton
+			action="#{teacherManager.addCourseToTeacher(course,sessionTeacherId)}"
 			value="Save course" />
 	</h:form>
 </ui:composition>

@@ -8,9 +8,15 @@ import javax.transaction.UserTransaction;
 
 import com.coursefeedback.teacher.Teacher;
 
+/**
+ * Basic implementation of teacher registration .
+ * 
+ * Handles all teacher registration operations.
+ */
 @ManagedBean(name = "teacherRegistrationManager")
 public class BasicTeacherRegistrationManager implements
 		TeacherRegistrationManager {
+	private static final String TEACHER_HOME = "teacherHome";
 
 	@PersistenceContext(name = "CourseFeedback")
 	private EntityManager em;
@@ -31,6 +37,6 @@ public class BasicTeacherRegistrationManager implements
 			}
 		}
 
-		return "teacher-home";
+		return TEACHER_HOME;
 	}
 }

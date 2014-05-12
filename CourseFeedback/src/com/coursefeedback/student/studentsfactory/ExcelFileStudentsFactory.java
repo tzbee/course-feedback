@@ -18,7 +18,7 @@ import org.apache.poi.ss.usermodel.Row;
 import com.coursefeedback.student.Student;
 
 /**
- * Defines ways of creating or retriving a set of students using an Excel file
+ * Defines ways of creating or retrieving a set of students using an Excel file
  * 
  */
 

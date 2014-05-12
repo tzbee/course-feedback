@@ -2,8 +2,6 @@ package com.coursefeedback.student;
 
 import java.util.Collection;
 
-import com.coursefeedback.course.Course;
-
 public interface AbstractStudentManager {
 
 	/**
@@ -93,13 +91,4 @@ public interface AbstractStudentManager {
 	public Collection<Student> getAllStudents();
 
 	String saveStudents(Collection<Student> students);
-
-	/**
-	 * Get all courses associated with one student
-	 * 
-	 * @param studentID
-	 *            of the student
-	 * @return
-	 */
-	Collection<Course> getCoursesByStudentId(int studentID);
 }
