@@ -1,8 +1,6 @@
 package com.coursefeedbacktest.util;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -13,8 +11,9 @@ import com.coursefeedback.feedback.Feedback;
 @ManagedBean(name = "feedbackBeanTest")
 public class FeedbackBeanTest {
 	private List<Feedback> feedbacks = new ArrayList<Feedback>();
-	private static final Collection<Integer> FEEDBACK_VALUES = Arrays.asList(2,
-			53, 2);
+
+	// Test values
+	private static final Integer[] FEEDBACK_VALUES = { 2, 53, 2 };
 
 	@PostConstruct
 	public void initFeedbacks() {

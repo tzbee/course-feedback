@@ -26,10 +26,11 @@ public class UploadBean {
 
 	/**
 	 * Retrives the students using the injected student factory implementation
-	 * and file content. Saves the students using the injected student manager
-	 * implementation.
+	 * and file content.
 	 * 
-	 * @return
+	 * Saves the students using the injected student manager implementation.
+	 * 
+	 * @return the next navigation rule
 	 * @throws IOException
 	 */
 	public String upload() throws IOException {

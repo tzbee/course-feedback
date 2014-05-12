@@ -6,6 +6,5 @@ package com.coursefeedback.graph.chartdatafactory;
  * @author touzbi
  * 
  */
-public interface ContinuousChartDataFactory extends
-		ChartDataFactory<Double> {
+public interface ContinuousChartDataFactory extends ChartDataFactory<Double> {
 }

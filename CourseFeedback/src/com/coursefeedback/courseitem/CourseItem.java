@@ -21,8 +21,8 @@ import com.coursefeedback.course.Course;
 import com.coursefeedback.feedback.Feedback;
 
 /**
- * Java bean representing the basic structure of a course item
- * (Lecture,exercise,slide etc..)
+ * Java bean representing the basic structure of a course item (Lecture,
+ * exercise, slides etc..)
  * 
  * @author touzbi
  * 
