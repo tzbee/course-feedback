@@ -13,7 +13,8 @@ public class FeedbackBeanTest {
 	private List<Feedback> feedbacks = new ArrayList<Feedback>();
 
 	// Test values
-	private static final Integer[] FEEDBACK_VALUES = { 2, 53, 2 };
+	private static final Integer[] FEEDBACK_VALUES = { 2, 3, 4, 1, 6, 3, 5, 1,
+			6, 7, 3, 0, 1, 9, 4, 2, 3, 6, 1, 6, 9, 8, 9, 1, 8 };
 
 	@PostConstruct
 	public void initFeedbacks() {

@@ -24,7 +24,7 @@ public class AverageChartDataFactory implements ContinuousChartDataFactory {
 
 	@Override
 	public Map<Integer, Double> getChartData(List<Feedback> feedbacks) {
-		Map<Integer, Double> chartSeries = new HashMap<Integer, Double>();
+		Map<Integer, Double> chartData = new HashMap<Integer, Double>();
 
 		// Get a list of all feedback values
 		List<Integer> feedbackValues = FeedbackUtil
@@ -36,9 +36,9 @@ public class AverageChartDataFactory implements ContinuousChartDataFactory {
 
 		// Create the chart series
 		for (int i = 0; i < averageValueSet.size(); i++) {
-			chartSeries.put(i, averageValueSet.get(i));
+			chartData.put(i, averageValueSet.get(i));
 		}
 
-		return chartSeries;
+		return chartData;
 	}
 }
