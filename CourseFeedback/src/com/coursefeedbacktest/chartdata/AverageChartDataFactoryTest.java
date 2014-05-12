@@ -1,4 +1,4 @@
-package com.coursefeedbacktest.chartseries;
+package com.coursefeedbacktest.chartdata;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +12,7 @@ import com.coursefeedback.feedback.Feedback;
 import com.coursefeedback.graph.chartdatafactory.AverageChartDataFactory;
 import com.coursefeedback.graph.chartdatafactory.ContinuousChartDataFactory;
 
-public class AverageChartSeriesFactoryTest {
+public class AverageChartDataFactoryTest {
 	private static List<Feedback> FEEDBACKS;
 
 	@BeforeClass
@@ -34,10 +34,10 @@ public class AverageChartSeriesFactoryTest {
 
 	@Test
 	public void test() {
-		ContinuousChartDataFactory continuousChartSeriesFactory = new AverageChartDataFactory();
+		ContinuousChartDataFactory continuousChartDataFactory = new AverageChartDataFactory();
 
 		System.out.println("Feedback values: " + FEEDBACKS);
 		System.out.println("Chart series: "
-				+ continuousChartSeriesFactory.getChartData(FEEDBACKS));
+				+ continuousChartDataFactory.getChartData(FEEDBACKS));
 	}
 }
