@@ -6,6 +6,12 @@ import java.util.List;
 
 import com.coursefeedback.feedback.Feedback;
 
+/**
+ * Utility methods for feedback management
+ * 
+ * @author touzbi
+ */
+
 public class FeedbackUtil {
 
 	/**
@@ -57,24 +63,34 @@ public class FeedbackUtil {
 	}
 
 	/**
-	 * Get a list of all feedback average values
+	 * Get a list of average values form all previous elements for each index of
+	 * the given collection
 	 * 
-	 * @param feedbackValues
-	 * @return
+	 * Example: {1,4,7} -> {1, 2.5, 4} because
+	 * 
+	 * average of 1 -> 1
+	 * 
+	 * average of {1, 4} -> 2.5
+	 * 
+	 * average of {1, 4, 7} -> 4
+	 * 
+	 * @param input
+	 *            values
+	 * @return the list of average values
 	 */
-	public static List<Double> createAverageValueSet(
-			List<Integer> feedbackValues) {
+
+	public static List<Double> createAverageValueSet(List<Integer> values) {
 		List<Double> averageValueSet = new ArrayList<Double>();
 
-		for (int i = 0; i < feedbackValues.size(); i++) {
-			averageValueSet.add(average(getSubSet(feedbackValues, i)));
+		for (int i = 0; i < values.size(); i++) {
+			averageValueSet.add(average(getSubSet(values, i)));
 		}
 
 		return averageValueSet;
 	}
 
 	/**
-	 * Get a list of all feedback values
+	 * Get a list of all feedback values given a feedback collection
 	 * 
 	 * @param feedbacks
 	 * @return
