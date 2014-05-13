@@ -12,7 +12,7 @@ import com.coursefeedback.util.FeedbackUtil;
 /**
  * Create chart data (x & y axis) based on a list of feedback with:
  * 
- * x axis ->constant iteration (1,2,3..)
+ * x axis -> constant iteration (1,2,3..)
  * 
  * y axis -> average of all previous feedback values
  * 

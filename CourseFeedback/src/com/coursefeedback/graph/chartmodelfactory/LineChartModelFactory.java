@@ -42,12 +42,12 @@ public class LineChartModelFactory implements ChartModelFactory {
 		series.setLabel("Average");
 
 		// Translate the data
-		Map<Integer, Double> chartSeries = this.chartDataFactory
+		Map<Integer, Double> chartData = this.chartDataFactory
 				.getChartData(feedbacks);
 
 		// Add the data to the chart series
-		for (Integer xAxisValue : chartSeries.keySet()) {
-			series.set(xAxisValue, chartSeries.get(xAxisValue));
+		for (Integer xAxisValue : chartData.keySet()) {
+			series.set(xAxisValue, chartData.get(xAxisValue));
 		}
 
 		// Add the series to the model

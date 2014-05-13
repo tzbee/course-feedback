@@ -71,6 +71,13 @@
 		</h:commandButton>
 	</h:form>
 
+	<ui:insert name="summary graph">
+		<ui:include src="/modules/graphs/summaryGraph.xhtml">
+			<ui:param name="graphName" value="Summary graph" />
+			<ui:param name="course" value="#{currentCourse}" />
+		</ui:include>
+	</ui:insert>
+
 	<ui:include src="modules/footer.xhtml" />
 </h:body>
 </html>
