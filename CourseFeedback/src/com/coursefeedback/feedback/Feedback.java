@@ -1,5 +1,7 @@
 package com.coursefeedback.feedback;
 
+import java.sql.Timestamp;
+
 import javax.faces.bean.ManagedBean;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,6 +35,9 @@ public class Feedback {
 	@ManyToOne
 	@JoinColumn(name = "courseItemId")
 	private CourseItem courseItem;
+
+	@Column(name = "timestamp")
+	private Timestamp timestamp;
 
 	public int getValue() {
 		return value;
