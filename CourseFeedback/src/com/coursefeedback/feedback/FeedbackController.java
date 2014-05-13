@@ -11,6 +11,12 @@ import org.primefaces.event.SlideEndEvent;
 import com.coursefeedback.courseitem.CourseItem;
 import com.coursefeedback.student.StudentManager;
 
+/**
+ * Class that handles feedback input from rateCourseItem page.
+ * 
+ * @author
+ * 
+ */
 @ManagedBean
 public class FeedbackController {
 
@@ -58,6 +64,12 @@ public class FeedbackController {
 		this.sm = sm;
 	}
 
+	/**
+	 * Submits given feedback to database.
+	 * 
+	 * @param courseItemId
+	 * @return String representing next page.
+	 */
 	public String submitFeedback(int courseItemId) {
 		fbm.addFeedbackToCourseItem(this.fb, courseItemId);
 
@@ -67,6 +79,11 @@ public class FeedbackController {
 		return "rateCourseItem.xhtml";
 	}
 
+	/**
+	 * Event that launched when student rates a courseItem.
+	 * 
+	 * @param rateEvent
+	 */
 	public void onrate(RateEvent rateEvent) {
 		System.out.print("RateEvent");
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,
@@ -75,6 +92,11 @@ public class FeedbackController {
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 
+	/**
+	 * Event that launches when student submits a feedback.
+	 * 
+	 * @param event
+	 */
 	public void onSlideEnd(SlideEndEvent event) {
 		System.out.print("SlideEndEvent");
 		FacesMessage message = new FacesMessage("Selection", "You chose:"

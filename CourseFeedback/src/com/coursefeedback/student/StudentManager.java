@@ -14,7 +14,14 @@ import javax.persistence.Query;
 import javax.transaction.UserTransaction;
 
 import com.coursefeedback.course.Course;
+import com.coursefeedback.courseitem.CourseItem;
 
+/**
+ * This is a class that handles student related activities.
+ * 
+ * @author
+ * 
+ */
 @ManagedBean(name = "studentManager")
 @SessionScoped
 public class StudentManager implements AbstractStudentManager {
@@ -30,6 +37,12 @@ public class StudentManager implements AbstractStudentManager {
 
 	private long currentStudentID = -1;
 	private Course currentCourse = null;
+
+	/**
+	 * currently selected course item.
+	 */
+
+	private CourseItem currentCourseItem = null;
 
 	public Course getCurrentCourse() {
 		return this.currentCourse;
@@ -49,6 +62,21 @@ public class StudentManager implements AbstractStudentManager {
 		return this.currentStudentID;
 	}
 
+	public CourseItem getCurrentCourseItem() {
+		return currentCourseItem;
+	}
+
+	public void setCurrentCourseItem(CourseItem currentCourseItem) {
+		this.currentCourseItem = currentCourseItem;
+	}
+
+	/**
+	 * Retrieves student object with the given student number.
+	 * 
+	 * @param studentNumber
+	 * @return student object with the given student number, if one exists,
+	 *         otherwise null.
+	 */
 	@SuppressWarnings("unchecked")
 	public Student getStudentByStudentNumber(String studentNumber) {
 		Query query = this.em
@@ -67,6 +95,13 @@ public class StudentManager implements AbstractStudentManager {
 		return loginReply;
 	}
 
+	/**
+	 * Retrieves student object with the given student key.
+	 * 
+	 * @param studentKey
+	 * @return student object with the given student key, if one exists,
+	 *         otherwise null.
+	 */
 	@SuppressWarnings("unchecked")
 	private Student getStudentByStudentKey(String studentKey) {
 		Query query = this.em.createQuery(
@@ -98,6 +133,12 @@ public class StudentManager implements AbstractStudentManager {
 		return false;
 	}
 
+	/**
+	 * Generates a unique key. The key is randomly generated value from range
+	 * 10000000 to 99999999. Will not generate same key twice.
+	 * 
+	 * @return String representing the randomly generated key
+	 */
 	private String generateStudentKey() {
 		int MIN = 10000000;
 		int MAX = 99999999;
@@ -114,6 +155,14 @@ public class StudentManager implements AbstractStudentManager {
 		return randomKey;
 	}
 
+	/**
+	 * This is a support method for generateStudentKey() method. Checks whether
+	 * or not the given key is a duplicate one (student in the database already
+	 * has the same key).
+	 * 
+	 * @param key
+	 * @return true, if key is duplicate, false if not
+	 */
 	@SuppressWarnings("unchecked")
 	private boolean keyIsDuplicate(String key) {
 		Query query = this.em.createQuery(
@@ -142,6 +191,13 @@ public class StudentManager implements AbstractStudentManager {
 		return "studentRegister.xhtml";
 	}
 
+	/**
+	 * Updates previously generated student key to the database.
+	 * 
+	 * @param student
+	 *            object with student number and student key to update
+	 * @return true if update succeeded, other wise throws appropriate exception
+	 */
 	private boolean updateStudentKeyToDatabase(Student student) {
 		Query query;
 		try {

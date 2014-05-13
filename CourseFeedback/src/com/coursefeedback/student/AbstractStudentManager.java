@@ -66,16 +66,10 @@ public interface AbstractStudentManager {
 	 * @param String
 	 *            Student student
 	 * 
-	 * @return boolean; true = student is registered to system, false =s tudent
+	 * @return boolean; true = student is registered to system, false = student
 	 *         is not registered to system
 	 */
 	public boolean isStudentRegisteredToSystem(Student student);
-
-	/**
-	 * Get all students registered to system
-	 * 
-	 * @return Collection<Student>
-	 */
 
 	/**
 	 * Add an existing student to a course
@@ -86,9 +80,27 @@ public interface AbstractStudentManager {
 	 */
 	String addStudentToCourse(String studentNumber, int courseId);
 
-	public Student getStudentByStudentNumber(String studentNumber);
-
+	/**
+	 * Retrieves all students from the system.
+	 * 
+	 * @return all the students within the system in a Collection
+	 */
 	public Collection<Student> getAllStudents();
 
+	/**
+	 * Saves a collection of students to the system
+	 * 
+	 * @param students
+	 * @return
+	 */
+
 	String saveStudents(Collection<Student> students);
+
+	/**
+	 * Get a student based on his studentNumber
+	 * 
+	 * @return Collection<Student>
+	 */
+
+	public Student getStudentByStudentNumber(String studentNumber);
 }

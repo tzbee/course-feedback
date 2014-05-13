@@ -12,6 +12,13 @@ import com.coursefeedback.course.Course;
 import com.coursefeedback.courseitem.CourseItem;
 import com.coursefeedback.feedback.Feedback;
 
+/**
+ * This class creates feedback summary model based on the given course object.
+ * Displays every course item of the given course and their average value.
+ * 
+ * @author
+ * 
+ */
 @ManagedBean
 public class FeedbackSummary {
 	private CartesianChartModel categoryModel;
