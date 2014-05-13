@@ -71,6 +71,13 @@ public class BasicCourseManager implements CourseManager {
 				.setParameter("studentID", studentID).getResultList();
 	}
 
+	/**
+	 * Get all courses associated with one teacher
+	 * 
+	 * @param userName
+	 *            user name of the teacher
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<Course> getCoursesByTeacherId(String userName) {
