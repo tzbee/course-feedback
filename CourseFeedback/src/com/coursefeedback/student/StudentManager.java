@@ -26,6 +26,7 @@ import com.coursefeedback.courseitem.CourseItem;
 @SessionScoped
 public class StudentManager implements AbstractStudentManager {
 	private static final String TEACHER_HOME = "teacherHome";
+	private static final String RATE_COURSE_ITEM_PAGE = "/student/rateCourseItem.xhtml";
 
 	@PersistenceContext(name = "CourseFeedback")
 	private EntityManager em;
@@ -66,8 +67,9 @@ public class StudentManager implements AbstractStudentManager {
 		return currentCourseItem;
 	}
 
-	public void setCurrentCourseItem(CourseItem currentCourseItem) {
+	public String setCurrentCourseItem(CourseItem currentCourseItem) {
 		this.currentCourseItem = currentCourseItem;
+		return RATE_COURSE_ITEM_PAGE;
 	}
 
 	/**
