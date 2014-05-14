@@ -13,29 +13,12 @@
 	<title>Rate Course Item</title>
 </h:head>
 
-<style>
-.ui-widget,.ui-widget .ui-widget {
-	font-size: 100% !important;
-}
-
-.ui-rating-star a,.ui-rating-on a {
-	height: 32px;
-	width: 32px;
-	background-size: 32px;
-}
-
-.ui-rating-star a {
-	background-position: 0 -64px;
-}
-
-.ui-rating-star-on a {
-	background-position: 0 -96px;
-}
-</style>
 <h:body>
-	<p:layout style="min-width:400px;min-height:200px;" id="layout"
-		fullPage="true">
-		<p:layoutUnit position="center" resizable="true" size="300">
+
+	<ui:composition template="/template/studentTemplate.xhtml">
+		<ui:define name="content">
+			<h:outputStylesheet library="css" name="main.css" />
+
 			<center>
 				<H2>
 					Course item:
@@ -77,24 +60,15 @@
 
 					<br />
 					<br />
-
-
 				</h:form>
-				<ui:include src="/footer/footer.xhtml" />
-			</center>
-		</p:layoutUnit>
 
-		<p:layoutUnit position="south" resizable="true" size="300">
-			<ui:insert>
 				<ui:include src="/graphs/lineGraphModule.xhtml">
 					<ui:param name="graphName" value="Feedback average" />
 					<ui:param name="data"
 						value="#{feedbackManager.getFeedbacksByCourseItemId(courseitemid)}" />
 				</ui:include>
-			</ui:insert>
-
-		</p:layoutUnit>
-	</p:layout>
-
+			</center>
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>

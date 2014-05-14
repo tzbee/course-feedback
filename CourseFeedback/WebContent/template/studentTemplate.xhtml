@@ -5,7 +5,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-<!-- Basic template for all teacher pages -->
+<!-- Basic template for all student pages -->
 
 <h:head>
 	<title>Page Title</title>
@@ -13,12 +13,10 @@
 
 <h:body>
 	<ui:composition template="/template/commonTemplate.xhtml">
-		<ui:define name="header">
-			<ui:include src="/header/teacherLogout.xhtml" />
-		</ui:define>
+		<ui:define name="header" />
 
 		<ui:define name="menu">
-			<ui:include src="/menu/teacherMenu.xhtml" />
+			<ui:include src="/menu/studentMenu.xhtml" />
 		</ui:define>
 
 	</ui:composition>
