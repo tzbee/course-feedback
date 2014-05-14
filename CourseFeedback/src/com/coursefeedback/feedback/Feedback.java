@@ -37,7 +37,7 @@ public class Feedback {
 	private CourseItem courseItem;
 
 	@Column(name = "timestamp")
-	private Timestamp timestamp;
+	private String timestamp;
 
 	public int getValue() {
 		return value;
@@ -61,6 +61,14 @@ public class Feedback {
 
 	public void setCourseItem(CourseItem courseItem) {
 		this.courseItem = courseItem;
+	}
+
+	public String getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(String timestamp) {
+		this.timestamp = timestamp;
 	}
 
 	@Override

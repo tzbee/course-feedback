@@ -1,6 +1,8 @@
 package com.coursefeedback.feedback;
 
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
@@ -81,5 +83,19 @@ public class BasicFeedbackManager implements FeedbackManager {
 	@Override
 	public Collection<Feedback> getAllFeedbacks() {
 		return this.em.createQuery("SELECT f FROM Feedback f").getResultList();
+	}
+
+	public void createFeedbackbyValue(int value, int courseItemId) {
+		Feedback feedback = new Feedback();
+		feedback.setValue(value);
+
+		Date now = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat(
+				"yyyy/MM/dd HH:mm:ss");
+		String data = dateFormat.format(now);
+		feedback.setTimestamp(data);
+
+		// addFeedback( feedback );
+		addFeedbackToCourseItem(feedback, courseItemId);
 	}
 }

@@ -1,0 +1,78 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:metadata>
+	<f:viewParam name="courseitemid" />
+</f:metadata>
+
+<h:head>
+	<title>Rate Course Item</title>
+</h:head>
+
+<style>
+.ui-widget,.ui-widget .ui-widget {
+	font-size: 100% !important;
+}
+
+.ui-rating-star a,.ui-rating-on a {
+	height: 32px;
+	width: 32px;
+	background-size: 32px;
+}
+
+.ui-rating-star a {
+	background-position: 0 -64px;
+}
+
+.ui-rating-star-on a {
+	background-position: 0 -96px;
+}
+</style>
+<h:body>
+	<p:layout style="min-width:400px;min-height:200px;" id="layout"
+		fullPage="true">
+		<p:layoutUnit position="center" resizable="true" size="300">
+			<center>
+				<H2>
+					Course item:
+					<h:outputText
+						value="#{courseItemManager.getCourseItemNameById(courseitemid)}" />
+				</H2>
+				<br />
+
+				<h:form id="form">
+					<h:outputLabel value="*Please give your feedback below"></h:outputLabel>
+					<br />
+					<br />
+
+					<h:commandButton type="submit" value="Good"
+						action="#{feedbackManager.createFeedbackbyValue( 2, courseitemid)}"></h:commandButton>
+					<h:commandButton type="submit" value="Bad"
+						action="#{feedbackManager.createFeedbackbyValue( 1, courseitemid)}"></h:commandButton>
+
+
+
+				</h:form>
+				<ui:include src="/footer/footer.xhtml" />
+			</center>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="south" resizable="true" size="300">
+			<ui:insert>
+				<!-- 			<ui:include src="/feedbackBar.xhtml" /> -->
+				<ui:include src="/graphs/barGraphModule.xhtml">
+					<ui:param name="graphName" value="Feedback frequency" />
+					<ui:param name="data"
+						value="#{feedbackManager.getFeedbacksByCourseItemId(courseitemid)}" />
+				</ui:include>
+			</ui:insert>
+
+		</p:layoutUnit>
+	</p:layout>
+
+</h:body>
+</html>

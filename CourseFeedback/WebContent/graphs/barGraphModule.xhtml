@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Graph Module</title>
+</h:head>
+
+<h:body>
+
+	<!-- 	Params:  -->
+	<!-- 	graphName: Name of the graph -->
+	<!-- 	data: List of feedbacks -->
+	<ui:composition>
+
+		<p:panel header="#{graphName}">
+			<p:barChart legendPosition="ne" title=""
+				value="#{frequencyBarModel.getFeedbackChartModel(data)}" />
+				
+				<p:editor rendered="false" />
+		</p:panel>
+		
+		 
+	
+
+	</ui:composition>
+</h:body>
+
+</html>
