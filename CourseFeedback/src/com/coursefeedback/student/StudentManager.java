@@ -230,7 +230,7 @@ public class StudentManager implements AbstractStudentManager {
 		List<Student> students = query.getResultList();
 
 		if (students.size() == 1)
-			return "http://localhost:8080/CourseFeedback/courseSelection.xhtml"
+			return "http://localhost:8080/CourseFeedback/student/courseSelection.xhtml"
 					+ "?key=" + students.get(0).getStudentKey();
 		// return "http://localhost:8080/CourseFeedback/studentLogin.xhtml" +
 		// "?key=" + students.get(0).getStudentKey();

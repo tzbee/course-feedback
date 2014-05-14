@@ -38,7 +38,7 @@ public class BasicCourseItemManager implements CourseItemManager {
 	}
 
 	@Override
-	public String getCourseNameById(int courseItemId) {
+	public String getCourseItemNameById(int courseItemId) {
 		return (String) this.em
 				.createQuery(
 						"SELECT ci.courseItemName FROM CourseItem ci WHERE ci.courseItemId= :courseItemId")

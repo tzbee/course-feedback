@@ -5,5 +5,5 @@ public interface CourseItemManager {
 
 	CourseItem getCourseItemById(int courseItemId);
 
-	String getCourseNameById(int courseItemId);
+	String getCourseItemNameById(int courseItemId);
 }

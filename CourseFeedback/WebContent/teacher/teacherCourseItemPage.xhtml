@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<f:metadata>
+	<f:viewParam name="courseitemid" />
+</f:metadata>
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+
+<h:body>
+	<ui:composition template="/template/teacherTemplate.xhtml">
+		<ui:define name="content">
+
+			<c:set var="currentCourseItem"
+				value="#{courseItemManager.getCourseItemById(courseitemid)}" />
+
+			<h2>Course item info</h2>
+
+			<br />
+
+			<ui:include src="/modules/courseitem/courseItemInfo.xhtml">
+				<ui:param name="courseItemParam" value="#{currentCourseItem}" />
+			</ui:include>
+
+			<ui:include src="/graphs/lineGraphModule.xhtml">
+				<ui:param name="graphName" value="Feedback average" />
+				<ui:param name="data" value="#{currentCourseItem.feedbacks}" />
+			</ui:include>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
