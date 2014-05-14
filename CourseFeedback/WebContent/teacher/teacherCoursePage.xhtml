@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<f:metadata>
+	<f:viewParam name="courseid" />
+</f:metadata>
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+	<ui:composition template="/template/teacherTemplate.xhtml">
+		<ui:define name="content">
+
+			<c:set var="currentCourse"
+				value="#{courseManager.getCourseById(courseid)}" />
+
+			<h2>Course info</h2>
+
+			<br />
+
+			<ui:include src="/modules/course/courseInfo.xhtml">
+				<ui:param name="courseParam" value="#{currentCourse}" />
+			</ui:include>
+
+			<h2>Course items</h2>
+
+			<ui:include src="/modules/courseitem/courseItemList.xhtml">
+				<ui:param name="courseItems" value="#{currentCourse.courseItems}" />
+				<ui:param name="courseItemPage" value="/student/rateCourseItem" />
+			</ui:include>
+
+			<h:form>
+				<h2>
+					<h:outputLabel value="Add course item" />
+				</h2>
+
+				<h:inputText value="#{courseItem.courseItemName}" />
+
+				<h:commandButton value="Add course item"
+					action="#{courseItemManager.addCourseItemToCourse(courseItem,courseid)}">
+					<f:param name="courseid" value="#{courseid}" />
+				</h:commandButton>
+			</h:form>
+
+			<h:form>
+				<h2>
+					<h:outputLabel value="Add student to this course" />
+				</h2>
+
+				<h:inputText value="#{student.studentNumber}" />
+
+				<h:commandButton value="Add student"
+					action="#{studentManager.addStudentToCourse(student.studentNumber,courseid)}">
+					<f:param name="courseid" value="#{courseid}" />
+				</h:commandButton>
+			</h:form>
+
+			<ui:include src="/graphs/summaryGraph.xhtml">
+				<ui:param name="graphName" value="Summary graph" />
+				<ui:param name="course" value="#{currentCourse}" />
+			</ui:include>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

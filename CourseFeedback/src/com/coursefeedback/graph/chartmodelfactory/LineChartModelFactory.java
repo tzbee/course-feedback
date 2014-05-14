@@ -13,18 +13,15 @@ import com.coursefeedback.feedback.Feedback;
 import com.coursefeedback.graph.chartdatafactory.ContinuousChartDataFactory;
 
 /**
- * Creates a line chart model with:
- * 
- * x axis -> constant iteration (1,2,3..).
- * 
- * y axis -> series of values taken from the series factory
+ * Creates a line chart model with the series of x,y values taken from the chart
+ * data factory
  * 
  * @author touzbi
- * 
  */
 
 @ManagedBean(name = "chartModelFactory")
 public class LineChartModelFactory implements ChartModelFactory {
+	private static final String SERIES_LABEL = "Average";
 
 	@ManagedProperty("#{chartDataFactory}")
 	private ContinuousChartDataFactory chartDataFactory;
@@ -39,7 +36,7 @@ public class LineChartModelFactory implements ChartModelFactory {
 		LineChartSeries series = new LineChartSeries();
 
 		// Label the series
-		series.setLabel("Average");
+		series.setLabel(SERIES_LABEL);
 
 		// Translate the data
 		Map<Integer, Double> chartData = this.chartDataFactory

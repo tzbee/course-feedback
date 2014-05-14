@@ -4,23 +4,16 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<!-- Component displaying course information -->
-<!-- Params: -->
-<!-- courseParam -> course object to display information from -->
-
 <h:head>
-	<title>Course Info</title>
+	<title>Page Title</title>
 </h:head>
 
 <h:body>
-	<ui:composition>
-		<h3>Name</h3>
-		<h:outputText value="#{courseParam.name}" />
 
-		<br />
-
-		<h3>Course code</h3>
-		<h:outputText value="#{courseParam.courseCode}" />
+	<ui:composition template="/template/teacherTemplate.xhtml">
+		<ui:define name="content">Yeaaaah</ui:define>
 	</ui:composition>
+
 </h:body>
+
 </html>

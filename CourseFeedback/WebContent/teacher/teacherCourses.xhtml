@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Page Title</title>
+</h:head>
+
+<h:body>
+
+	<!-- Teacher courses page -->
+
+	<ui:composition template="/template/teacherTemplate.xhtml">
+		<ui:define name="content">
+
+			<h2>Course List</h2>
+
+			<!-- Course list module -->
+
+			<ui:include src="/modules/course/courseList.xhtml">
+				<ui:param name="courses"
+					value="#{courseManager.getCoursesByTeacherId(sessionTeacherId)}" />
+				<ui:param name="coursePage" value="/teacher/teacherCoursePage" />
+			</ui:include>
+
+			<h2>Add course</h2>
+
+			<!-- Add course to teacher module -->
+
+			<ui:include src="/teacher/addCourseToTeacher.xhtml">
+				<ui:param name="teacherId" value="#{sessionTeacherId}" />
+			</ui:include>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

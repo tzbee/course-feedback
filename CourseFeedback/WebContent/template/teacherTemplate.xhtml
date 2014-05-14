@@ -2,27 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<!-- Basic template for all pages -->
 
 <h:head>
 	<title>Page Title</title>
 </h:head>
 
 <h:body>
-
-	<!-- Teacher home page -->
-	<!-- Params: -->
-	<!-- teacherId: User name of the teacher  -->
-
-	<ui:composition template="/template/teacherTemplate.xhtml">
-		<ui:define name="content">
-
-			<h1>Teacher profile</h1>
-
-			<h2>User name</h2>
-			<h:outputText value="#{sessionTeacherId}" />
-
+	<ui:composition template="/template/commonTemplate.xhtml">
+		<ui:define name="header">
+			<ui:include src="/header/teacherLogout.xhtml" />
 		</ui:define>
+
+		<ui:define name="menu">
+			<ui:include src="/menu/teacherMenu.xhtml" />
+		</ui:define>
+
 	</ui:composition>
 </h:body>
 

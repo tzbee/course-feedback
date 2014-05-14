@@ -18,17 +18,13 @@
 	<c:set var="currentCourse"
 		value="#{courseManager.getCourseById(courseid)}" />
 
-	<h1>
-		<h:outputText value="Course info:" />
-	</h1>
+	<h2>Course info</h2>
 
 	<br />
 
-	<h2>
-		<h:outputText value="Name" />
-	</h2>
-
-	<h:outputText value="#{currentCourse.name}" />
+	<ui:include src="/modules/course/courseInfo.xhtml">
+		<ui:param name="courseParam" value="#{currentCourse}" />
+	</ui:include>
 
 	<h2>
 		<h:outputText value="Course items" />

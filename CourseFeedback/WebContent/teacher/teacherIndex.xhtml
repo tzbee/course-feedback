@@ -6,23 +6,21 @@
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Teacher profile</title>
 </h:head>
 
 <h:body>
+	<c:choose>
+		<c:when test="#{empty sessionTeacherId}">
+			<h:link value="Register" outcome="teacherRegistration" />
+			<ui:include src="teacherLogin.xhtml" />
+		</c:when>
 
-	<h:form>
-		<h:commandButton value="Logout" action="#{teacherLoginManager.logout}" />
-	</h:form>
+		<c:otherwise>
+			<ui:include src="teacherHome.xhtml" />
+		</c:otherwise>
 
-	<h1>Teacher profile</h1>
+	</c:choose>
 
-	<h2>Name</h2>
-
-	<h:outputText value="#{sessionTeacherId}" />
-
-
-
-
+	<ui:include src="/footer/footer.xhtml" />
 </h:body>
 </html>

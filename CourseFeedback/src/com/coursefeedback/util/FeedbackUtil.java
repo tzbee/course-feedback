@@ -66,7 +66,7 @@ public class FeedbackUtil {
 	 * Get a list of average values form all previous elements for each index of
 	 * the given collection
 	 * 
-	 * Example: {1,4,7} -> {1, 2.5, 4} because
+	 * Example: {1, 4, 7} -> {1, 2.5, 4} because
 	 * 
 	 * average of 1 -> 1
 	 * 

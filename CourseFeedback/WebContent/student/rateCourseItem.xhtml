@@ -80,13 +80,13 @@
 
 
 				</h:form>
-				<ui:include src="/modules/footer.xhtml" />
+				<ui:include src="/footer/footer.xhtml" />
 			</center>
 		</p:layoutUnit>
 
 		<p:layoutUnit position="south" resizable="true" size="300">
 			<ui:insert>
-				<ui:include src="/modules/graphs/lineGraphModule.xhtml">
+				<ui:include src="/graphs/lineGraphModule.xhtml">
 					<ui:param name="graphName" value="Feedback average" />
 					<ui:param name="data"
 						value="#{feedbackManager.getFeedbacksByCourseItemId(courseitemid)}" />

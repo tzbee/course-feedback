@@ -11,7 +11,7 @@ import com.coursefeedback.teacher.Teacher;
 
 @ManagedBean(name = "teacherManager")
 public class BasicTeacherManager implements TeacherManager {
-	private static final String TEACHER_PROFILE = "teacherProfile";
+	private static final String TEACHER_PROFILE = "/teacher/teacherCourses";
 
 	@PersistenceContext(name = "CourseFeedback")
 	private EntityManager em;

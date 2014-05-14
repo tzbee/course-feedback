@@ -8,6 +8,11 @@ import javax.faces.bean.ManagedBean;
 
 import com.coursefeedback.course.Course;
 
+/**
+ * Test bean for a list of courses
+ * 
+ * @author touzbi
+ */
 @ManagedBean(name = "courseBeanTest")
 public class CourseBeanTest {
 	private List<Course> courses = new ArrayList<Course>();

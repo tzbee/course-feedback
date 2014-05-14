@@ -16,7 +16,7 @@ import com.coursefeedback.teacher.exception.InvalidUserNameException;
 public class BasicTeacherLoginManager implements TeacherLoginManager {
 	private static final String TEACHER_SESSION_ATTRIBUTE = "sessionTeacherId";
 
-	private static final String TEACHER_HOME = "teacherHome";
+	private static final String TEACHER_INDEX = "teacherIndex";
 	private static final String LOGIN_PAGE = "teacherLogin";
 
 	@PersistenceContext(name = "CourseFeedback")
@@ -45,7 +45,7 @@ public class BasicTeacherLoginManager implements TeacherLoginManager {
 		httpSession.setAttribute(TEACHER_SESSION_ATTRIBUTE,
 				teacher.getUserName());
 
-		return TEACHER_HOME;
+		return TEACHER_INDEX;
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class BasicTeacherLoginManager implements TeacherLoginManager {
 
 		httpSession.invalidate();
 
-		return TEACHER_HOME;
+		return TEACHER_INDEX;
 	}
 
 	public String getMessage() {

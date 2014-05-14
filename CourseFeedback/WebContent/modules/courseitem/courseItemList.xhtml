@@ -1,8 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<!-- Component displaying a list of courses information -->
+<!-- Component displaying a list of course items information -->
 <!-- Params: -->
-<!-- courses: The list of courses to display -->
+<!-- courseItems: The list of course items to display -->
+<!-- courseItemPage: The page each link should redirect to -->
+
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -10,33 +12,34 @@
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 	xmlns:f="http://java.sun.com/jsf/core">
 	<c:choose>
-		<c:when test="#{!empty courses}">
-			<h:dataTable value="#{courses}" var="course" styleClass="order-table"
-				headerClass="order-table-header"
+		<c:when test="#{!empty courseItems}">
+			<h:dataTable value="#{courseItems}" var="courseItem"
+				styleClass="order-table" headerClass="order-table-header"
 				rowClasses="order-table-odd-row,order-table-even-row">
 
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Code" />
+						<h:outputText value="Name" />
 					</f:facet>
 
-					<h:link value="#{course.courseCode}" outcome="#{coursePage}">
-						<f:param name="courseid" value="#{course.courseId}" />
+					<h:link value="#{courseItem.courseItemName}"
+						outcome="#{courseItemPage}">
+						<f:param name="courseitemid" value="#{courseItem.courseItemId}" />
 					</h:link>
 
 				</h:column>
 
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Name" />
+						<h:outputText value="Course" />
 					</f:facet>
-					<h:outputText value="#{course.name}" />
+					<h:outputText value="#{courseItem.course}" />
 				</h:column>
 			</h:dataTable>
 		</c:when>
 
 		<c:otherwise>
-			<h:outputText value="No courses yet" />
+			<h:outputText value="No course items yet" />
 		</c:otherwise>
 	</c:choose>
 </ui:composition>

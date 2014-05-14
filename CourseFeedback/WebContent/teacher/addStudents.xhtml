@@ -6,45 +6,48 @@
 	<title>fileUpload</title>
 </h:head>
 <h:body>
+	<ui:composition>
 
-	<!-- Add students by excel file  -->
-	<p>
-		<h:form id="form" enctype="multipart/form-data">
-			<strong><h:outputLabel value="Add students with excel file" /></strong>
+		<!-- Add students by excel file  -->
+		<p>
+			<h:form id="form" enctype="multipart/form-data">
+				<strong><h:outputLabel value="Add students with excel file" /></strong>
 
-			<br />
-
-			<p>
-				<h:inputFile id="file" value="#{uploadBean.file}">
-					<f:validator validatorId="fileValidator" />
-				</h:inputFile>
 				<br />
-				<h:commandButton value="Upload" action="#{uploadBean.upload()}" />
-			</p>
 
-		</h:form>
-	</p>
+				<p>
+					<h:inputFile id="file" value="#{uploadBean.file}">
+						<f:validator validatorId="fileValidator" />
+					</h:inputFile>
+					<br />
+					<h:commandButton value="Upload" action="#{uploadBean.upload()}" />
+				</p>
 
-	<!-- Add student manually -->
-	<p>
-		<h:form>
-			<strong><h:outputLabel value="Add student manually" /></strong>
-			<br />
+			</h:form>
+		</p>
 
-			<p>
-				Student number:
-				<h:inputText value="#{student.studentNumber}"></h:inputText>
-			</p>
-			<p>
-				Student email:
-				<h:inputText value="#{student.studentEmail}"></h:inputText>
-			</p>
-			<h:commandButton type="submit" value="Save"
-				action="#{studentManager.addStudentToSystem(student.studentNumber, student.studentEmail)}"></h:commandButton>
-		</h:form>
-	</p>
+		<!-- Add student manually -->
+		<p>
+			<h:form>
+				<strong><h:outputLabel value="Add student manually" /></strong>
+				<br />
 
-	<br />
-	<ui:include src="/modules/footer.xhtml" />
+				<p>
+					Student number:
+					<h:inputText value="#{student.studentNumber}"></h:inputText>
+				</p>
+				<p>
+					Student email:
+					<h:inputText value="#{student.studentEmail}"></h:inputText>
+				</p>
+				<h:commandButton type="submit" value="Save"
+					action="#{studentManager.addStudentToSystem(student.studentNumber, student.studentEmail)}"></h:commandButton>
+			</h:form>
+		</p>
+
+		<br />
+
+	</ui:composition>
+
 </h:body>
 </html>

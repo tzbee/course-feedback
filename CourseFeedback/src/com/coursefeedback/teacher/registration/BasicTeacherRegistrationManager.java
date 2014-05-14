@@ -16,7 +16,7 @@ import com.coursefeedback.teacher.Teacher;
 @ManagedBean(name = "teacherRegistrationManager")
 public class BasicTeacherRegistrationManager implements
 		TeacherRegistrationManager {
-	private static final String TEACHER_HOME = "teacherHome";
+	private static final String TEACHER_INDEX = "teacherIndex";
 
 	@PersistenceContext(name = "CourseFeedback")
 	private EntityManager em;
@@ -37,6 +37,6 @@ public class BasicTeacherRegistrationManager implements
 			}
 		}
 
-		return TEACHER_HOME;
+		return TEACHER_INDEX;
 	}
 }
