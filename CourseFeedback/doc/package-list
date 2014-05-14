@@ -15,5 +15,8 @@ com.coursefeedback.teacher.registration
 com.coursefeedback.teacher.teachermanager
 com.coursefeedback.util
 com.coursefeedback.validator
-com.coursefeedbacktest.chartseries
+com.coursefeedbacktest.chartdata
+com.coursefeedbacktest.course
+com.coursefeedbacktest.courseitembeantest
+com.coursefeedbacktest.feedback
 com.coursefeedbacktest.util
