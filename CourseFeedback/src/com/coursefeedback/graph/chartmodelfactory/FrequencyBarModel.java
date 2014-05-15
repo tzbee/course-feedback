@@ -1,7 +1,7 @@
-package com.coursefeedback.graph;
+package com.coursefeedback.graph.chartmodelfactory;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
@@ -11,7 +11,7 @@ import org.primefaces.model.chart.ChartSeries;
 import com.coursefeedback.feedback.Feedback;
 
 @ManagedBean
-public class FrequencyBarModel implements Serializable {
+public class FrequencyBarModel implements Serializable, ChartModelFactory {
 	private static final long serialVersionUID = 1L;
 
 	private CartesianChartModel categoryModel;
@@ -23,8 +23,8 @@ public class FrequencyBarModel implements Serializable {
 		return categoryModel;
 	}
 
-	public CartesianChartModel getFeedbackChartModel(
-			Collection<Feedback> feedbacks) {
+	@Override
+	public CartesianChartModel createFeedbackChartModel(List<Feedback> feedbacks) {
 		categoryModel = new CartesianChartModel();
 
 		ChartSeries chart = new ChartSeries();

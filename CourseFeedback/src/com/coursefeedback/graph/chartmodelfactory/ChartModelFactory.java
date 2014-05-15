@@ -14,5 +14,5 @@ import com.coursefeedback.feedback.Feedback;
  * 
  */
 public interface ChartModelFactory {
-	CartesianChartModel getFeedbackChartModel(List<Feedback> feedbacks);
+	CartesianChartModel createFeedbackChartModel(List<Feedback> feedbacks);
 }

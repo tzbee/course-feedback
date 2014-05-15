@@ -27,7 +27,7 @@ public class LineChartModelFactory implements ChartModelFactory {
 	private ContinuousChartDataFactory chartDataFactory;
 
 	@Override
-	public CartesianChartModel getFeedbackChartModel(List<Feedback> feedbacks) {
+	public CartesianChartModel createFeedbackChartModel(List<Feedback> feedbacks) {
 
 		// Create the model
 		CartesianChartModel cartesianChartModel = new CartesianChartModel();

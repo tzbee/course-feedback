@@ -20,13 +20,9 @@
 
 		<p:panel header="#{graphName}">
 			<p:barChart legendPosition="ne" title=""
-				value="#{frequencyBarModel.getFeedbackChartModel(data)}" />
-				
-				<p:editor rendered="false" />
+				value="#{frequencyBarModel.createFeedbackChartModel(data)}" />
+			<p:editor rendered="false" />
 		</p:panel>
-		
-		 
-	
 
 	</ui:composition>
 </h:body>
