@@ -1,4 +1,4 @@
-package com.coursefeedback.graph;
+package com.coursefeedback.graph.coursechartmodelfactory;
 
 import java.util.Collection;
 import java.util.List;
@@ -20,14 +20,15 @@ import com.coursefeedback.feedback.Feedback;
  * 
  */
 @ManagedBean
-public class FeedbackSummary {
+public class FeedbackSummary implements CourseChartModelFactory {
 	private CartesianChartModel categoryModel;
 
 	public CartesianChartModel getCategoryModel() {
 		return categoryModel;
 	}
 
-	public CartesianChartModel createFeedbackSummaryModel(Course course) {
+	@Override
+	public CartesianChartModel createCourseChartModel(Course course) {
 		System.out.print("createFeedbackSummaryModel(Course course) reached");
 		this.categoryModel = new CartesianChartModel();
 		ChartSeries chart = new ChartSeries();

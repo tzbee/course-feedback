@@ -1,4 +1,4 @@
-package com.coursefeedback.graph.chartmodelfactory;
+package com.coursefeedback.graph.feedbackchartmodelfactory;
 
 import java.util.List;
 import java.util.Map;
@@ -20,7 +20,7 @@ import com.coursefeedback.graph.chartdatafactory.ContinuousChartDataFactory;
  */
 
 @ManagedBean(name = "chartModelFactory")
-public class LineChartModelFactory implements ChartModelFactory {
+public class LineChartModelFactory implements FeedbackChartModelFactory {
 	private static final String SERIES_LABEL = "Average";
 
 	@ManagedProperty("#{chartDataFactory}")

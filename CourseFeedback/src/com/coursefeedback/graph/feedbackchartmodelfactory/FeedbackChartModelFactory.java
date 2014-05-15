@@ -1,4 +1,4 @@
-package com.coursefeedback.graph.chartmodelfactory;
+package com.coursefeedback.graph.feedbackchartmodelfactory;
 
 import java.util.List;
 
@@ -13,6 +13,6 @@ import com.coursefeedback.feedback.Feedback;
  * @author touzbi
  * 
  */
-public interface ChartModelFactory {
+public interface FeedbackChartModelFactory {
 	CartesianChartModel createFeedbackChartModel(List<Feedback> feedbacks);
 }
