@@ -31,19 +31,18 @@ public class FrequencyBarModel implements Serializable {
 		chart.setLabel("Lecture 1");
 
 		int badCounter = 0;
-		int goodCounter=0;
+		int goodCounter = 0;
 		for (Feedback feedback : feedbacks) {
-			 if(feedback.getValue()==1)
-				 badCounter++;
-			 if(feedback.getValue()==2)
-				 goodCounter++;
+			if (feedback.getValue() == 1)
+				badCounter++;
+			if (feedback.getValue() == 2)
+				goodCounter++;
 		}
-		System.out.println("goodCounter"+goodCounter);
-		
-		System.out.println("badCounter"+badCounter);
-			 chart.set("bad  "  , badCounter);
-			 chart.set("good "  , goodCounter);
-		 
+		System.out.println("goodCounter" + goodCounter);
+
+		System.out.println("badCounter" + badCounter);
+		chart.set("bad  ", badCounter);
+		chart.set("good ", goodCounter);
 
 		categoryModel.addSeries(chart);
 
