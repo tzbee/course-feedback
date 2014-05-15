@@ -16,10 +16,11 @@
 	<!-- 	Params:  -->
 	<!-- 	graphName: Name of the graph -->
 	<!-- 	course: Course object-->
+
 	<ui:composition>
 		<p:panel header="#{graphName}">
 			<p:barChart id="basic"
-				value="#{feedbackSummary.createFeedbackSummaryModel(course)}"
+				value="#{feedbackSummary.createCourseChartModel(course)}"
 				legendPosition="ne" title="" style="height:100%" />
 		</p:panel>
 	</ui:composition>
