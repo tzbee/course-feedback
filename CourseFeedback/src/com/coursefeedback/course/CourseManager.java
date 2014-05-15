@@ -2,6 +2,12 @@ package com.coursefeedback.course;
 
 import java.util.Collection;
 
+/**
+ * Course Manager
+ * 
+ * Handles all course related operations
+ * 
+ */
 public interface CourseManager {
 
 	/**

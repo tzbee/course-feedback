@@ -4,8 +4,9 @@ import com.coursefeedback.course.Course;
 import com.coursefeedback.teacher.Teacher;
 
 /**
- * Teacher Manager class Handles all teacher related operations
+ * Teacher Manager class
  * 
+ * Handles all teacher related operations
  */
 public interface TeacherManager {
 	/**
