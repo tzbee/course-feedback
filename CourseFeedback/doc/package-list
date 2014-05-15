@@ -3,9 +3,9 @@ com.coursefeedback.courseitem
 com.coursefeedback.feedback
 com.coursefeedback.feedback.metadata
 com.coursefeedback.fileupload
-com.coursefeedback.graph
 com.coursefeedback.graph.chartdatafactory
-com.coursefeedback.graph.chartmodelfactory
+com.coursefeedback.graph.coursechartmodelfactory
+com.coursefeedback.graph.feedbackchartmodelfactory
 com.coursefeedback.student
 com.coursefeedback.student.studentsfactory
 com.coursefeedback.teacher
