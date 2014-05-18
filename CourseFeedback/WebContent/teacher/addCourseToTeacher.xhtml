@@ -18,12 +18,22 @@
 	<ui:composition>
 		<h:form>
 			<h:outputLabel value="Name" />
-			<h:inputText value="#{course.name}" />
+
+			<h:inputText id="coursename" value="#{course.name}" required="true"
+				requiredMessage="Course name is required!"
+				validatorMessage="Check length!, 4 to 15 characters required!">
+				<f:validateLength minimum="4" maximum="15" />
+			</h:inputText>
+
+			<h:message for="coursename" style="color:red" />
 
 			<br />
 
 			<h:outputLabel value="Code" />
-			<h:inputText value="#{course.courseCode}" />
+
+			<h:inputText id="coursecode" value="#{course.courseCode}"
+				required="true" requiredMessage="Course code is required!" />
+			<h:message for="coursecode" style="color:red" />
 
 			<br />
 

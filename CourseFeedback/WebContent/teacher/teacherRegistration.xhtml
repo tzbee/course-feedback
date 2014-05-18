@@ -17,12 +17,25 @@
 		</h2>
 		<p>
 			<strong>Username:</strong>
-			<h:inputText value="#{teacher.userName}" />
+
+			<h:inputText id="username" value="#{teacher.userName}"
+				required="true" requiredMessage="Username is required!">
+				<f:validator validatorId="usernameValidator" />
+			</h:inputText>
+
+			<h:message for="username" style="color:red" />
 		</p>
+
 		<p>
 			<strong>Password:</strong>
-			<h:inputText value="#{teacher.password}" />
+			
+			<h:inputText id="password" value="#{teacher.password}"
+				required="true" requiredMessage="Password is required!">
+				<f:validator validatorId="passwordValidator" />
+			</h:inputText>
+			<h:message for="password" style="color:red" />
 		</p>
+
 
 		<h:commandButton value="Register"
 			action="#{teacherRegistrationManager.register(teacher)}" />

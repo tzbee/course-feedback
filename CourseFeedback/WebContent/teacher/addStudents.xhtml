@@ -34,12 +34,31 @@
 
 				<p>
 					Student number:
-					<h:inputText value="#{student.studentNumber}"></h:inputText>
+					<!--@Isaac: Changes made here, added ID, required, and RequiredMessage tags also, the number validator
+					 and the message (h:message)   -->
+					<h:inputText id="studentno" value="#{student.studentNumber}"
+						required="true"
+						requiredMessage="Student number is 
+					required!">
+						<f:validator validatorId="numberValidator" />
+					</h:inputText>
+					<h:message for="studentno" style="color:red" />
+
+
 				</p>
+
 				<p>
+					<!--@Isaac: Changes made here, added ID, required, and RequiredMessage tags also, the email validator
+					 and the message (h:message)   -->
 					Student email:
-					<h:inputText value="#{student.studentEmail}"></h:inputText>
+					<h:inputText id="email" value="#{student.studentEmail}"
+						required="true" requiredMessage="Student email is required!">
+						<f:validator validatorId="emailValidator" />
+					</h:inputText>
+					<h:message for="email" style="color:red" />
+
 				</p>
+
 				<h:commandButton type="submit" value="Save"
 					action="#{studentManager.addStudentToSystem(student.studentNumber, student.studentEmail)}"></h:commandButton>
 			</h:form>

@@ -17,9 +17,6 @@ public class FrequencyBarModel implements Serializable,
 
 	private CartesianChartModel categoryModel;
 
-	public FrequencyBarModel() {
-	}
-
 	public CartesianChartModel getCategoryModel() {
 		return categoryModel;
 	}

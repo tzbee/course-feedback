@@ -12,12 +12,23 @@
 		</h2>
 
 		<p>
+			<!--@Isaac: Changes made here, added ID, required, and RequiredMessage tags also the usernamevalidator and the message (h:message)   -->
 			<strong>Username:</strong>
-			<h:inputText value="#{teacher.userName}" />
+			<h:inputText id="username" value="#{teacher.userName}"
+				required="true" requiredMessage="Username is required!">
+				<f:validator validatorId="usernameValidator" />
+			</h:inputText>
+			<h:message for="username" style="color:red" />
 		</p>
+
 		<p>
+			<!--@Isaac: Changes made here, added ID, required, and RequiredMessage tags also the passwordvalidator and the message (h:message)   -->
 			<strong>Password:</strong>
-			<h:inputText value="#{teacher.password}" />
+			<h:inputText id="password" value="#{teacher.password}"
+				required="true" requiredMessage="Password is required!">
+				<f:validator validatorId="passwordValidator" />
+			</h:inputText>
+			<h:message for="password" style="color:red" />
 		</p>
 
 		<h:commandButton value="Login"

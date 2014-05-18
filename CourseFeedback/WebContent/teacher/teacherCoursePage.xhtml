@@ -41,12 +41,19 @@
 					<h:outputLabel value="Add course item" />
 				</h2>
 
-				<h:inputText value="#{courseItem.courseItemName}" />
+				<h:inputText id="courseitem" value="#{courseItem.courseItemName}"
+					required="true" requiredMessage="Course item is required!"
+					validatorMessage="Check length!, 4 to 15 characters required!">
+					<f:validateLength maximum="15" minimum="4" />
+				</h:inputText>
 
 				<h:commandButton value="Add course item"
 					action="#{courseItemManager.addCourseItemToCourse(courseItem,courseid)}">
 					<f:param name="courseid" value="#{courseid}" />
 				</h:commandButton>
+
+				<h:message for="courseitem" style="color:red" />
+
 			</h:form>
 
 			<h:form>
@@ -54,12 +61,18 @@
 					<h:outputLabel value="Add student to this course" />
 				</h2>
 
-				<h:inputText value="#{student.studentNumber}" />
-
+				<h:inputText id="studentno" value="#{student.studentNumber}"
+					required="true" requiredMessage="Student number is required!">
+					<f:validator validatorId="numberValidator" />
+				</h:inputText>
+				
 				<h:commandButton value="Add student"
 					action="#{studentManager.addStudentToCourse(student.studentNumber,courseid)}">
 					<f:param name="courseid" value="#{courseid}" />
 				</h:commandButton>
+
+				<h:message for="studentno" style="color:red" />
+
 			</h:form>
 
 			<ui:include src="/graphs/summaryGraph.xhtml">
