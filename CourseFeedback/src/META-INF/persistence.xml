@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="CourseFeedback"
 		transaction-type="JTA">
-		<jta-data-source>jdbc/bonecp_resource</jta-data-source>
+		<jta-data-source>jdbc/__default</jta-data-source>
 
 		<class>com.coursefeedback.teacher.Teacher</class>
 		<class>com.coursefeedback.course.Course</class>
