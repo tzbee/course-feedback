@@ -31,6 +31,7 @@ public class UploadBean {
 	 * 
 	 * @return the next navigation rule
 	 * @throws IOException
+	 *             If the file cannot be read
 	 */
 	public String upload() throws IOException {
 		return this.studentManager.saveStudents(this.studentsFactory

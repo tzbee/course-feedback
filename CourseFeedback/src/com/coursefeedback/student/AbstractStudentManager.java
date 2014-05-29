@@ -2,6 +2,11 @@ package com.coursefeedback.student;
 
 import java.util.Collection;
 
+/**
+ * Student Manager
+ * 
+ * Handles all student related operations
+ */
 public interface AbstractStudentManager {
 
 	/**
@@ -76,7 +81,7 @@ public interface AbstractStudentManager {
 	 * 
 	 * @param student
 	 * @param courseId
-	 * @return
+	 * @return representing next page
 	 */
 	String addStudentToCourse(String studentNumber, int courseId);
 
@@ -91,15 +96,15 @@ public interface AbstractStudentManager {
 	 * Saves a collection of students to the system
 	 * 
 	 * @param students
-	 * @return
+	 * @return representing next page
 	 */
 
 	String saveStudents(Collection<Student> students);
 
 	/**
-	 * Get a student based on his studentNumber
+	 * Get a student by his studentNumber
 	 * 
-	 * @return Collection<Student>
+	 * @return The student identified by the student number
 	 */
 
 	public Student getStudentByStudentNumber(String studentNumber);

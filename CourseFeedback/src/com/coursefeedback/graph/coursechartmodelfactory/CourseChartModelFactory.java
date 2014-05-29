@@ -5,10 +5,19 @@ import org.primefaces.model.chart.CartesianChartModel;
 import com.coursefeedback.course.Course;
 
 /**
- * Creates chart model based on the given course object.
+ * Abstract factory for Creating a chart model based on a given course object.
  * 
  * @author
  */
 public interface CourseChartModelFactory {
+	/**
+	 * Creates a chart model based on the given course object.
+	 * 
+	 * @param course
+	 *            The course object to create the chart model from
+	 * 
+	 * @return The chart model created from the course object
+	 */
+
 	CartesianChartModel createCourseChartModel(Course course);
 }

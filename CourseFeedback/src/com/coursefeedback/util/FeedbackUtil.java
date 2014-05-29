@@ -9,7 +9,7 @@ import com.coursefeedback.feedback.Feedback;
 /**
  * Utility methods for feedback management
  * 
- * @author touzbi
+ * @author Amine
  */
 
 public class FeedbackUtil {

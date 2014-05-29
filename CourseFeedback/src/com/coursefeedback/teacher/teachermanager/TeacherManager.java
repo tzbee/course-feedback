@@ -10,19 +10,22 @@ import com.coursefeedback.teacher.Teacher;
  */
 public interface TeacherManager {
 	/**
-	 * Add a course to a teacher identified by its username
+	 * Add a course to a teacher identified by its user name
 	 * 
 	 * @param course
+	 *            Course object to add to the teacher
 	 * @param teacherUserName
+	 *            The id identifying the teacher
 	 * @return The next navigation rule
 	 */
 	String addCourseToTeacher(Course course, String teacherUserName);
 
 	/**
-	 * Get teacher's information using its username
+	 * Find a teacher identified by its user name
 	 * 
 	 * @param userName
-	 * @return
+	 *            The user name used to identify the teacher
+	 * @return The teacher object found using the user name
 	 */
 	Teacher getTeacherByUserName(String userName);
 }
