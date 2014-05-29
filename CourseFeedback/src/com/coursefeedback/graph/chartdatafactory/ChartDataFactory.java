@@ -18,8 +18,8 @@ public interface ChartDataFactory<E> {
 	/**
 	 * Create a chart series(x & y axis data) from an ordered list of feedbacks
 	 * 
-	 * @param <E>
-	 *            The type of the data series at the y axis
+	 * @param feedbacks
+	 *            the ordered list of feedbacks to process the data from
 	 * 
 	 * @return a Map representing the data: The Map keys are X axis values, and
 	 *         the Map values are Y axis values

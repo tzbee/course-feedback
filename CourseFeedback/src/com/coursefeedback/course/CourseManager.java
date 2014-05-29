@@ -45,7 +45,7 @@ public interface CourseManager {
 	/**
 	 * Get all courses taken by a student identified by its student id
 	 * 
-	 * @param studentKey
+	 * @param studentID
 	 *            The student id identifying the student
 	 * @return A collection of course the student is taking
 	 */

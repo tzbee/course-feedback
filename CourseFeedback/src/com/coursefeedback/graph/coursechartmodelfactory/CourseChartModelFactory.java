@@ -7,7 +7,6 @@ import com.coursefeedback.course.Course;
 /**
  * Abstract factory for Creating a chart model based on a given course object.
  * 
- * @author
  */
 public interface CourseChartModelFactory {
 	/**

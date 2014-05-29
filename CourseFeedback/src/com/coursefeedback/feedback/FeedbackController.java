@@ -14,8 +14,6 @@ import com.coursefeedback.student.StudentManager;
 /**
  * Class that handles feedback input from rateCourseItem page.
  * 
- * @author
- * 
  */
 @ManagedBean
 public class FeedbackController {

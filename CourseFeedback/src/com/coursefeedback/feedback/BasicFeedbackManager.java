@@ -31,8 +31,6 @@ public class BasicFeedbackManager implements FeedbackManager {
 	 * Adds feedback to a course item
 	 * 
 	 * @param feedback
-	 * @param courseId
-	 * @return
 	 */
 	@Override
 	public String addFeedback(Feedback feedback) {

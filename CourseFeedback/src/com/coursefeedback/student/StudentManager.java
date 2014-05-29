@@ -19,8 +19,6 @@ import com.coursefeedback.courseitem.CourseItem;
 /**
  * This is a class that handles student related activities.
  * 
- * @author
- * 
  */
 @ManagedBean(name = "studentManager")
 @SessionScoped

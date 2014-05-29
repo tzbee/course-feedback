@@ -12,7 +12,7 @@ public interface AbstractStudentManager {
 	/**
 	 * Retrieves login reply for the studentRegister.xhtml page
 	 * 
-	 * @return String representing login reply
+	 * @return string representing login reply
 	 */
 	public String getLoginReply();
 
@@ -28,8 +28,8 @@ public interface AbstractStudentManager {
 	 * Creates key for a student IF: teacher has input the student into the
 	 * system AND student does not already have a key
 	 * 
-	 * @param String
-	 *            studentNumber
+	 * @param studentNumber
+	 *            String studentNumber
 	 * 
 	 * @return String representing next page
 	 */
@@ -38,7 +38,7 @@ public interface AbstractStudentManager {
 	/**
 	 * Retrieves student key link for the given student
 	 * 
-	 * @param Student
+	 * @param student
 	 *            student
 	 * 
 	 * @return String representing student key link
@@ -48,7 +48,7 @@ public interface AbstractStudentManager {
 	/**
 	 * Add student to the system
 	 * 
-	 * @param Student
+	 * @param student
 	 *            student
 	 * 
 	 * @return String representing next page
@@ -58,8 +58,11 @@ public interface AbstractStudentManager {
 	/**
 	 * Add student to the system
 	 * 
-	 * @param String
-	 *            studentNumber, String studentEmail
+	 * @param studentNumber
+	 *            student number
+	 * @param studentEmail
+	 *            student email
+	 * 
 	 * 
 	 * @return String representing next page
 	 */
@@ -68,8 +71,7 @@ public interface AbstractStudentManager {
 	/**
 	 * Check if student is already registered to system
 	 * 
-	 * @param String
-	 *            Student student
+	 * @param student student
 	 * 
 	 * @return boolean; true = student is registered to system, false = student
 	 *         is not registered to system
@@ -79,7 +81,7 @@ public interface AbstractStudentManager {
 	/**
 	 * Add an existing student to a course
 	 * 
-	 * @param student
+	 * @param studentNumber
 	 * @param courseId
 	 * @return representing next page
 	 */
@@ -103,6 +105,8 @@ public interface AbstractStudentManager {
 
 	/**
 	 * Get a student by his studentNumber
+	 * 
+	 * @param studentNumber
 	 * 
 	 * @return The student identified by the student number
 	 */

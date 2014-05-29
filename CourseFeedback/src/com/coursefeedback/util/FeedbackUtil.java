@@ -74,7 +74,7 @@ public class FeedbackUtil {
 	 * 
 	 * average of {1, 4, 7} returns 4
 	 * 
-	 * @param input
+	 * @param values
 	 *            values
 	 * @return the list of average values
 	 */
