@@ -14,6 +14,7 @@ import javax.transaction.UserTransaction;
  * 
  * @author touzbi
  */
+
 @ManagedBean(name = "courseManager")
 public class BasicCourseManager implements CourseManager {
 	@PersistenceContext(name = "CourseFeedback")

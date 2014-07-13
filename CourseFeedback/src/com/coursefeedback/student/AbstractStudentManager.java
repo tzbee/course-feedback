@@ -71,7 +71,8 @@ public interface AbstractStudentManager {
 	/**
 	 * Check if student is already registered to system
 	 * 
-	 * @param student student
+	 * @param student
+	 *            student
 	 * 
 	 * @return boolean; true = student is registered to system, false = student
 	 *         is not registered to system

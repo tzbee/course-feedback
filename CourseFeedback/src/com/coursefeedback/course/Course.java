@@ -25,6 +25,7 @@ import com.coursefeedback.teacher.Teacher;
  * @author touzbi
  * 
  */
+
 @ManagedBean
 @Entity
 @Table(name = "course")
